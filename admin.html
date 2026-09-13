@@ -1,0 +1,2577 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FlaschenlandOPS – Administration</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            min-height: 70px;
+            background: #ffffff;
+            border-bottom: 1px solid #e4e8ef;
+
+            padding: 12px 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 43px;
+            height: 43px;
+            border-radius: 11px;
+
+            background: #1769e0;
+            color: #ffffff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #7a8494;
+            margin-top: 2px;
+        }
+
+        .logout {
+            border: 1px solid #d8dee8;
+            background: #ffffff;
+            padding: 10px 15px;
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .logout:hover {
+            background: #f5f7fa;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 22px 50px;
+        }
+
+        .page-title {
+            margin-bottom: 25px;
+        }
+
+        .page-title h1 {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        .page-title p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* =========================
+           MESSAGE
+        ========================= */
+
+        #message {
+            display: none;
+            padding: 13px 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        #message.success {
+            display: block;
+            background: #effcf3;
+            border: 1px solid #b9e3c3;
+            color: #18743a;
+        }
+
+        #message.error {
+            display: block;
+            background: #fff1f1;
+            border: 1px solid #efc3c3;
+            color: #b42318;
+        }
+
+        /* =========================
+           FILTER
+        ========================= */
+
+        .filter-card {
+            background: #ffffff;
+            border: 1px solid #e4e8ef;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .filter-title {
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .filters {
+            display: grid;
+            grid-template-columns:
+                repeat(4, minmax(150px, 1fr))
+                auto;
+
+            gap: 12px;
+            align-items: end;
+        }
+
+        .filter-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #4b5563;
+        }
+
+        .filter-group input,
+        .filter-group select {
+            width: 100%;
+            height: 43px;
+
+            border: 1px solid #d5dbe5;
+            border-radius: 8px;
+
+            background: #ffffff;
+
+            padding: 0 11px;
+            font-size: 14px;
+
+            outline: none;
+        }
+
+        .filter-group input:focus,
+        .filter-group select:focus {
+            border-color: #1769e0;
+        }
+
+        .filter-button {
+            height: 43px;
+            border: none;
+            border-radius: 8px;
+
+            padding: 0 18px;
+
+            background: #1769e0;
+            color: #ffffff;
+
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .filter-button:hover {
+            background: #0d57c7;
+        }
+
+        /* =========================
+           KPI
+        ========================= */
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(5, minmax(150px, 1fr));
+
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .kpi {
+            background: #ffffff;
+            border: 1px solid #e4e8ef;
+            border-radius: 15px;
+            padding: 19px;
+        }
+
+        .kpi-label {
+            color: #6b7280;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .kpi-value {
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .kpi-unit {
+            font-size: 12px;
+            color: #7a8494;
+            margin-top: 4px;
+        }
+
+        /* =========================
+           GRID
+        ========================= */
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e4e8ef;
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .card h2 {
+            font-size: 18px;
+            margin-bottom: 17px;
+        }
+
+        /* =========================
+           CHART
+        ========================= */
+
+        .chart-container {
+            width: 100%;
+            height: 280px;
+
+            display: flex;
+            align-items: end;
+            gap: 7px;
+
+            border-bottom: 1px solid #dfe4eb;
+            padding: 10px 5px 0;
+            overflow-x: auto;
+        }
+
+        .bar-wrapper {
+            min-width: 32px;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            align-items: center;
+        }
+
+        .bar {
+            width: 25px;
+            min-height: 2px;
+            background: #1769e0;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .bar-label {
+            font-size: 9px;
+            color: #6b7280;
+            margin-top: 6px;
+            white-space: nowrap;
+        }
+
+        /* =========================
+           PROCESS DISTRIBUTION
+        ========================= */
+
+        .process-row {
+            margin-bottom: 18px;
+        }
+
+        .process-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-row-top {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .process-row-name {
+            font-weight: 700;
+        }
+
+        .process-row-value {
+            color: #6b7280;
+        }
+
+        .progress {
+            height: 10px;
+            border-radius: 10px;
+            background: #edf0f5;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #1769e0;
+            border-radius: 10px;
+        }
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-card {
+            background: #ffffff;
+            border: 1px solid #e4e8ef;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .table-header {
+            padding: 20px;
+            border-bottom: 1px solid #e7ebf0;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .table-header h2 {
+            font-size: 18px;
+        }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        th,
+        td {
+            padding: 13px 16px;
+            text-align: left;
+            border-bottom: 1px solid #edf0f4;
+            font-size: 13px;
+        }
+
+        th {
+            background: #f8fafc;
+            color: #596273;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        tbody tr:hover {
+            background: #fafbfd;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .status.active {
+            background: #eaf8ee;
+            color: #18743a;
+        }
+
+        .status.inactive {
+            background: #f1f3f6;
+            color: #6b7280;
+        }
+
+        .role {
+            font-weight: 700;
+        }
+
+        .role.admin {
+            color: #7c3aed;
+        }
+
+        .role.employee {
+            color: #1769e0;
+        }
+
+        .action-button {
+            border: 1px solid #d8dee8;
+            background: #ffffff;
+            border-radius: 7px;
+            padding: 7px 10px;
+
+            cursor: pointer;
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .action-button:hover {
+            background: #f5f7fa;
+        }
+
+        /* =========================
+           EMPTY
+        ========================= */
+
+        .empty {
+            padding: 30px;
+            text-align: center;
+            color: #7a8494;
+            font-size: 14px;
+        }
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        .loading {
+            padding: 30px;
+            text-align: center;
+            color: #7a8494;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #8a93a3;
+            font-size: 12px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1100px) {
+
+            .kpi-grid {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+            .filters {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .kpi-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            header {
+                padding: 10px 14px;
+            }
+
+            .brand {
+                font-size: 17px;
+            }
+
+            main {
+                padding: 22px 14px 40px;
+            }
+
+            .filters {
+                grid-template-columns: 1fr;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .kpi {
+                padding: 15px;
+            }
+
+            .kpi-value {
+                font-size: 21px;
+            }
+
+            .page-title h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-left">
+
+        <div class="logo">
+            F
+        </div>
+
+        <div>
+            <div class="brand">
+                FlaschenlandOPS
+            </div>
+
+            <div class="subtitle">
+                Administration
+            </div>
+        </div>
+
+    </div>
+
+    <button
+        class="logout"
+        id="logoutButton"
+    >
+        Abmelden
+    </button>
+
+</header>
+
+
+<main>
+
+    <div class="page-title">
+
+        <h1>
+            Dashboard
+        </h1>
+
+        <p>
+            Übersicht über Arbeitszeiten, Mengen und Produktivität.
+        </p>
+
+    </div>
+
+
+    <div id="message"></div>
+
+
+    <!-- =========================
+         FILTER
+    ========================== -->
+
+    <div class="filter-card">
+
+        <div class="filter-title">
+            Auswertung filtern
+        </div>
+
+        <div class="filters">
+
+            <div class="filter-group">
+
+                <label for="dateFrom">
+                    Von
+                </label>
+
+                <input
+                    type="date"
+                    id="dateFrom"
+                >
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <label for="dateTo">
+                    Bis
+                </label>
+
+                <input
+                    type="date"
+                    id="dateTo"
+                >
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <label for="employeeFilter">
+                    Mitarbeiter
+                </label>
+
+                <select id="employeeFilter">
+
+                    <option value="">
+                        Alle Mitarbeiter
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <label for="processFilter">
+                    Prozess
+                </label>
+
+                <select id="processFilter">
+
+                    <option value="">
+                        Alle Prozesse
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                class="filter-button"
+                id="applyFilter"
+            >
+                Auswerten
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         KPIs
+    ========================== -->
+
+    <div class="kpi-grid">
+
+        <div class="kpi">
+
+            <div class="kpi-label">
+                Gesamt Arbeitszeit
+            </div>
+
+            <div
+                class="kpi-value"
+                id="totalHours"
+            >
+                0,00
+            </div>
+
+            <div class="kpi-unit">
+                Stunden
+            </div>
+
+        </div>
+
+
+        <div class="kpi">
+
+            <div class="kpi-label">
+                Gesamt Wannen
+            </div>
+
+            <div
+                class="kpi-value"
+                id="totalTubs"
+            >
+                0
+            </div>
+
+            <div class="kpi-unit">
+                Wareneingang + Pick
+            </div>
+
+        </div>
+
+
+        <div class="kpi">
+
+            <div class="kpi-label">
+                Gesamt Pakete
+            </div>
+
+            <div
+                class="kpi-value"
+                id="totalPackages"
+            >
+                0
+            </div>
+
+            <div class="kpi-unit">
+                Pack
+            </div>
+
+        </div>
+
+
+        <div class="kpi">
+
+            <div class="kpi-label">
+                Wannen / Stunde
+            </div>
+
+            <div
+                class="kpi-value"
+                id="tubsPerHour"
+            >
+                0,00
+            </div>
+
+            <div class="kpi-unit">
+                Gesamtproduktivität
+            </div>
+
+        </div>
+
+
+        <div class="kpi">
+
+            <div class="kpi-label">
+                Pakete / Stunde
+            </div>
+
+            <div
+                class="kpi-value"
+                id="packagesPerHour"
+            >
+                0,00
+            </div>
+
+            <div class="kpi-unit">
+                Gesamtproduktivität
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CHARTS
+    ========================== -->
+
+    <div class="dashboard-grid">
+
+
+        <div class="card">
+
+            <h2>
+                Arbeitszeit nach Prozess
+            </h2>
+
+            <div id="processDistribution">
+
+                <div class="empty">
+                    Noch keine Daten vorhanden.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                Arbeitszeit pro Tag
+            </h2>
+
+            <div
+                id="dailyChart"
+                class="chart-container"
+            >
+                <div class="empty">
+                    Noch keine Daten vorhanden.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MITARBEITERVERGLEICH
+    ========================== -->
+
+    <div class="table-card">
+
+        <div class="table-header">
+
+            <h2>
+                Mitarbeitervergleich
+            </h2>
+
+        </div>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Mitarbeiter
+                        </th>
+
+                        <th>
+                            Stunden
+                        </th>
+
+                        <th>
+                            Wannen
+                        </th>
+
+                        <th>
+                            Pakete
+                        </th>
+
+                        <th>
+                            Wannen / Std.
+                        </th>
+
+                        <th>
+                            Pakete / Std.
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody
+                    id="employeeStatsBody"
+                >
+
+                    <tr>
+
+                        <td
+                            colspan="6"
+                            class="loading"
+                        >
+                            Daten werden geladen...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MITARBEITER VERWALTUNG
+    ========================== -->
+
+    <div class="table-card">
+
+        <div class="table-header">
+
+            <h2>
+                Mitarbeiterverwaltung
+            </h2>
+
+        </div>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Mitarbeiternummer
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Rolle
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Erstellt
+                        </th>
+
+                        <th>
+                            Aktion
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody
+                    id="employeesBody"
+                >
+
+                    <tr>
+
+                        <td
+                            colspan="6"
+                            class="loading"
+                        >
+                            Mitarbeiter werden geladen...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+    FlaschenlandOPS
+</footer>
+
+
+<!-- =========================
+     SUPABASE
+========================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+    /* ============================================================
+       SUPABASE
+    ============================================================ */
+
+    const SUPABASE_URL =
+        "https://kmdsltojdpfpsatwgfcg.supabase.co";
+
+    const SUPABASE_KEY =
+        "sb_publishable_dpG11d2sSHDTn-2Y5cCAsQ_dPVSBAGo";
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+    /* ============================================================
+       ELEMENTE
+    ============================================================ */
+
+    const message =
+        document.getElementById("message");
+
+    const logoutButton =
+        document.getElementById("logoutButton");
+
+    const dateFrom =
+        document.getElementById("dateFrom");
+
+    const dateTo =
+        document.getElementById("dateTo");
+
+    const employeeFilter =
+        document.getElementById("employeeFilter");
+
+    const processFilter =
+        document.getElementById("processFilter");
+
+    const applyFilter =
+        document.getElementById("applyFilter");
+
+    const employeeStatsBody =
+        document.getElementById(
+            "employeeStatsBody"
+        );
+
+    const employeesBody =
+        document.getElementById(
+            "employeesBody"
+        );
+
+    const processDistribution =
+        document.getElementById(
+            "processDistribution"
+        );
+
+    const dailyChart =
+        document.getElementById(
+            "dailyChart"
+        );
+
+
+    /* ============================================================
+       DATEN
+    ============================================================ */
+
+    let currentUser = null;
+    let currentProfile = null;
+
+    let employees = [];
+    let processes = [];
+
+    let sessions = [];
+    let quantities = [];
+
+
+    /* ============================================================
+       HILFSFUNKTIONEN
+    ============================================================ */
+
+    function showMessage(
+        text,
+        type = "success"
+    ) {
+
+        message.textContent =
+            text;
+
+        message.className =
+            type;
+
+        setTimeout(
+            () => {
+
+                message.textContent =
+                    "";
+
+                message.className =
+                    "";
+
+            },
+            5000
+        );
+    }
+
+
+    function formatNumber(
+        number,
+        decimals = 2
+    ) {
+
+        return new Intl.NumberFormat(
+            "de-DE",
+            {
+                minimumFractionDigits:
+                    decimals,
+
+                maximumFractionDigits:
+                    decimals
+            }
+        ).format(number);
+    }
+
+
+    function formatDate(
+        dateString
+    ) {
+
+        if (!dateString) {
+            return "-";
+        }
+
+        return new Date(
+            dateString
+        ).toLocaleDateString(
+            "de-DE"
+        );
+    }
+
+
+    function getDateString(
+        date
+    ) {
+
+        const year =
+            date.getFullYear();
+
+        const month =
+            String(
+                date.getMonth() + 1
+            ).padStart(2, "0");
+
+        const day =
+            String(
+                date.getDate()
+            ).padStart(2, "0");
+
+        return (
+            year +
+            "-" +
+            month +
+            "-" +
+            day
+        );
+    }
+
+
+    function getHours(
+        startedAt,
+        endedAt
+    ) {
+
+        if (
+            !startedAt ||
+            !endedAt
+        ) {
+            return 0;
+        }
+
+        const start =
+            new Date(
+                startedAt
+            ).getTime();
+
+        const end =
+            new Date(
+                endedAt
+            ).getTime();
+
+        if (end <= start) {
+            return 0;
+        }
+
+        return (
+            end - start
+        ) / 3600000;
+    }
+
+
+    /* ============================================================
+       INITIALISIERUNG
+    ============================================================ */
+
+    async function initialize() {
+
+        try {
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient.auth.getSession();
+
+
+            if (error) {
+                throw error;
+            }
+
+
+            if (!data.session) {
+
+                window.location.href =
+                    "index.html";
+
+                return;
+            }
+
+
+            currentUser =
+                data.session.user;
+
+
+            /*
+             * Adminprofil laden
+             */
+
+            const {
+                data: profile,
+                error: profileError
+            } =
+                await supabaseClient
+                    .from("profiles")
+                    .select(
+                        "id, employee_number, first_name, last_name, role, active"
+                    )
+                    .eq(
+                        "id",
+                        currentUser.id
+                    )
+                    .single();
+
+
+            if (profileError) {
+                throw profileError;
+            }
+
+
+            if (
+                !profile.active ||
+                profile.role !== "admin"
+            ) {
+
+                await supabaseClient.auth.signOut();
+
+                window.location.href =
+                    "index.html";
+
+                return;
+            }
+
+
+            currentProfile =
+                profile;
+
+
+            /*
+             * Standardzeitraum:
+             * aktueller Monat
+             */
+
+            const today =
+                new Date();
+
+            const firstDay =
+                new Date(
+                    today.getFullYear(),
+                    today.getMonth(),
+                    1
+                );
+
+
+            dateFrom.value =
+                getDateString(
+                    firstDay
+                );
+
+            dateTo.value =
+                getDateString(
+                    today
+                );
+
+
+            await loadEmployees();
+
+            await loadProcesses();
+
+            await loadData();
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Admin Initialisierung:",
+                error
+            );
+
+            showMessage(
+                "Das Dashboard konnte nicht geladen werden.",
+                "error"
+            );
+        }
+    }
+
+
+    /* ============================================================
+       MITARBEITER LADEN
+    ============================================================ */
+
+    async function loadEmployees() {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("profiles")
+                .select(
+                    "id, employee_number, first_name, last_name, role, active, created_at"
+                )
+                .order(
+                    "last_name",
+                    {
+                        ascending: true
+                    }
+                );
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        employees =
+            data || [];
+
+
+        /*
+         * Mitarbeiterfilter
+         */
+
+        employeeFilter.innerHTML =
+            '<option value="">Alle Mitarbeiter</option>';
+
+
+        employees.forEach(
+            employee => {
+
+                const option =
+                    document.createElement(
+                        "option"
+                    );
+
+                option.value =
+                    employee.id;
+
+                option.textContent =
+                    employee.first_name +
+                    " " +
+                    employee.last_name;
+
+                employeeFilter.appendChild(
+                    option
+                );
+            }
+        );
+
+
+        renderEmployees();
+    }
+
+
+    /* ============================================================
+       PROZESSE LADEN
+    ============================================================ */
+
+    async function loadProcesses() {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("processes")
+                .select(
+                    "id, name, tracks_quantity, quantity_unit, active"
+                )
+                .order(
+                    "sort_order",
+                    {
+                        ascending: true
+                    }
+                );
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        processes =
+            data || [];
+
+
+        processFilter.innerHTML =
+            '<option value="">Alle Prozesse</option>';
+
+
+        processes
+            .filter(
+                process =>
+                    process.active
+            )
+            .forEach(
+                process => {
+
+                    const option =
+                        document.createElement(
+                            "option"
+                        );
+
+                    option.value =
+                        process.id;
+
+                    option.textContent =
+                        process.name;
+
+                    processFilter.appendChild(
+                        option
+                    );
+                }
+            );
+    }
+
+
+    /* ============================================================
+       DATEN LADEN
+    ============================================================ */
+
+    async function loadData() {
+
+        const from =
+            dateFrom.value;
+
+        const to =
+            dateTo.value;
+
+
+        if (!from || !to) {
+
+            showMessage(
+                "Bitte einen Zeitraum auswählen.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        if (from > to) {
+
+            showMessage(
+                "Das Startdatum darf nicht nach dem Enddatum liegen.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /*
+         * Sessions
+         */
+
+        let sessionQuery =
+            supabaseClient
+                .from("work_sessions")
+                .select(
+                    "id, employee_id, process_id, started_at, ended_at"
+                )
+                .not(
+                    "ended_at",
+                    "is",
+                    null
+                )
+                .gte(
+                    "started_at",
+                    from + "T00:00:00"
+                )
+                .lte(
+                    "started_at",
+                    to + "T23:59:59"
+                );
+
+
+        if (
+            employeeFilter.value
+        ) {
+
+            sessionQuery =
+                sessionQuery.eq(
+                    "employee_id",
+                    employeeFilter.value
+                );
+        }
+
+
+        if (
+            processFilter.value
+        ) {
+
+            sessionQuery =
+                sessionQuery.eq(
+                    "process_id",
+                    processFilter.value
+                );
+        }
+
+
+        const {
+            data: sessionData,
+            error: sessionError
+        } =
+            await sessionQuery;
+
+
+        if (sessionError) {
+            throw sessionError;
+        }
+
+
+        sessions =
+            sessionData || [];
+
+
+        /*
+         * Mengen
+         */
+
+        let quantityQuery =
+            supabaseClient
+                .from("daily_quantities")
+                .select(
+                    "id, employee_id, process_id, work_date, quantity"
+                )
+                .gte(
+                    "work_date",
+                    from
+                )
+                .lte(
+                    "work_date",
+                    to
+                );
+
+
+        if (
+            employeeFilter.value
+        ) {
+
+            quantityQuery =
+                quantityQuery.eq(
+                    "employee_id",
+                    employeeFilter.value
+                );
+        }
+
+
+        if (
+            processFilter.value
+        ) {
+
+            quantityQuery =
+                quantityQuery.eq(
+                    "process_id",
+                    processFilter.value
+                );
+        }
+
+
+        const {
+            data: quantityData,
+            error: quantityError
+        } =
+            await quantityQuery;
+
+
+        if (quantityError) {
+            throw quantityError;
+        }
+
+
+        quantities =
+            quantityData || [];
+
+
+        calculateDashboard();
+    }
+
+
+    /* ============================================================
+       DASHBOARD BERECHNEN
+    ============================================================ */
+
+    function calculateDashboard() {
+
+        let totalHours = 0;
+
+        let totalTubs = 0;
+
+        let totalPackages = 0;
+
+
+        /*
+         * Gesamtstunden
+         */
+
+        sessions.forEach(
+            session => {
+
+                totalHours +=
+                    getHours(
+                        session.started_at,
+                        session.ended_at
+                    );
+            }
+        );
+
+
+        /*
+         * Mengen
+         */
+
+        quantities.forEach(
+            quantity => {
+
+                const process =
+                    processes.find(
+                        p =>
+                            p.id ===
+                            quantity.process_id
+                    );
+
+
+                if (!process) {
+                    return;
+                }
+
+
+                if (
+                    process.name ===
+                    "Wareneingang" ||
+                    process.name ===
+                    "Pick"
+                ) {
+
+                    totalTubs +=
+                        Number(
+                            quantity.quantity
+                        );
+
+                }
+
+
+                if (
+                    process.name ===
+                    "Pack"
+                ) {
+
+                    totalPackages +=
+                        Number(
+                            quantity.quantity
+                        );
+                }
+            }
+        );
+
+
+        /*
+         * KPIs
+         */
+
+        document.getElementById(
+            "totalHours"
+        ).textContent =
+            formatNumber(
+                totalHours
+            );
+
+
+        document.getElementById(
+            "totalTubs"
+        ).textContent =
+            formatNumber(
+                totalTubs,
+                0
+            );
+
+
+        document.getElementById(
+            "totalPackages"
+        ).textContent =
+            formatNumber(
+                totalPackages,
+                0
+            );
+
+
+        /*
+         * Produktivität
+         *
+         * Gesamtmenge / Gesamtzeit
+         */
+
+        const tubsPerHour =
+            totalHours > 0
+                ? totalTubs / totalHours
+                : 0;
+
+
+        const packagesPerHour =
+            totalHours > 0
+                ? totalPackages / totalHours
+                : 0;
+
+
+        document.getElementById(
+            "tubsPerHour"
+        ).textContent =
+            formatNumber(
+                tubsPerHour
+            );
+
+
+        document.getElementById(
+            "packagesPerHour"
+        ).textContent =
+            formatNumber(
+                packagesPerHour
+            );
+
+
+        renderProcessDistribution();
+
+        renderDailyChart();
+
+        renderEmployeeStats();
+    }
+
+
+    /* ============================================================
+       PROZESSVERTEILUNG
+    ============================================================ */
+
+    function renderProcessDistribution() {
+
+        processDistribution.innerHTML =
+            "";
+
+
+        const processHours = {};
+
+
+        processes.forEach(
+            process => {
+
+                processHours[
+                    process.id
+                ] = 0;
+            }
+        );
+
+
+        sessions.forEach(
+            session => {
+
+                if (
+                    processHours[
+                        session.process_id
+                    ] !== undefined
+                ) {
+
+                    processHours[
+                        session.process_id
+                    ] +=
+                        getHours(
+                            session.started_at,
+                            session.ended_at
+                        );
+                }
+            }
+        );
+
+
+        const totalHours =
+            Object.values(
+                processHours
+            ).reduce(
+                (sum, value) =>
+                    sum + value,
+                0
+            );
+
+
+        if (totalHours <= 0) {
+
+            processDistribution.innerHTML =
+                `
+                <div class="empty">
+                    Keine Arbeitszeit im ausgewählten Zeitraum.
+                </div>
+                `;
+
+            return;
+        }
+
+
+        processes.forEach(
+            process => {
+
+                const hours =
+                    processHours[
+                        process.id
+                    ] || 0;
+
+
+                if (hours <= 0) {
+                    return;
+                }
+
+
+                const percentage =
+                    (
+                        hours /
+                        totalHours
+                    ) * 100;
+
+
+                const row =
+                    document.createElement(
+                        "div"
+                    );
+
+                row.className =
+                    "process-row";
+
+
+                row.innerHTML = `
+                    <div class="process-row-top">
+                        <span class="process-row-name">
+                            ${process.name}
+                        </span>
+
+                        <span class="process-row-value">
+                            ${formatNumber(hours)} Std.
+                            (${formatNumber(percentage, 1)} %)
+                        </span>
+                    </div>
+
+                    <div class="progress">
+                        <div
+                            class="progress-bar"
+                            style="width:${percentage}%"
+                        ></div>
+                    </div>
+                `;
+
+
+                processDistribution.appendChild(
+                    row
+                );
+            }
+        );
+    }
+
+
+    /* ============================================================
+       TAGESCHART
+    ============================================================ */
+
+    function renderDailyChart() {
+
+        dailyChart.innerHTML =
+            "";
+
+
+        const from =
+            new Date(
+                dateFrom.value +
+                "T00:00:00"
+            );
+
+        const to =
+            new Date(
+                dateTo.value +
+                "T00:00:00"
+            );
+
+
+        const days = [];
+
+
+        const cursor =
+            new Date(from);
+
+
+        while (
+            cursor <= to
+        ) {
+
+            days.push(
+                getDateString(
+                    cursor
+                )
+            );
+
+            cursor.setDate(
+                cursor.getDate() + 1
+            );
+        }
+
+
+        const dailyHours = {};
+
+
+        days.forEach(
+            day => {
+
+                dailyHours[day] =
+                    0;
+            }
+        );
+
+
+        sessions.forEach(
+            session => {
+
+                const day =
+                    getDateString(
+                        new Date(
+                            session.started_at
+                        )
+                    );
+
+
+                if (
+                    dailyHours[day] !== undefined
+                ) {
+
+                    dailyHours[day] +=
+                        getHours(
+                            session.started_at,
+                            session.ended_at
+                        );
+                }
+            }
+        );
+
+
+        const maxHours =
+            Math.max(
+                ...Object.values(
+                    dailyHours
+                ),
+                1
+            );
+
+
+        days.forEach(
+            day => {
+
+                const hours =
+                    dailyHours[day];
+
+
+                const wrapper =
+                    document.createElement(
+                        "div"
+                    );
+
+                wrapper.className =
+                    "bar-wrapper";
+
+
+                const height =
+                    (
+                        hours /
+                        maxHours
+                    ) * 230;
+
+
+                wrapper.innerHTML = `
+
+                    <div
+                        class="bar"
+                        style="height:${Math.max(height, 2)}px"
+                        title="${formatNumber(hours)} Stunden"
+                    ></div>
+
+                    <div class="bar-label">
+                        ${day.substring(8, 10)}.${day.substring(5, 7)}
+                    </div>
+
+                `;
+
+
+                dailyChart.appendChild(
+                    wrapper
+                );
+            }
+        );
+
+
+        if (
+            days.length === 0
+        ) {
+
+            dailyChart.innerHTML =
+                `
+                <div class="empty">
+                    Keine Daten vorhanden.
+                </div>
+                `;
+        }
+    }
+
+
+    /* ============================================================
+       MITARBEITERVERGLEICH
+    ============================================================ */
+
+    function renderEmployeeStats() {
+
+        employeeStatsBody.innerHTML =
+            "";
+
+
+        const stats = {};
+
+
+        employees.forEach(
+            employee => {
+
+                stats[
+                    employee.id
+                ] = {
+
+                    hours: 0,
+
+                    tubs: 0,
+
+                    packages: 0
+                };
+            }
+        );
+
+
+        sessions.forEach(
+            session => {
+
+                if (
+                    !stats[
+                        session.employee_id
+                    ]
+                ) {
+                    return;
+                }
+
+
+                stats[
+                    session.employee_id
+                ].hours +=
+                    getHours(
+                        session.started_at,
+                        session.ended_at
+                    );
+            }
+        );
+
+
+        quantities.forEach(
+            quantity => {
+
+                if (
+                    !stats[
+                        quantity.employee_id
+                    ]
+                ) {
+                    return;
+                }
+
+
+                const process =
+                    processes.find(
+                        p =>
+                            p.id ===
+                            quantity.process_id
+                    );
+
+
+                if (!process) {
+                    return;
+                }
+
+
+                if (
+                    process.name ===
+                    "Wareneingang" ||
+                    process.name ===
+                    "Pick"
+                ) {
+
+                    stats[
+                        quantity.employee_id
+                    ].tubs +=
+                        Number(
+                            quantity.quantity
+                        );
+                }
+
+
+                if (
+                    process.name ===
+                    "Pack"
+                ) {
+
+                    stats[
+                        quantity.employee_id
+                    ].packages +=
+                        Number(
+                            quantity.quantity
+                        );
+                }
+            }
+        );
+
+
+        const filteredEmployees =
+            employees.filter(
+                employee =>
+                    employee.active
+            );
+
+
+        if (
+            filteredEmployees.length === 0
+        ) {
+
+            employeeStatsBody.innerHTML =
+                `
+                <tr>
+                    <td colspan="6" class="empty">
+                        Keine Mitarbeiter vorhanden.
+                    </td>
+                </tr>
+                `;
+
+            return;
+        }
+
+
+        filteredEmployees.forEach(
+            employee => {
+
+                const stat =
+                    stats[
+                        employee.id
+                    ];
+
+
+                const tubsPerHour =
+                    stat.hours > 0
+                        ? stat.tubs /
+                          stat.hours
+                        : 0;
+
+
+                const packagesPerHour =
+                    stat.hours > 0
+                        ? stat.packages /
+                          stat.hours
+                        : 0;
+
+
+                const row =
+                    document.createElement(
+                        "tr"
+                    );
+
+
+                row.innerHTML = `
+
+                    <td>
+                        <strong>
+                            ${employee.first_name}
+                            ${employee.last_name}
+                        </strong>
+                    </td>
+
+                    <td>
+                        ${formatNumber(stat.hours)}
+                    </td>
+
+                    <td>
+                        ${formatNumber(stat.tubs, 0)}
+                    </td>
+
+                    <td>
+                        ${formatNumber(stat.packages, 0)}
+                    </td>
+
+                    <td>
+                        ${formatNumber(tubsPerHour)}
+                    </td>
+
+                    <td>
+                        ${formatNumber(packagesPerHour)}
+                    </td>
+
+                `;
+
+
+                employeeStatsBody.appendChild(
+                    row
+                );
+            }
+        );
+    }
+
+
+    /* ============================================================
+       MITARBEITERVERWALTUNG
+    ============================================================ */
+
+    function renderEmployees() {
+
+        employeesBody.innerHTML =
+            "";
+
+
+        if (
+            employees.length === 0
+        ) {
+
+            employeesBody.innerHTML =
+                `
+                <tr>
+                    <td colspan="6" class="empty">
+                        Keine Mitarbeiter vorhanden.
+                    </td>
+                </tr>
+                `;
+
+            return;
+        }
+
+
+        employees.forEach(
+            employee => {
+
+                const row =
+                    document.createElement(
+                        "tr"
+                    );
+
+
+                const roleClass =
+                    employee.role === "admin"
+                        ? "admin"
+                        : "employee";
+
+
+                const statusClass =
+                    employee.active
+                        ? "active"
+                        : "inactive";
+
+
+                const statusText =
+                    employee.active
+                        ? "Aktiv"
+                        : "Deaktiviert";
+
+
+                const actionText =
+                    employee.active
+                        ? "Deaktivieren"
+                        : "Aktivieren";
+
+
+                row.innerHTML = `
+
+                    <td>
+                        ${employee.employee_number}
+                    </td>
+
+                    <td>
+                        <strong>
+                            ${employee.first_name}
+                            ${employee.last_name}
+                        </strong>
+                    </td>
+
+                    <td>
+                        <span class="role ${roleClass}">
+                            ${employee.role === "admin"
+                                ? "Administrator"
+                                : "Mitarbeiter"}
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="status ${statusClass}">
+                            ${statusText}
+                        </span>
+                    </td>
+
+                    <td>
+                        ${formatDate(
+                            employee.created_at
+                        )}
+                    </td>
+
+                    <td>
+                        <button
+                            class="action-button"
+                            data-id="${employee.id}"
+                        >
+                            ${actionText}
+                        </button>
+                    </td>
+
+                `;
+
+
+                const button =
+                    row.querySelector(
+                        ".action-button"
+                    );
+
+
+                button.addEventListener(
+                    "click",
+                    () =>
+                        toggleEmployee(
+                            employee
+                        )
+                );
+
+
+                employeesBody.appendChild(
+                    row
+                );
+            }
+        );
+    }
+
+
+    /* ============================================================
+       MITARBEITER AKTIVIEREN / DEAKTIVIEREN
+    ============================================================ */
+
+    async function toggleEmployee(
+        employee
+    ) {
+
+        /*
+         * Verhindern, dass der aktuell
+         * eingeloggte Admin sich selbst
+         * versehentlich deaktiviert.
+         */
+
+        if (
+            employee.id ===
+            currentUser.id
+        ) {
+
+            showMessage(
+                "Du kannst dein eigenes Administratorkonto hier nicht deaktivieren.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        const newStatus =
+            !employee.active;
+
+
+        const question =
+            newStatus
+                ? "Mitarbeiter wieder aktivieren?"
+                : "Mitarbeiter wirklich deaktivieren?";
+
+
+        if (
+            !confirm(
+                question
+            )
+        ) {
+            return;
+        }
+
+
+        try {
+
+            const {
+                error
+            } =
+                await supabaseClient
+                    .from("profiles")
+                    .update({
+                        active:
+                            newStatus,
+
+                        updated_at:
+                            new Date().toISOString()
+                    })
+                    .eq(
+                        "id",
+                        employee.id
+                    );
+
+
+            if (error) {
+                throw error;
+            }
+
+
+            showMessage(
+                newStatus
+                    ? "Mitarbeiter wurde aktiviert."
+                    : "Mitarbeiter wurde deaktiviert."
+            );
+
+
+            await loadEmployees();
+
+            await loadData();
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Mitarbeiterstatus:",
+                error
+            );
+
+            showMessage(
+                "Der Mitarbeiterstatus konnte nicht geändert werden.",
+                "error"
+            );
+        }
+    }
+
+
+    /* ============================================================
+       FILTER
+    ============================================================ */
+
+    applyFilter.addEventListener(
+        "click",
+        async function () {
+
+            applyFilter.disabled =
+                true;
+
+            applyFilter.textContent =
+                "Laden...";
+
+
+            try {
+
+                await loadData();
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Filter:",
+                    error
+                );
+
+                showMessage(
+                    "Die Auswertung konnte nicht geladen werden.",
+                    "error"
+                );
+
+            }
+
+            finally {
+
+                applyFilter.disabled =
+                    false;
+
+                applyFilter.textContent =
+                    "Auswerten";
+            }
+        }
+    );
+
+
+    /* ============================================================
+       LOGOUT
+    ============================================================ */
+
+    logoutButton.addEventListener(
+        "click",
+        async function () {
+
+            await supabaseClient.auth.signOut();
+
+            window.location.href =
+                "index.html";
+        }
+    );
+
+
+    /* ============================================================
+       AUTH STATUS
+    ============================================================ */
+
+    supabaseClient.auth.onAuthStateChange(
+        function (
+            event,
+            session
+        ) {
+
+            if (
+                event === "SIGNED_OUT" ||
+                !session
+            ) {
+
+                window.location.href =
+                    "index.html";
+            }
+        }
+    );
+
+
+    /* ============================================================
+       START
+    ============================================================ */
+
+    initialize();
+
+</script>
+
+</body>
+</html>
