@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>FlaschenlandOPS – Passwort zurücksetzen</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e2e7ee;
+            border-radius: 18px;
+            padding: 32px;
+            box-shadow: 0 10px 35px rgba(15, 23, 42, .07);
+        }
+
+        .logo {
+            width: 52px;
+            height: 52px;
+            margin: 0 auto 18px;
+            border-radius: 14px;
+            background: #1769e0;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+            font-weight: 800;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .message {
+            display: none;
+            padding: 12px 14px;
+            border-radius: 9px;
+            font-size: 13px;
+            line-height: 1.45;
+            margin-bottom: 18px;
+        }
+
+        .message.error {
+            display: block;
+            background: #fff1f1;
+            border: 1px solid #efc3c3;
+            color: #b42318;
+        }
+
+        .message.success {
+            display: block;
+            background: #effcf3;
+            border: 1px solid #b9e3c3;
+            color: #18743a;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 7px;
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            height: 47px;
+            border: 1px solid #d5dbe5;
+            border-radius: 9px;
+            padding: 0 12px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .password-wrapper input {
+            padding-right: 90px;
+        }
+
+        input:focus {
+            border-color: #1769e0;
+            box-shadow: 0 0 0 3px rgba(23, 105, 224, .10);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            color: #1769e0;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 7px;
+            cursor: pointer;
+        }
+
+        .hint {
+            margin-top: 6px;
+            color: #7a8494;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .button {
+            width: 100%;
+            height: 47px;
+            border: none;
+            border-radius: 9px;
+            background: #1769e0;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #0d57c7;
+        }
+
+        .button:disabled {
+            opacity: .65;
+            cursor: not-allowed;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #1769e0;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+
+        .success-box {
+            display: none;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 54px;
+            height: 54px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: #eaf8ee;
+            color: #18743a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .success-box h2 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .success-box p {
+            color: #6b7280;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #8a93a3;
+            font-size: 11px;
+        }
+
+        footer a {
+            color: #687386;
+            text-decoration: none;
+            margin: 0 4px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="logo">
+            F
+        </div>
+
+        <h1>
+            Neues Passwort
+        </h1>
+
+        <p class="subtitle">
+            Vergib ein neues Passwort für dein
+            FlaschenlandOPS-Konto.
+        </p>
+
+
+        <div
+            id="message"
+            class="message"
+        ></div>
+
+
+        <form id="resetForm">
+
+            <div class="form-group">
+
+                <label for="password">
+                    Neues Passwort
+                </label>
+
+                <div class="password-wrapper">
+
+                    <input
+                        id="password"
+                        type="password"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <button
+                        id="passwordToggle"
+                        class="password-toggle"
+                        type="button"
+                    >
+                        Anzeigen
+                    </button>
+
+                </div>
+
+                <div class="hint">
+                    Das Passwort muss mindestens
+                    8 Zeichen lang sein.
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="passwordConfirm">
+                    Passwort wiederholen
+                </label>
+
+                <div class="password-wrapper">
+
+                    <input
+                        id="passwordConfirm"
+                        type="password"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <button
+                        id="passwordConfirmToggle"
+                        class="password-toggle"
+                        type="button"
+                    >
+                        Anzeigen
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="submitButton"
+                class="button"
+                type="submit"
+            >
+                Passwort speichern
+            </button>
+
+        </form>
+
+
+        <div
+            id="successBox"
+            class="success-box"
+        >
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Passwort geändert
+            </h2>
+
+            <p>
+                Dein Passwort wurde erfolgreich
+                geändert. Du kannst dich jetzt
+                mit deinem neuen Passwort anmelden.
+            </p>
+
+            <a
+                href="index.html"
+                class="back"
+            >
+                Zur Anmeldung
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+
+        FlaschenlandOPS
+
+        |
+
+        <a href="datenschutz.html">
+            Datenschutz
+        </a>
+
+        |
+
+        <a href="impressum.html">
+            Impressum
+        </a>
+
+        |
+
+        <a href="agb.html">
+            AGB
+        </a>
+
+    </footer>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+    "https://kmdsltojdpfpsatwgfcg.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_dpG11d2sSHDTn-2Y5cCAsQ_dPVSBAGo";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+const form =
+    document.getElementById(
+        "resetForm"
+    );
+
+
+const message =
+    document.getElementById(
+        "message"
+    );
+
+
+const submitButton =
+    document.getElementById(
+        "submitButton"
+    );
+
+
+const successBox =
+    document.getElementById(
+        "successBox"
+    );
+
+
+function showMessage(
+    text,
+    type
+) {
+
+    message.textContent =
+        text;
+
+    message.className =
+        "message " + type;
+
+    message.style.display =
+        "block";
+}
+
+
+function clearMessage() {
+
+    message.textContent = "";
+
+    message.className =
+        "message";
+
+    message.style.display =
+        "none";
+}
+
+
+function setupPasswordToggle(
+    inputId,
+    buttonId
+) {
+
+    const input =
+        document.getElementById(
+            inputId
+        );
+
+    const button =
+        document.getElementById(
+            buttonId
+        );
+
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            if (
+                input.type ===
+                "password"
+            ) {
+
+                input.type =
+                    "text";
+
+                button.textContent =
+                    "Verbergen";
+
+            } else {
+
+                input.type =
+                    "password";
+
+                button.textContent =
+                    "Anzeigen";
+            }
+        }
+    );
+}
+
+
+setupPasswordToggle(
+    "password",
+    "passwordToggle"
+);
+
+
+setupPasswordToggle(
+    "passwordConfirm",
+    "passwordConfirmToggle"
+);
+
+
+/*
+ * Supabase stellt nach dem Klick auf den
+ * "Passwort vergessen"-Link eine Session
+ * über den Recovery-Link her.
+ *
+ * Wir warten hier kurz auf die Session,
+ * bevor der Benutzer das neue Passwort
+ * speichern kann.
+ */
+
+let recoveryReady = false;
+
+
+async function checkRecoverySession() {
+
+    try {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .auth
+                .getSession();
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        if (data.session) {
+
+            recoveryReady =
+                true;
+
+            return;
+        }
+
+
+        /*
+         * Bei einem Recovery-Link kann die
+         * Session je nach Browser zunächst
+         * über den URL-Hash verarbeitet werden.
+         *
+         * Deshalb noch einmal kurz warten.
+         */
+
+        await new Promise(
+            resolve =>
+                setTimeout(
+                    resolve,
+                    800
+                )
+        );
+
+
+        const {
+            data: secondData,
+            error: secondError
+        } =
+            await supabaseClient
+                .auth
+                .getSession();
+
+
+        if (secondError) {
+            throw secondError;
+        }
+
+
+        if (
+            secondData.session
+        ) {
+
+            recoveryReady =
+                true;
+
+            return;
+        }
+
+
+        showMessage(
+            "Der Passwort-Link ist ungültig oder abgelaufen. Bitte fordere einen neuen Link an.",
+            "error"
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Recovery-Session:",
+            error
+        );
+
+        showMessage(
+            "Der Passwort-Link konnte nicht überprüft werden.",
+            "error"
+        );
+    }
+}
+
+
+supabaseClient
+    .auth
+    .onAuthStateChange(
+        (
+            event,
+            session
+        ) => {
+
+            if (
+                event ===
+                    "PASSWORD_RECOVERY" &&
+                session
+            ) {
+
+                recoveryReady =
+                    true;
+
+                clearMessage();
+            }
+        }
+    );
+
+
+form.addEventListener(
+    "submit",
+    async event => {
+
+        event.preventDefault();
+
+
+        clearMessage();
+
+
+        const password =
+            document.getElementById(
+                "password"
+            ).value;
+
+
+        const passwordConfirm =
+            document.getElementById(
+                "passwordConfirm"
+            ).value;
+
+
+        if (
+            password.length < 8
+        ) {
+
+            showMessage(
+                "Das Passwort muss mindestens 8 Zeichen lang sein.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        if (
+            password !==
+            passwordConfirm
+        ) {
+
+            showMessage(
+                "Die beiden Passwörter stimmen nicht überein.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        submitButton.disabled =
+            true;
+
+        submitButton.textContent =
+            "Passwort wird gespeichert...";
+
+
+        try {
+
+            /*
+             * Vor dem Update prüfen wir,
+             * ob Supabase eine gültige Session
+             * für den Recovery-Vorgang besitzt.
+             */
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .auth
+                    .getSession();
+
+
+            if (error) {
+                throw error;
+            }
+
+
+            if (!data.session) {
+
+                throw new Error(
+                    "Keine gültige Passwort-Session vorhanden. Bitte einen neuen Passwort-Link anfordern."
+                );
+            }
+
+
+            const {
+                error: updateError
+            } =
+                await supabaseClient
+                    .auth
+                    .updateUser({
+                        password:
+                            password
+                    });
+
+
+            if (updateError) {
+                throw updateError;
+            }
+
+
+            form.style.display =
+                "none";
+
+
+            successBox.style.display =
+                "block";
+
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Passwort ändern:",
+                error
+            );
+
+
+            showMessage(
+                error.message ||
+                "Das Passwort konnte nicht geändert werden.",
+                "error"
+            );
+
+        }
+
+        finally {
+
+            submitButton.disabled =
+                false;
+
+            submitButton.textContent =
+                "Passwort speichern";
+        }
+    }
+);
+
+
+/*
+ * Recovery-Session prüfen.
+ */
+
+checkRecoverySession();
+
+</script>
+
+</body>
+</html>
