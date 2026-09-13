@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FlaschenlandOPS – Mitarbeiter</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e4e8ef;
+            min-height: 70px;
+            padding: 12px 24px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .small-logo {
+            width: 42px;
+            height: 42px;
+            border-radius: 11px;
+            background: #1769e0;
+            color: #ffffff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .employee-name {
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 2px;
+        }
+
+        .logout-button {
+            border: 1px solid #d8dee8;
+            background: #ffffff;
+            color: #374151;
+
+            padding: 10px 15px;
+            border-radius: 9px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background: #f5f7fa;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            width: 100%;
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 30px 20px 50px;
+        }
+
+        .welcome {
+            margin-bottom: 25px;
+        }
+
+        .welcome h1 {
+            font-size: 28px;
+            margin-bottom: 7px;
+        }
+
+        .welcome p {
+            color: #6b7280;
+            font-size: 15px;
+        }
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .status-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+
+            border: 1px solid #e5e9f0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .status-label {
+            color: #6b7280;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .status-process {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .status-time {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1769e0;
+        }
+
+        .no-process {
+            color: #6b7280;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* =========================
+           PROCESS GRID
+        ========================= */
+
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .process-button {
+            min-height: 145px;
+
+            background: #ffffff;
+            border: 2px solid #e0e5ed;
+            border-radius: 16px;
+
+            padding: 20px;
+
+            cursor: pointer;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            transition: 0.2s;
+        }
+
+        .process-button:hover {
+            border-color: #1769e0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .process-button.active {
+            border-color: #1769e0;
+            background: #eef5ff;
+        }
+
+        .process-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .process-name {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .process-state {
+            margin-top: 7px;
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .process-button.active .process-state {
+            color: #1769e0;
+            font-weight: 700;
+        }
+
+        /* =========================
+           QUANTITY CARD
+        ========================= */
+
+        .quantity-card {
+            display: none;
+
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 22px;
+            margin-top: 25px;
+
+            border: 1px solid #e5e9f0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .quantity-card.visible {
+            display: block;
+        }
+
+        .quantity-title {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 7px;
+        }
+
+        .quantity-description {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .quantity-row {
+            display: flex;
+            gap: 12px;
+            align-items: end;
+        }
+
+        .quantity-input-wrapper {
+            flex: 1;
+        }
+
+        .quantity-input-wrapper label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .quantity-input {
+            width: 100%;
+            height: 50px;
+
+            border: 1px solid #d5dbe5;
+            border-radius: 9px;
+
+            padding: 0 14px;
+
+            font-size: 17px;
+            outline: none;
+        }
+
+        .quantity-input:focus {
+            border-color: #1769e0;
+            box-shadow: 0 0 0 3px rgba(23, 105, 224, 0.1);
+        }
+
+        .save-button {
+            height: 50px;
+            padding: 0 22px;
+
+            border: none;
+            border-radius: 9px;
+
+            background: #1769e0;
+            color: #ffffff;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .save-button:hover {
+            background: #0d57c7;
+        }
+
+        .save-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* =========================
+           MESSAGES
+        ========================= */
+
+        .message {
+            display: none;
+
+            padding: 13px 15px;
+            border-radius: 10px;
+
+            margin-bottom: 20px;
+
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .message.error {
+            display: block;
+            background: #fff1f1;
+            border: 1px solid #f0c5c5;
+            color: #b42318;
+        }
+
+        .message.success {
+            display: block;
+            background: #effcf3;
+            border: 1px solid #b9e3c3;
+            color: #18743a;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+            color: #8a93a3;
+            font-size: 12px;
+            padding: 20px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            header {
+                padding: 10px 15px;
+            }
+
+            .brand {
+                font-size: 17px;
+            }
+
+            .employee-name {
+                font-size: 12px;
+            }
+
+            main {
+                padding: 22px 14px 40px;
+            }
+
+            .welcome h1 {
+                font-size: 24px;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .process-button {
+                min-height: 125px;
+                padding: 14px;
+            }
+
+            .process-icon {
+                font-size: 30px;
+                margin-bottom: 8px;
+            }
+
+            .process-name {
+                font-size: 16px;
+            }
+
+            .quantity-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .save-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-left">
+
+        <div class="small-logo">
+            F
+        </div>
+
+        <div>
+            <div class="brand">
+                FlaschenlandOPS
+            </div>
+
+            <div
+                class="employee-name"
+                id="employeeName"
+            >
+                Wird geladen...
+            </div>
+        </div>
+
+    </div>
+
+    <button
+        class="logout-button"
+        id="logoutButton"
+    >
+        Abmelden
+    </button>
+
+</header>
+
+
+<main>
+
+    <div class="welcome">
+
+        <h1>
+            Arbeitsprozess
+        </h1>
+
+        <p>
+            Wähle den Prozess aus, an dem du gerade arbeitest.
+        </p>
+
+    </div>
+
+
+    <div
+        id="message"
+        class="message"
+    ></div>
+
+
+    <!-- =========================
+         AKTUELLER STATUS
+    ========================== -->
+
+    <div class="status-card">
+
+        <div class="status-label">
+            Aktueller Prozess
+        </div>
+
+        <div
+            id="currentProcess"
+            class="no-process"
+        >
+            Kein Prozess aktiv
+        </div>
+
+        <div
+            id="currentTime"
+            class="status-time"
+            style="display:none;"
+        >
+            00:00:00
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         PROZESSE
+    ========================== -->
+
+    <h2 class="section-title">
+        Prozesse
+    </h2>
+
+    <div class="process-grid">
+
+        <button
+            class="process-button"
+            data-process="Wareneingang"
+        >
+
+            <div class="process-icon">
+                📦
+            </div>
+
+            <div class="process-name">
+                Wareneingang
+            </div>
+
+            <div class="process-state">
+                Wannen
+            </div>
+
+        </button>
+
+
+        <button
+            class="process-button"
+            data-process="Pick"
+        >
+
+            <div class="process-icon">
+                🛒
+            </div>
+
+            <div class="process-name">
+                Pick
+            </div>
+
+            <div class="process-state">
+                Wannen
+            </div>
+
+        </button>
+
+
+        <button
+            class="process-button"
+            data-process="Pack"
+        >
+
+            <div class="process-icon">
+                📦
+            </div>
+
+            <div class="process-name">
+                Pack
+            </div>
+
+            <div class="process-state">
+                Pakete
+            </div>
+
+        </button>
+
+
+        <button
+            class="process-button"
+            data-process="Service"
+        >
+
+            <div class="process-icon">
+                🎧
+            </div>
+
+            <div class="process-name">
+                Service
+            </div>
+
+            <div class="process-state">
+                Nur Zeit
+            </div>
+
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         MENGENEINGABE
+    ========================== -->
+
+    <div
+        id="quantityCard"
+        class="quantity-card"
+    >
+
+        <div
+            id="quantityTitle"
+            class="quantity-title"
+        >
+            Menge eintragen
+        </div>
+
+        <div
+            id="quantityDescription"
+            class="quantity-description"
+        >
+            Trag hier deine Menge für heute ein.
+        </div>
+
+
+        <div class="quantity-row">
+
+            <div class="quantity-input-wrapper">
+
+                <label for="quantityInput">
+                    Menge
+                </label>
+
+                <input
+                    type="number"
+                    id="quantityInput"
+                    class="quantity-input"
+                    min="0"
+                    step="1"
+                    placeholder="0"
+                >
+
+            </div>
+
+            <button
+                id="saveQuantityButton"
+                class="save-button"
+            >
+                Menge speichern
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+    FlaschenlandOPS
+</footer>
+
+
+<!-- =========================
+     SUPABASE
+========================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+    /* ============================================================
+       SUPABASE
+    ============================================================ */
+
+    const SUPABASE_URL =
+        "https://kmdsltojdpfpsatwgfcg.supabase.co";
+
+    const SUPABASE_KEY =
+        "sb_publishable_dpG11d2sSHDTn-2Y5cCAsQ_dPVSBAGo";
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+    /* ============================================================
+       ELEMENTE
+    ============================================================ */
+
+    const employeeName =
+        document.getElementById("employeeName");
+
+    const logoutButton =
+        document.getElementById("logoutButton");
+
+    const message =
+        document.getElementById("message");
+
+    const currentProcess =
+        document.getElementById("currentProcess");
+
+    const currentTime =
+        document.getElementById("currentTime");
+
+    const processButtons =
+        document.querySelectorAll(".process-button");
+
+    const quantityCard =
+        document.getElementById("quantityCard");
+
+    const quantityTitle =
+        document.getElementById("quantityTitle");
+
+    const quantityDescription =
+        document.getElementById("quantityDescription");
+
+    const quantityInput =
+        document.getElementById("quantityInput");
+
+    const saveQuantityButton =
+        document.getElementById("saveQuantityButton");
+
+
+    /* ============================================================
+       VARIABLEN
+    ============================================================ */
+
+    let currentUser = null;
+    let currentProfile = null;
+
+    let processes = [];
+
+    let activeSession = null;
+
+    let timerInterval = null;
+
+    let selectedQuantityProcess = null;
+
+
+    /* ============================================================
+       HILFSFUNKTIONEN
+    ============================================================ */
+
+    function showMessage(text, type = "success") {
+
+        message.textContent = text;
+
+        message.className =
+            "message " + type;
+
+        setTimeout(() => {
+
+            message.className = "message";
+
+            message.textContent = "";
+
+        }, 5000);
+    }
+
+
+    function formatDuration(milliseconds) {
+
+        if (milliseconds < 0) {
+            milliseconds = 0;
+        }
+
+        const totalSeconds =
+            Math.floor(milliseconds / 1000);
+
+        const hours =
+            Math.floor(totalSeconds / 3600);
+
+        const minutes =
+            Math.floor(
+                (totalSeconds % 3600) / 60
+            );
+
+        const seconds =
+            totalSeconds % 60;
+
+
+        return (
+            String(hours).padStart(2, "0") +
+            ":" +
+            String(minutes).padStart(2, "0") +
+            ":" +
+            String(seconds).padStart(2, "0")
+        );
+    }
+
+
+    function updateTimer() {
+
+        if (!activeSession) {
+
+            currentTime.style.display =
+                "none";
+
+            return;
+        }
+
+
+        const startedAt =
+            new Date(
+                activeSession.started_at
+            );
+
+
+        const now =
+            new Date();
+
+
+        const duration =
+            now.getTime() -
+            startedAt.getTime();
+
+
+        currentTime.textContent =
+            formatDuration(duration);
+
+        currentTime.style.display =
+            "block";
+    }
+
+
+    function startTimer() {
+
+        stopTimer();
+
+        updateTimer();
+
+        timerInterval =
+            setInterval(
+                updateTimer,
+                1000
+            );
+    }
+
+
+    function stopTimer() {
+
+        if (timerInterval) {
+
+            clearInterval(
+                timerInterval
+            );
+
+            timerInterval = null;
+        }
+    }
+
+
+    /* ============================================================
+       AUTH / BENUTZER LADEN
+    ============================================================ */
+
+    async function initialize() {
+
+        try {
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient.auth.getSession();
+
+
+            if (error) {
+                throw error;
+            }
+
+
+            if (!data.session) {
+
+                window.location.href =
+                    "index.html";
+
+                return;
+            }
+
+
+            currentUser =
+                data.session.user;
+
+
+            /*
+             * Profil laden
+             */
+
+            const {
+                data: profile,
+                error: profileError
+            } =
+                await supabaseClient
+                    .from("profiles")
+                    .select(
+                        "id, employee_number, first_name, last_name, role, active"
+                    )
+                    .eq(
+                        "id",
+                        currentUser.id
+                    )
+                    .single();
+
+
+            if (profileError) {
+                throw profileError;
+            }
+
+
+            if (!profile.active) {
+
+                await supabaseClient.auth.signOut();
+
+                window.location.href =
+                    "index.html";
+
+                return;
+            }
+
+
+            currentProfile =
+                profile;
+
+
+            employeeName.textContent =
+                profile.first_name +
+                " " +
+                profile.last_name;
+
+
+            /*
+             * Prozesse laden
+             */
+
+            await loadProcesses();
+
+
+            /*
+             * Aktive Session laden
+             */
+
+            await loadActiveSession();
+
+
+            /*
+             * Mengen für heute laden
+             */
+
+            await loadTodayQuantity();
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Initialisierung:",
+                error
+            );
+
+            showMessage(
+                "Die Mitarbeiterdaten konnten nicht geladen werden.",
+                "error"
+            );
+        }
+    }
+
+
+    /* ============================================================
+       PROZESSE LADEN
+    ============================================================ */
+
+    async function loadProcesses() {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("processes")
+                .select(
+                    "id, name, tracks_quantity, quantity_unit, active, sort_order"
+                )
+                .eq(
+                    "active",
+                    true
+                )
+                .order(
+                    "sort_order",
+                    {
+                        ascending: true
+                    }
+                );
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        processes =
+            data || [];
+    }
+
+
+    /* ============================================================
+       AKTIVE SESSION LADEN
+    ============================================================ */
+
+    async function loadActiveSession() {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("work_sessions")
+                .select(
+                    `
+                    id,
+                    employee_id,
+                    process_id,
+                    started_at,
+                    ended_at,
+                    processes (
+                        id,
+                        name,
+                        tracks_quantity,
+                        quantity_unit
+                    )
+                    `
+                )
+                .eq(
+                    "employee_id",
+                    currentUser.id
+                )
+                .is(
+                    "ended_at",
+                    null
+                )
+                .maybeSingle();
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        activeSession =
+            data;
+
+
+        updateProcessDisplay();
+
+    }
+
+
+    /* ============================================================
+       AKTIVEN PROZESS ANZEIGEN
+    ============================================================ */
+
+    function updateProcessDisplay() {
+
+        processButtons.forEach(
+            button => {
+
+                button.classList.remove(
+                    "active"
+                );
+
+                const name =
+                    button.dataset.process;
+
+                const state =
+                    button.querySelector(
+                        ".process-state"
+                    );
+
+
+                if (
+                    activeSession &&
+                    activeSession.processes &&
+                    activeSession.processes.name === name
+                ) {
+
+                    button.classList.add(
+                        "active"
+                    );
+
+                    state.textContent =
+                        "AKTIV";
+
+                } else {
+
+                    if (name === "Service") {
+
+                        state.textContent =
+                            "Nur Zeit";
+
+                    } else if (name === "Pack") {
+
+                        state.textContent =
+                            "Pakete";
+
+                    } else {
+
+                        state.textContent =
+                            "Wannen";
+                    }
+                }
+            }
+        );
+
+
+        if (
+            activeSession &&
+            activeSession.processes
+        ) {
+
+            currentProcess.textContent =
+                activeSession.processes.name;
+
+            currentProcess.className =
+                "status-process";
+
+            startTimer();
+
+        } else {
+
+            currentProcess.textContent =
+                "Kein Prozess aktiv";
+
+            currentProcess.className =
+                "no-process";
+
+            currentTime.style.display =
+                "none";
+
+            stopTimer();
+        }
+    }
+
+
+    /* ============================================================
+       PROZESS BUTTONS
+    ============================================================ */
+
+    processButtons.forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                async function () {
+
+                    const processName =
+                        button.dataset.process;
+
+
+                    const process =
+                        processes.find(
+                            item =>
+                                item.name ===
+                                processName
+                        );
+
+
+                    if (!process) {
+
+                        showMessage(
+                            "Dieser Prozess wurde nicht gefunden.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+
+                    await switchProcess(
+                        process
+                    );
+                }
+            );
+        }
+    );
+
+
+    /* ============================================================
+       PROZESS WECHSELN
+    ============================================================ */
+
+    async function switchProcess(
+        newProcess
+    ) {
+
+        processButtons.forEach(
+            button => {
+                button.disabled = true;
+            }
+        );
+
+
+        try {
+
+            /*
+             * Falls bereits derselbe Prozess läuft:
+             * nichts tun.
+             */
+
+            if (
+                activeSession &&
+                activeSession.process_id ===
+                newProcess.id
+            ) {
+
+                showMessage(
+                    newProcess.name +
+                    " läuft bereits."
+                );
+
+                return;
+            }
+
+
+            /*
+             * Bestehenden Prozess beenden
+             */
+
+            if (activeSession) {
+
+                const {
+                    error: endError
+                } =
+                    await supabaseClient
+                        .from("work_sessions")
+                        .update({
+                            ended_at:
+                                new Date().toISOString()
+                        })
+                        .eq(
+                            "id",
+                            activeSession.id
+                        );
+
+
+                if (endError) {
+                    throw endError;
+                }
+            }
+
+
+            /*
+             * Neuen Prozess starten
+             */
+
+            const {
+                data: newSession,
+                error: startError
+            } =
+                await supabaseClient
+                    .from("work_sessions")
+                    .insert({
+                        employee_id:
+                            currentUser.id,
+
+                        process_id:
+                            newProcess.id,
+
+                        started_at:
+                            new Date().toISOString()
+                    })
+                    .select(
+                        `
+                        id,
+                        employee_id,
+                        process_id,
+                        started_at,
+                        ended_at,
+                        processes (
+                            id,
+                            name,
+                            tracks_quantity,
+                            quantity_unit
+                        )
+                        `
+                    )
+                    .single();
+
+
+            if (startError) {
+                throw startError;
+            }
+
+
+            activeSession =
+                newSession;
+
+
+            updateProcessDisplay();
+
+
+            showMessage(
+                newProcess.name +
+                " wurde gestartet."
+            );
+
+
+            /*
+             * Menge des neuen Prozesses anzeigen
+             */
+
+            if (
+                newProcess.tracks_quantity
+            ) {
+
+                selectedQuantityProcess =
+                    newProcess;
+
+                await loadTodayQuantity();
+
+            } else {
+
+                quantityCard.classList.remove(
+                    "visible"
+                );
+            }
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Prozesswechsel:",
+                error
+            );
+
+
+            showMessage(
+                "Der Prozess konnte nicht gewechselt werden.",
+                "error"
+            );
+
+
+            /*
+             * Daten erneut laden,
+             * falls es einen Fehler gab.
+             */
+
+            await loadActiveSession();
+        }
+
+        finally {
+
+            processButtons.forEach(
+                button => {
+                    button.disabled = false;
+                }
+            );
+        }
+    }
+
+
+    /* ============================================================
+       MENGE HEUTE LADEN
+    ============================================================ */
+
+    async function loadTodayQuantity() {
+
+        /*
+         * Wenn kein aktiver Prozess existiert,
+         * Menge ausblenden.
+         */
+
+        if (!activeSession) {
+
+            quantityCard.classList.remove(
+                "visible"
+            );
+
+            return;
+        }
+
+
+        const process =
+            activeSession.processes;
+
+
+        if (
+            !process ||
+            !process.tracks_quantity
+        ) {
+
+            quantityCard.classList.remove(
+                "visible"
+            );
+
+            return;
+        }
+
+
+        selectedQuantityProcess =
+            process;
+
+
+        const today =
+            new Date();
+
+
+        const year =
+            today.getFullYear();
+
+        const month =
+            String(
+                today.getMonth() + 1
+            ).padStart(2, "0");
+
+        const day =
+            String(
+                today.getDate()
+            ).padStart(2, "0");
+
+
+        const workDate =
+            year +
+            "-" +
+            month +
+            "-" +
+            day;
+
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("daily_quantities")
+                .select(
+                    "id, quantity"
+                )
+                .eq(
+                    "employee_id",
+                    currentUser.id
+                )
+                .eq(
+                    "process_id",
+                    process.id
+                )
+                .eq(
+                    "work_date",
+                    workDate
+                )
+                .maybeSingle();
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        quantityTitle.textContent =
+            process.name +
+            " – Menge heute";
+
+
+        quantityDescription.textContent =
+            "Heutige Menge für " +
+            process.name +
+            ": " +
+            process.quantity_unit;
+
+
+        if (data) {
+
+            quantityInput.value =
+                data.quantity;
+
+        } else {
+
+            quantityInput.value =
+                "";
+        }
+
+
+        quantityCard.classList.add(
+            "visible"
+        );
+    }
+
+
+    /* ============================================================
+       MENGE SPEICHERN
+    ============================================================ */
+
+    saveQuantityButton.addEventListener(
+        "click",
+        async function () {
+
+            if (!selectedQuantityProcess) {
+
+                showMessage(
+                    "Kein Prozess für die Mengeneingabe ausgewählt.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            const value =
+                quantityInput.value.trim();
+
+
+            if (value === "") {
+
+                showMessage(
+                    "Bitte eine Menge eingeben.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            const quantity =
+                Number(value);
+
+
+            if (
+                !Number.isInteger(quantity) ||
+                quantity < 0
+            ) {
+
+                showMessage(
+                    "Bitte eine gültige ganze Zahl eingeben.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            saveQuantityButton.disabled =
+                true;
+
+            saveQuantityButton.textContent =
+                "Speichern...";
+
+
+            try {
+
+                const today =
+                    new Date();
+
+
+                const year =
+                    today.getFullYear();
+
+                const month =
+                    String(
+                        today.getMonth() + 1
+                    ).padStart(2, "0");
+
+                const day =
+                    String(
+                        today.getDate()
+                    ).padStart(2, "0");
+
+
+                const workDate =
+                    year +
+                    "-" +
+                    month +
+                    "-" +
+                    day;
+
+
+                /*
+                 * UPSERT:
+                 * Existiert der Eintrag bereits,
+                 * wird er aktualisiert.
+                 */
+
+                const {
+                    error
+                } =
+                    await supabaseClient
+                        .from("daily_quantities")
+                        .upsert(
+                            {
+                                employee_id:
+                                    currentUser.id,
+
+                                process_id:
+                                    selectedQuantityProcess.id,
+
+                                work_date:
+                                    workDate,
+
+                                quantity:
+                                    quantity,
+
+                                updated_at:
+                                    new Date().toISOString()
+                            },
+                            {
+                                onConflict:
+                                    "employee_id,process_id,work_date"
+                            }
+                        );
+
+
+                if (error) {
+                    throw error;
+                }
+
+
+                showMessage(
+                    "Menge erfolgreich gespeichert."
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Menge speichern:",
+                    error
+                );
+
+                showMessage(
+                    "Die Menge konnte nicht gespeichert werden.",
+                    "error"
+                );
+            }
+
+            finally {
+
+                saveQuantityButton.disabled =
+                    false;
+
+                saveQuantityButton.textContent =
+                    "Menge speichern";
+            }
+        }
+    );
+
+
+    /* ============================================================
+       ABMELDEN
+    ============================================================ */
+
+    logoutButton.addEventListener(
+        "click",
+        async function () {
+
+            logoutButton.disabled =
+                true;
+
+            logoutButton.textContent =
+                "Abmelden...";
+
+
+            try {
+
+                /*
+                 * Wenn noch ein Prozess läuft,
+                 * beenden wir ihn beim Abmelden.
+                 */
+
+                if (activeSession) {
+
+                    const {
+                        error
+                    } =
+                        await supabaseClient
+                            .from("work_sessions")
+                            .update({
+                                ended_at:
+                                    new Date().toISOString()
+                            })
+                            .eq(
+                                "id",
+                                activeSession.id
+                            );
+
+
+                    if (error) {
+                        console.error(
+                            "Session beenden:",
+                            error
+                        );
+                    }
+                }
+
+
+                await supabaseClient.auth.signOut();
+
+
+                window.location.href =
+                    "index.html";
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Logout:",
+                    error
+                );
+
+                logoutButton.disabled =
+                    false;
+
+                logoutButton.textContent =
+                    "Abmelden";
+            }
+        }
+    );
+
+
+    /* ============================================================
+       AUTOMATISCH AUSLOGGEN BEI AUTH-ÄNDERUNG
+    ============================================================ */
+
+    supabaseClient.auth.onAuthStateChange(
+        function (
+            event,
+            session
+        ) {
+
+            if (
+                event === "SIGNED_OUT" ||
+                !session
+            ) {
+
+                window.location.href =
+                    "index.html";
+            }
+        }
+    );
+
+
+    /* ============================================================
+       START
+    ============================================================ */
+
+    initialize();
+
+</script>
+
+</body>
+</html>
