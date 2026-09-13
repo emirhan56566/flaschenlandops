@@ -16,11 +16,12 @@
         body {
             min-height: 100vh;
             font-family: Arial, Helvetica, sans-serif;
-            background: #f1f5f9;
+            background: linear-gradient(135deg, #f4f7fb 0%, #e8eef7 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            color: #172033;
         }
 
         .login-container {
@@ -31,56 +32,36 @@
         .login-card {
             background: #ffffff;
             border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.10);
+            padding: 40px 35px 30px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.10);
         }
 
         .logo {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .logo-box {
-            width: 72px;
-            height: 72px;
-            margin: 0 auto 18px;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 22px;
             border-radius: 18px;
-            background: #2563eb;
-            color: white;
+            background: #1769e0;
+            color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
-            font-weight: bold;
+            font-size: 38px;
+            font-weight: 800;
         }
 
-        .logo h1 {
+        h1 {
+            text-align: center;
             font-size: 28px;
-            color: #111827;
             margin-bottom: 8px;
+            color: #172033;
         }
 
-        .logo p {
+        .subtitle {
+            text-align: center;
             color: #6b7280;
             font-size: 15px;
-        }
-
-        .message {
-            display: none;
-            padding: 13px;
-            border-radius: 9px;
-            margin-bottom: 18px;
-            font-size: 14px;
-        }
-
-        .error {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-
-        .success {
-            background: #dcfce7;
-            color: #166534;
+            margin-bottom: 30px;
         }
 
         .form-group {
@@ -89,26 +70,27 @@
 
         label {
             display: block;
+            font-size: 14px;
+            font-weight: 600;
             margin-bottom: 8px;
             color: #374151;
-            font-size: 14px;
-            font-weight: bold;
         }
 
         input {
             width: 100%;
-            height: 50px;
-            padding: 0 14px;
-            border: 1px solid #d1d5db;
-            border-radius: 9px;
+            height: 52px;
+            border: 1px solid #d5dbe5;
+            border-radius: 10px;
+            padding: 0 15px;
             font-size: 16px;
+            outline: none;
+            transition: 0.2s;
             background: #ffffff;
         }
 
         input:focus {
-            outline: none;
-            border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+            border-color: #1769e0;
+            box-shadow: 0 0 0 3px rgba(23, 105, 224, 0.12);
         }
 
         .password-wrapper {
@@ -116,29 +98,35 @@
         }
 
         .password-wrapper input {
-            padding-right: 50px;
+            padding-right: 85px;
         }
 
-        .password-button {
+        .password-toggle {
             position: absolute;
             right: 10px;
             top: 50%;
             transform: translateY(-50%);
             border: none;
             background: transparent;
+            color: #1769e0;
+            font-size: 13px;
+            font-weight: 600;
             cursor: pointer;
-            font-size: 19px;
-            padding: 5px;
+            padding: 8px;
+        }
+
+        .password-toggle:hover {
+            color: #0d4fae;
         }
 
         .forgot-password {
             display: block;
             text-align: right;
-            margin-top: -8px;
-            margin-bottom: 22px;
-            color: #2563eb;
+            margin-top: 8px;
+            color: #1769e0;
             text-decoration: none;
-            font-size: 13px;
+            font-size: 14px;
+            cursor: pointer;
         }
 
         .forgot-password:hover {
@@ -147,58 +135,87 @@
 
         .login-button {
             width: 100%;
-            height: 52px;
+            height: 54px;
             border: none;
-            border-radius: 9px;
-            background: #2563eb;
-            color: white;
+            border-radius: 10px;
+            background: #1769e0;
+            color: #ffffff;
             font-size: 16px;
-            font-weight: bold;
+            font-weight: 700;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: 0.2s;
+            margin-top: 10px;
         }
 
         .login-button:hover {
-            background: #1d4ed8;
+            background: #0d57c7;
         }
 
         .login-button:disabled {
-            background: #93c5fd;
+            opacity: 0.65;
             cursor: not-allowed;
         }
 
+        .message {
+            display: none;
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin-bottom: 18px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .error-message {
+            background: #fff1f1;
+            color: #b42318;
+            border: 1px solid #f3c1c1;
+        }
+
+        .success-message {
+            background: #effcf3;
+            color: #18743a;
+            border: 1px solid #b7e4c2;
+        }
+
         .legal {
-            margin-top: 30px;
+            margin-top: 25px;
             padding-top: 20px;
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid #edf0f4;
             text-align: center;
-            color: #6b7280;
+            color: #7a8494;
             font-size: 12px;
-            line-height: 1.8;
+            line-height: 1.7;
         }
 
         .legal a {
-            color: #4b5563;
+            color: #687386;
             text-decoration: none;
-            margin: 0 5px;
+            margin: 0 6px;
         }
 
         .legal a:hover {
+            color: #1769e0;
             text-decoration: underline;
         }
 
-        .copyright {
-            margin-top: 8px;
-            color: #9ca3af;
-            font-size: 11px;
+        .footer {
+            text-align: center;
+            margin-top: 15px;
+            color: #8a93a3;
+            font-size: 12px;
         }
 
         @media (max-width: 480px) {
-            .login-card {
-                padding: 30px 22px;
+            body {
+                padding: 12px;
             }
 
-            .logo h1 {
+            .login-card {
+                padding: 30px 22px 25px;
+                border-radius: 16px;
+            }
+
+            h1 {
                 font-size: 24px;
             }
         }
@@ -207,349 +224,549 @@
 
 <body>
 
-    <main class="login-container">
+<div class="login-container">
 
-        <section class="login-card">
+    <div class="login-card">
 
-            <!-- Logo -->
-            <div class="logo">
+        <div class="logo">F</div>
 
-                <div class="logo-box">
-                    F
-                </div>
+        <h1>FlaschenlandOPS</h1>
 
-                <h1>FlaschenlandOPS</h1>
+        <p class="subtitle">
+            Mitarbeiter Login
+        </p>
 
-                <p>Mitarbeiter Login</p>
+        <div id="errorMessage" class="message error-message"></div>
 
+        <div id="successMessage" class="message success-message"></div>
+
+        <form id="loginForm">
+
+            <div class="form-group">
+                <label for="email">
+                    E-Mail-Adresse
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="name@flaschenland.de"
+                    autocomplete="username"
+                    required
+                >
             </div>
 
+            <div class="form-group">
 
-            <!-- Fehlermeldung -->
-            <div
-                id="errorMessage"
-                class="message error">
-            </div>
+                <label for="password">
+                    Passwort
+                </label>
 
-
-            <!-- Erfolgsmeldung -->
-            <div
-                id="successMessage"
-                class="message success">
-            </div>
-
-
-            <!-- Login Formular -->
-            <form id="loginForm">
-
-                <div class="form-group">
-
-                    <label for="email">
-                        E-Mail-Adresse
-                    </label>
+                <div class="password-wrapper">
 
                     <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="E-Mail-Adresse"
-                        autocomplete="username"
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Passwort eingeben"
+                        autocomplete="current-password"
                         required
                     >
 
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="password">
-                        Passwort
-                    </label>
-
-                    <div class="password-wrapper">
-
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            placeholder="Passwort"
-                            autocomplete="current-password"
-                            required
-                        >
-
-                        <button
-                            type="button"
-                            id="passwordButton"
-                            class="password-button"
-                            aria-label="Passwort anzeigen">
-                            👁️
-                        </button>
-
-                    </div>
+                    <button
+                        type="button"
+                        id="passwordToggle"
+                        class="password-toggle"
+                    >
+                        Anzeigen
+                    </button>
 
                 </div>
-
 
                 <a
                     href="#"
                     id="forgotPassword"
-                    class="forgot-password">
+                    class="forgot-password"
+                >
                     Passwort vergessen?
                 </a>
 
-
-                <button
-                    type="submit"
-                    id="loginButton"
-                    class="login-button">
-
-                    Einloggen
-
-                </button>
-
-            </form>
-
-
-            <!-- Rechtliche Informationen -->
-            <div class="legal">
-
-                <div>
-
-                    <a href="datenschutz.html">
-                        Datenschutz
-                    </a>
-
-                    |
-
-                    <a href="impressum.html">
-                        Impressum
-                    </a>
-
-                    |
-
-                    <a href="agb.html">
-                        AGB
-                    </a>
-
-                </div>
-
-                <div class="copyright">
-                    © 2026 FlaschenlandOPS
-                </div>
-
             </div>
 
-        </section>
+            <button
+                type="submit"
+                id="loginButton"
+                class="login-button"
+            >
+                Einloggen
+            </button>
 
-    </main>
+        </form>
+
+        <div class="legal">
+
+            <a href="datenschutz.html">
+                Datenschutz
+            </a>
+
+            |
+
+            <a href="impressum.html">
+                Impressum
+            </a>
+
+            |
+
+            <a href="agb.html">
+                AGB
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        FlaschenlandOPS
+    </div>
+
+</div>
 
 
-    <script>
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-        const loginForm =
-            document.getElementById("loginForm");
+<script>
+    /*
+     * ============================================================
+     * SUPABASE VERBINDUNG
+     * ============================================================
+     */
 
-        const loginButton =
-            document.getElementById("loginButton");
+    const SUPABASE_URL =
+        "https://kmdsltojdpfpsatwgfcg.supabase.co";
 
-        const passwordInput =
-            document.getElementById("password");
+    const SUPABASE_KEY =
+        "sb_publishable_dpG11d2sSHDTn-2Y5cCAsQ_dPVSBAGo";
 
-        const passwordButton =
-            document.getElementById("passwordButton");
-
-        const errorMessage =
-            document.getElementById("errorMessage");
-
-        const successMessage =
-            document.getElementById("successMessage");
-
-        const forgotPassword =
-            document.getElementById("forgotPassword");
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
 
 
-        /*
-         * Passwort anzeigen / verstecken
-         */
+    /*
+     * ============================================================
+     * ELEMENTE
+     * ============================================================
+     */
 
-        passwordButton.addEventListener(
-            "click",
-            function () {
+    const loginForm =
+        document.getElementById("loginForm");
 
-                if (passwordInput.type === "password") {
+    const emailInput =
+        document.getElementById("email");
 
-                    passwordInput.type = "text";
+    const passwordInput =
+        document.getElementById("password");
 
-                    passwordButton.textContent = "🙈";
+    const passwordToggle =
+        document.getElementById("passwordToggle");
 
-                    passwordButton.setAttribute(
-                        "aria-label",
-                        "Passwort verstecken"
+    const loginButton =
+        document.getElementById("loginButton");
+
+    const forgotPassword =
+        document.getElementById("forgotPassword");
+
+    const errorMessage =
+        document.getElementById("errorMessage");
+
+    const successMessage =
+        document.getElementById("successMessage");
+
+
+    /*
+     * ============================================================
+     * MELDUNGEN
+     * ============================================================
+     */
+
+    function hideMessages() {
+
+        errorMessage.style.display = "none";
+        successMessage.style.display = "none";
+
+        errorMessage.textContent = "";
+        successMessage.textContent = "";
+    }
+
+
+    function showError(message) {
+
+        successMessage.style.display = "none";
+
+        errorMessage.textContent = message;
+        errorMessage.style.display = "block";
+    }
+
+
+    function showSuccess(message) {
+
+        errorMessage.style.display = "none";
+
+        successMessage.textContent = message;
+        successMessage.style.display = "block";
+    }
+
+
+    /*
+     * ============================================================
+     * PASSWORT ANZEIGEN / VERBERGEN
+     * ============================================================
+     */
+
+    passwordToggle.addEventListener(
+        "click",
+        function () {
+
+            if (passwordInput.type === "password") {
+
+                passwordInput.type = "text";
+                passwordToggle.textContent = "Verbergen";
+
+            } else {
+
+                passwordInput.type = "password";
+                passwordToggle.textContent = "Anzeigen";
+            }
+        }
+    );
+
+
+    /*
+     * ============================================================
+     * LOGIN
+     * ============================================================
+     */
+
+    loginForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+            hideMessages();
+
+            const email =
+                emailInput.value.trim();
+
+            const password =
+                passwordInput.value;
+
+
+            if (!email || !password) {
+
+                showError(
+                    "Bitte E-Mail-Adresse und Passwort eingeben."
+                );
+
+                return;
+            }
+
+
+            loginButton.disabled = true;
+            loginButton.textContent =
+                "Anmeldung läuft...";
+
+
+            try {
+
+                /*
+                 * Benutzer bei Supabase Auth anmelden
+                 */
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient.auth.signInWithPassword({
+                        email: email,
+                        password: password
+                    });
+
+
+                if (error) {
+                    throw error;
+                }
+
+
+                const user = data.user;
+
+
+                if (!user) {
+
+                    throw new Error(
+                        "Kein Benutzer zurückgegeben."
+                    );
+                }
+
+
+                /*
+                 * Mitarbeiterprofil laden
+                 */
+
+                const {
+                    data: profile,
+                    error: profileError
+                } =
+                    await supabaseClient
+                        .from("profiles")
+                        .select(
+                            "id, first_name, last_name, role, active"
+                        )
+                        .eq("id", user.id)
+                        .single();
+
+
+                if (profileError) {
+                    throw profileError;
+                }
+
+
+                /*
+                 * Prüfen, ob Mitarbeiter aktiv ist
+                 */
+
+                if (!profile.active) {
+
+                    await supabaseClient.auth.signOut();
+
+                    showError(
+                        "Dieses Mitarbeiterkonto ist deaktiviert."
+                    );
+
+                    return;
+                }
+
+
+                /*
+                 * Weiterleitung anhand der Rolle
+                 */
+
+                if (profile.role === "admin") {
+
+                    window.location.href =
+                        "admin.html";
+
+                } else {
+
+                    window.location.href =
+                        "mitarbeiter.html";
+                }
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Login Fehler:",
+                    error
+                );
+
+
+                /*
+                 * Benutzerfreundliche Fehlermeldungen
+                 */
+
+                if (
+                    error.message &&
+                    error.message.toLowerCase().includes(
+                        "invalid login credentials"
+                    )
+                ) {
+
+                    showError(
+                        "E-Mail-Adresse oder Passwort ist falsch."
                     );
 
                 } else {
 
-                    passwordInput.type = "password";
-
-                    passwordButton.textContent = "👁️";
-
-                    passwordButton.setAttribute(
-                        "aria-label",
-                        "Passwort anzeigen"
-                    );
-                }
-            }
-        );
-
-
-        /*
-         * Login
-         *
-         * Supabase Auth wird im nächsten Schritt
-         * hier angeschlossen.
-         */
-
-        loginForm.addEventListener(
-            "submit",
-            async function (event) {
-
-                event.preventDefault();
-
-                hideMessages();
-
-                const email =
-                    document
-                        .getElementById("email")
-                        .value
-                        .trim();
-
-                const password =
-                    passwordInput.value;
-
-
-                if (!email || !password) {
-
                     showError(
-                        "Bitte E-Mail-Adresse und Passwort eingeben."
+                        "Anmeldung fehlgeschlagen. Bitte später erneut versuchen."
                     );
-
-                    return;
                 }
 
+            }
 
-                loginButton.disabled = true;
+            finally {
+
+                loginButton.disabled = false;
 
                 loginButton.textContent =
-                    "Anmeldung läuft...";
-
-
-                try {
-
-                    /*
-                     * Hier kommt als Nächstes:
-                     *
-                     * Supabase Auth
-                     *
-                     * Die Passwörter werden NICHT
-                     * in unserer eigenen Datenbank gespeichert.
-                     */
-
-                    showSuccess(
-                        "Login-Oberfläche ist bereit."
-                    );
-
-
-                } catch (error) {
-
-                    console.error(error);
-
-                    showError(
-                        "Die Anmeldung konnte nicht durchgeführt werden."
-                    );
-
-                } finally {
-
-                    loginButton.disabled = false;
-
-                    loginButton.textContent =
-                        "Einloggen";
-                }
-
+                    "Einloggen";
             }
-        );
+
+        }
+    );
 
 
-        /*
-         * Passwort vergessen
-         */
+    /*
+     * ============================================================
+     * PASSWORT VERGESSEN
+     * ============================================================
+     */
 
-        forgotPassword.addEventListener(
-            "click",
-            function (event) {
+    forgotPassword.addEventListener(
+        "click",
+        async function (event) {
 
-                event.preventDefault();
+            event.preventDefault();
 
-                const email =
-                    document
-                        .getElementById("email")
-                        .value
-                        .trim();
+            hideMessages();
+
+            const email =
+                emailInput.value.trim();
 
 
-                if (!email) {
+            if (!email) {
 
-                    showError(
-                        "Bitte zuerst deine E-Mail-Adresse eingeben."
+                showError(
+                    "Bitte zuerst deine E-Mail-Adresse eingeben."
+                );
+
+                emailInput.focus();
+
+                return;
+            }
+
+
+            try {
+
+                const {
+                    error
+                } =
+                    await supabaseClient.auth.resetPasswordForEmail(
+                        email,
+                        {
+                            redirectTo:
+                                window.location.origin +
+                                "/passwort-reset.html"
+                        }
                     );
 
-                    document
-                        .getElementById("email")
-                        .focus();
 
-                    return;
+                if (error) {
+                    throw error;
                 }
 
 
                 showSuccess(
-                    "Die Passwort-Wiederherstellung wird mit Supabase eingerichtet."
+                    "Wenn für diese E-Mail-Adresse ein Konto vorhanden ist, wurde eine Anleitung zum Zurücksetzen des Passworts verschickt."
                 );
 
             }
-        );
+
+            catch (error) {
+
+                console.error(
+                    "Passwort-Reset Fehler:",
+                    error
+                );
+
+                showError(
+                    "Die Anfrage konnte momentan nicht verarbeitet werden."
+                );
+            }
+
+        }
+    );
 
 
-        /*
-         * Meldungen
-         */
+    /*
+     * ============================================================
+     * BEREITS EINGELOGGT?
+     * ============================================================
+     */
 
-        function showError(message) {
+    async function checkExistingSession() {
 
-            errorMessage.textContent = message;
+        try {
 
-            errorMessage.style.display = "block";
+            const {
+                data,
+                error
+            } =
+                await supabaseClient.auth.getSession();
 
-            successMessage.style.display = "none";
+
+            if (error) {
+                return;
+            }
+
+
+            if (!data.session) {
+                return;
+            }
+
+
+            const user =
+                data.session.user;
+
+
+            const {
+                data: profile,
+                error: profileError
+            } =
+                await supabaseClient
+                    .from("profiles")
+                    .select(
+                        "id, first_name, last_name, role, active"
+                    )
+                    .eq("id", user.id)
+                    .single();
+
+
+            if (profileError) {
+                return;
+            }
+
+
+            if (!profile.active) {
+
+                await supabaseClient.auth.signOut();
+
+                return;
+            }
+
+
+            if (profile.role === "admin") {
+
+                window.location.href =
+                    "admin.html";
+
+            } else {
+
+                window.location.href =
+                    "mitarbeiter.html";
+            }
+
         }
 
+        catch (error) {
 
-        function showSuccess(message) {
-
-            successMessage.textContent = message;
-
-            successMessage.style.display = "block";
-
-            errorMessage.style.display = "none";
+            console.error(
+                "Session Prüfung:",
+                error
+            );
         }
+    }
 
 
-        function hideMessages() {
+    checkExistingSession();
 
-            errorMessage.style.display = "none";
-
-            successMessage.style.display = "none";
-        }
-
-    </script>
+</script>
 
 </body>
 </html>
