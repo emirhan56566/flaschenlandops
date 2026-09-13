@@ -1,0 +1,7 @@
+{
+  "name": "flaschenlandops",
+  "private": true,
+  "dependencies": {
+    "@supabase/supabase-js": "^2"
+  }
+}
