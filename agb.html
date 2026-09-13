@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>FlaschenlandOPS – Nutzungsbedingungen</title>
+
+  <meta
+    name="description"
+    content="Nutzungsbedingungen für die interne Mitarbeiter-App FlaschenlandOPS der Flaschenland GmbH."
+  >
+
+  <style>
+    :root {
+      --primary: #111827;
+      --secondary: #374151;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --background: #f3f4f6;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --muted: #6b7280;
+      --success: #047857;
+      --warning-bg: #fffbeb;
+      --warning-border: #f59e0b;
+      --radius: 14px;
+      --shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--primary);
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+
+    .topbar {
+      background: #111827;
+      color: white;
+      padding: 18px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .topbar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: #2563eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      color: #d1d5db;
+      font-size: 14px;
+    }
+
+    .nav a:hover {
+      color: white;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 45px 20px 70px;
+    }
+
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 38px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 5vw, 42px);
+      line-height: 1.2;
+    }
+
+    .hero p {
+      margin: 8px 0;
+      color: var(--secondary);
+    }
+
+    .version {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 6px 10px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .toc {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px 30px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .toc h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .toc ol {
+      margin-bottom: 0;
+      padding-left: 22px;
+    }
+
+    .toc li {
+      margin: 6px 0;
+    }
+
+    .section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px;
+      margin-bottom: 20px;
+      scroll-margin-top: 90px;
+    }
+
+    .section h2 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 24px;
+      line-height: 1.3;
+    }
+
+    .section h3 {
+      font-size: 18px;
+      margin-top: 25px;
+      margin-bottom: 8px;
+    }
+
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section ul,
+    .section ol {
+      padding-left: 25px;
+    }
+
+    .section li {
+      margin-bottom: 8px;
+    }
+
+    .notice {
+      background: var(--warning-bg);
+      border-left: 4px solid var(--warning-border);
+      padding: 18px 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .notice strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .company-box {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 15px;
+    }
+
+    .company-box p {
+      margin: 4px 0;
+    }
+
+    .footer {
+      background: #111827;
+      color: #d1d5db;
+      padding: 30px 20px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer strong {
+      color: white;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      color: #d1d5db;
+    }
+
+    .footer a:hover {
+      color: white;
+    }
+
+    .back-top {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      .topbar {
+        position: static;
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero,
+      .section {
+        padding: 24px 20px;
+      }
+
+      .toc {
+        padding: 22px 20px;
+      }
+
+      .container {
+        padding-top: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header class="topbar">
+    <div class="topbar-inner">
+
+      <div class="brand">
+        <div class="brand-icon">FL</div>
+        <span>FlaschenlandOPS</span>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Mitarbeiterbereich</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="impressum.html">Impressum</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- =========================
+       CONTENT
+  ========================== -->
+
+  <main class="container">
+
+    <section class="hero">
+
+      <h1>Nutzungsbedingungen</h1>
+
+      <p>
+        für die interne Mitarbeiter-App
+        <strong>FlaschenlandOPS</strong>
+      </p>
+
+      <p>
+        Diese Nutzungsbedingungen regeln die Nutzung der internen
+        digitalen Arbeits- und Verwaltungsplattform FlaschenlandOPS
+        durch Mitarbeiterinnen und Mitarbeiter der Flaschenland GmbH.
+      </p>
+
+      <span class="version">
+        Version 1.0 · Stand: 13.09.2026
+      </span>
+
+    </section>
+
+
+    <!-- Inhaltsverzeichnis -->
+
+    <section class="toc">
+
+      <h2>Inhaltsverzeichnis</h2>
+
+      <ol>
+        <li><a href="#geltungsbereich">Geltungsbereich</a></li>
+        <li><a href="#zweck">Zweck und Funktionsumfang</a></li>
+        <li><a href="#zugang">Benutzerkonto und Zugangsdaten</a></li>
+        <li><a href="#pflichten">Pflichten der Mitarbeiter</a></li>
+        <li><a href="#arbeitszeiten">Arbeitszeiten und Arbeitsdaten</a></li>
+        <li><a href="#produktivitaet">Prozess- und Leistungsdaten</a></li>
+        <li><a href="#richtigkeit">Richtigkeit der Angaben</a></li>
+        <li><a href="#datenschutz">Datenschutz</a></li>
+        <li><a href="#vertraulichkeit">Vertraulichkeit</a></li>
+        <li><a href="#missbrauch">Missbrauch und unzulässige Nutzung</a></li>
+        <li><a href="#verfuegbarkeit">Verfügbarkeit und technische Änderungen</a></li>
+        <li><a href="#sperrung">Sperrung und Beendigung des Zugangs</a></li>
+        <li><a href="#haftung">Haftung</a></li>
+        <li><a href="#aenderungen">Änderungen der Nutzungsbedingungen</a></li>
+        <li><a href="#recht">Anwendbares Recht</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ol>
+
+    </section>
+
+
+    <!-- 1 -->
+
+    <section class="section" id="geltungsbereich">
+
+      <h2>1. Geltungsbereich</h2>
+
+      <p>
+        Diese Nutzungsbedingungen gelten für die Nutzung der internen
+        Mitarbeiter-App <strong>FlaschenlandOPS</strong> der
+        Flaschenland GmbH.
+      </p>
+
+      <p>
+        FlaschenlandOPS ist ausschließlich für betriebliche Zwecke
+        und für hierfür berechtigte Mitarbeiterinnen und Mitarbeiter
+        bestimmt.
+      </p>
+
+      <p>
+        Ein Anspruch auf Nutzung bestimmter Funktionen besteht nicht,
+        soweit dies nicht ausdrücklich mit der Flaschenland GmbH
+        vereinbart wurde.
+      </p>
+
+    </section>
+
+
+    <!-- 2 -->
+
+    <section class="section" id="zweck">
+
+      <h2>2. Zweck und Funktionsumfang</h2>
+
+      <p>
+        FlaschenlandOPS dient der digitalen Unterstützung betrieblicher
+        Abläufe innerhalb der Flaschenland GmbH.
+      </p>
+
+      <p>Je nach Berechtigung können insbesondere folgende Funktionen
+        bereitgestellt werden:</p>
+
+      <ul>
+        <li>Erfassung und Verwaltung von Arbeitszeiten</li>
+        <li>Zuordnung von Mitarbeitern zu betrieblichen Prozessen</li>
+        <li>Erfassung von Arbeits- und Prozessleistungen</li>
+        <li>Erfassung von Mengen und Bearbeitungsdaten</li>
+        <li>Anzeige persönlicher oder betrieblicher Auswertungen</li>
+        <li>Verwaltung von Benutzerkonten</li>
+        <li>administrative und organisatorische Funktionen</li>
+      </ul>
+
+      <p>
+        Der konkrete Funktionsumfang kann jederzeit erweitert,
+        eingeschränkt oder technisch angepasst werden.
+      </p>
+
+    </section>
+
+
+    <!-- 3 -->
+
+    <section class="section" id="zugang">
+
+      <h2>3. Benutzerkonto und Zugangsdaten</h2>
+
+      <p>
+        Die Nutzung von FlaschenlandOPS setzt ein persönliches,
+        von der Flaschenland GmbH bereitgestelltes Benutzerkonto voraus.
+      </p>
+
+      <p>
+        Zugangsdaten sind persönlich und dürfen nicht an andere Personen
+        weitergegeben werden.
+      </p>
+
+      <h3>3.1 Schutz des Passworts</h3>
+
+      <p>
+        Mitarbeiter sind verpflichtet, ihr Passwort vertraulich zu
+        behandeln und so aufzubewahren, dass Dritte keinen unbefugten
+        Zugriff darauf erhalten.
+      </p>
+
+      <h3>3.2 Verdacht auf Missbrauch</h3>
+
+      <p>
+        Bei Verdacht auf einen unbefugten Zugriff, Verlust von
+        Zugangsdaten oder sonstige Sicherheitsvorfälle ist die
+        zuständige betriebliche Stelle unverzüglich zu informieren.
+      </p>
+
+      <h3>3.3 Persönliche Nutzung</h3>
+
+      <p>
+        Ein Benutzerkonto darf grundsätzlich nur von der Person genutzt
+        werden, der es zugeordnet wurde.
+      </p>
+
+    </section>
+
+
+    <!-- 4 -->
+
+    <section class="section" id="pflichten">
+
+      <h2>4. Pflichten der Mitarbeiter</h2>
+
+      <p>
+        Bei der Nutzung von FlaschenlandOPS sind die betrieblichen
+        Vorgaben der Flaschenland GmbH einzuhalten.
+      </p>
+
+      <p>Insbesondere ist es untersagt:</p>
+
+      <ul>
+        <li>
+          Zugangsdaten anderer Mitarbeiter zu verwenden,
+        </li>
+        <li>
+          Daten anderer Benutzer ohne entsprechende Berechtigung
+          zu verändern oder zu löschen,
+        </li>
+        <li>
+          technische Sicherheitsmechanismen zu umgehen,
+        </li>
+        <li>
+          Schadsoftware oder sonstige schädliche Inhalte einzubringen,
+        </li>
+        <li>
+          unberechtigten Personen Zugriff auf die Anwendung zu ermöglichen,
+        </li>
+        <li>
+          betriebliche Daten außerhalb der vorgesehenen Systeme
+          unberechtigt zu kopieren oder weiterzugeben.
+        </li>
+      </ul>
+
+    </section>
+
+
+    <!-- 5 -->
+
+    <section class="section" id="arbeitszeiten">
+
+      <h2>5. Arbeitszeiten und Arbeitsdaten</h2>
+
+      <p>
+        Soweit FlaschenlandOPS zur Erfassung von Arbeitszeiten eingesetzt
+        wird, sind Beginn, Ende, Pausen und sonstige erforderliche
+        Angaben wahrheitsgemäß und entsprechend den betrieblichen
+        Vorgaben zu erfassen.
+      </p>
+
+      <p>
+        Die technische Erfassung innerhalb der Anwendung ersetzt keine
+        gesetzlichen oder betrieblichen Regelungen zur Arbeitszeit.
+      </p>
+
+      <div class="notice">
+        <strong>Wichtiger Hinweis</strong>
+        FlaschenlandOPS ist ein technisches Hilfsmittel zur digitalen
+        Dokumentation. Maßgeblich bleiben die jeweils geltenden
+        gesetzlichen, tariflichen, arbeitsvertraglichen und betrieblichen
+        Regelungen.
+      </div>
+
+    </section>
+
+
+    <!-- 6 -->
+
+    <section class="section" id="produktivitaet">
+
+      <h2>6. Prozess- und Leistungsdaten</h2>
+
+      <p>
+        Soweit innerhalb von FlaschenlandOPS Mengen, Prozesszeiten,
+        Arbeitsvorgänge oder vergleichbare betriebliche Daten erfasst
+        werden, müssen diese Angaben nach bestem Wissen und entsprechend
+        den betrieblichen Arbeitsabläufen eingegeben werden.
+      </p>
+
+      <p>
+        Die in FlaschenlandOPS dargestellten Auswertungen können
+        ausschließlich auf den tatsächlich erfassten Daten beruhen.
+        Technische Auswertungen stellen daher nicht automatisch eine
+        vollständige oder abschließende Bewertung der Arbeitsleistung
+        eines Mitarbeiters dar.
+      </p>
+
+    </section>
+
+
+    <!-- 7 -->
+
+    <section class="section" id="richtigkeit">
+
+      <h2>7. Richtigkeit der Angaben</h2>
+
+      <p>
+        Mitarbeiter sind verpflichtet, Eingaben sorgfältig und
+        wahrheitsgemäß vorzunehmen.
+      </p>
+
+      <p>
+        Fehlerhafte Eingaben sollen möglichst unverzüglich der
+        zuständigen Führungskraft oder der zuständigen administrativen
+        Stelle gemeldet werden.
+      </p>
+
+      <p>
+        Eine absichtliche Manipulation von Arbeitszeit-, Mengen-,
+        Prozess- oder sonstigen betrieblichen Daten ist nicht zulässig.
+      </p>
+
+    </section>
+
+
+    <!-- 8 -->
+
+    <section class="section" id="datenschutz">
+
+      <h2>8. Datenschutz</h2>
+
+      <p>
+        Im Rahmen der Nutzung von FlaschenlandOPS können
+        personenbezogene Daten verarbeitet werden.
+      </p>
+
+      <p>
+        Die Verarbeitung erfolgt nach den jeweils geltenden
+        datenschutzrechtlichen Bestimmungen.
+      </p>
+
+      <p>
+        Weitere Informationen zur Verarbeitung personenbezogener Daten
+        enthält die separate
+        <a href="datenschutz.html">Datenschutzerklärung</a>.
+      </p>
+
+      <p>
+        Die Mitarbeiter werden darauf hingewiesen, dass insbesondere
+        Benutzerkonto, Arbeitszeit-, Prozess- und sonstige
+        nutzungsbezogene Daten verarbeitet werden können, soweit dies
+        für die vorgesehenen betrieblichen Zwecke erforderlich und
+        rechtlich zulässig ist.
+      </p>
+
+    </section>
+
+
+    <!-- 9 -->
+
+    <section class="section" id="vertraulichkeit">
+
+      <h2>9. Vertraulichkeit</h2>
+
+      <p>
+        Die über FlaschenlandOPS zugänglichen Informationen können
+        vertrauliche betriebliche Informationen enthalten.
+      </p>
+
+      <p>
+        Diese Informationen dürfen ausschließlich im Rahmen der
+        dienstlichen Tätigkeit und der hierfür erteilten Berechtigungen
+        verwendet werden.
+      </p>
+
+      <p>
+        Eine Weitergabe an unbefugte Personen oder die Veröffentlichung
+        betrieblicher Informationen ist nicht gestattet.
+      </p>
+
+      <p>
+        Gesetzliche und arbeitsvertragliche Verschwiegenheitspflichten
+        bleiben unberührt.
+      </p>
+
+    </section>
+
+
+    <!-- 10 -->
+
+    <section class="section" id="missbrauch">
+
+      <h2>10. Missbrauch und unzulässige Nutzung</h2>
+
+      <p>
+        Die Nutzung von FlaschenlandOPS zu privaten, rechtswidrigen oder
+        sonstigen nicht vorgesehenen Zwecken ist untersagt, soweit die
+        Nutzung nicht ausdrücklich gestattet wurde.
+      </p>
+
+      <p>
+        Insbesondere sind Manipulationsversuche, unbefugte Zugriffe,
+        das Auslesen fremder Daten sowie das Umgehen von
+        Berechtigungs- und Sicherheitsmechanismen untersagt.
+      </p>
+
+      <p>
+        Sicherheitsrelevante Ereignisse können aus technischen und
+        sicherheitsbezogenen Gründen protokolliert werden, soweit dies
+        rechtlich zulässig und erforderlich ist.
+      </p>
+
+    </section>
+
+
+    <!-- 11 -->
+
+    <section class="section" id="verfuegbarkeit">
+
+      <h2>11. Verfügbarkeit und technische Änderungen</h2>
+
+      <p>
+        Die Flaschenland GmbH bemüht sich um eine möglichst zuverlässige
+        Verfügbarkeit von FlaschenlandOPS.
+      </p>
+
+      <p>
+        Eine jederzeitige und ununterbrochene Verfügbarkeit kann jedoch
+        aufgrund von Wartungen, Updates, technischen Störungen,
+        Netzwerkproblemen oder Ereignissen außerhalb des Einflussbereichs
+        der Flaschenland GmbH nicht garantiert werden.
+      </p>
+
+      <p>
+        Funktionen können aus technischen, organisatorischen oder
+        sicherheitsrelevanten Gründen geändert, erweitert,
+        eingeschränkt oder eingestellt werden.
+      </p>
+
+    </section>
+
+
+    <!-- 12 -->
+
+    <section class="section" id="sperrung">
+
+      <h2>12. Sperrung und Beendigung des Zugangs</h2>
+
+      <p>
+        Die Flaschenland GmbH kann Benutzerkonten sperren oder
+        deaktivieren, wenn hierfür ein betrieblicher, organisatorischer,
+        sicherheitsrelevanter oder rechtlich zulässiger Grund besteht.
+      </p>
+
+      <p>
+        Dies kann insbesondere bei Beendigung des Beschäftigungsverhältnisses,
+        einem Wechsel der Zuständigkeit oder bei einem Verdacht auf
+        missbräuchliche Nutzung erforderlich sein.
+      </p>
+
+      <p>
+        Die Sperrung des Zugangs zu FlaschenlandOPS lässt bestehende
+        arbeitsvertragliche Rechte und Pflichten unberührt.
+      </p>
+
+    </section>
+
+
+    <!-- 13 -->
+
+    <section class="section" id="haftung">
+
+      <h2>13. Haftung</h2>
+
+      <p>
+        Die Flaschenland GmbH haftet nach den gesetzlichen Vorschriften.
+      </p>
+
+      <p>
+        Eine Haftungsbeschränkung gilt insbesondere nicht für Schäden,
+        die aufgrund vorsätzlichen oder grob fahrlässigen Handelns,
+        aufgrund einer Verletzung von Leben, Körper oder Gesundheit
+        oder in sonstigen Fällen entstehen, in denen eine Haftung
+        gesetzlich zwingend vorgeschrieben ist.
+      </p>
+
+      <p>
+        Mitarbeiter haften für Schäden, die sie durch vorsätzliches oder
+        rechtswidriges Verhalten verursachen, nach den jeweils geltenden
+        gesetzlichen und arbeitsrechtlichen Bestimmungen.
+      </p>
+
+    </section>
+
+
+    <!-- 14 -->
+
+    <section class="section" id="aenderungen">
+
+      <h2>14. Änderungen der Nutzungsbedingungen</h2>
+
+      <p>
+        Die Flaschenland GmbH kann diese Nutzungsbedingungen anpassen,
+        soweit dies aufgrund technischer, organisatorischer, rechtlicher
+        oder betrieblicher Entwicklungen erforderlich ist.
+      </p>
+
+      <p>
+        Eine aktualisierte Fassung wird innerhalb von FlaschenlandOPS
+        oder auf einem hierfür vorgesehenen betrieblichen Weg
+        bereitgestellt.
+      </p>
+
+      <p>
+        Das Datum und die Versionsnummer der jeweils aktuellen Fassung
+        werden in diesem Dokument angegeben.
+      </p>
+
+    </section>
+
+
+    <!-- 15 -->
+
+    <section class="section" id="recht">
+
+      <h2>15. Anwendbares Recht</h2>
+
+      <p>
+        Es gilt das Recht der Bundesrepublik Deutschland, soweit
+        gesetzlich zulässig.
+      </p>
+
+      <p>
+        Zwingende arbeitsrechtliche Vorschriften sowie sonstige
+        zwingende gesetzliche Bestimmungen bleiben unberührt.
+      </p>
+
+    </section>
+
+
+    <!-- 16 -->
+
+    <section class="section" id="kontakt">
+
+      <h2>16. Kontakt</h2>
+
+      <p>
+        Bei Fragen zur Nutzung von FlaschenlandOPS wenden sich
+        Mitarbeiter bitte an die hierfür zuständige betriebliche Stelle
+        oder an die Flaschenland GmbH.
+      </p>
+
+      <div class="company-box">
+
+        <p><strong>Flaschenland GmbH</strong></p>
+
+        <p>
+          Im Schützengrund 49<br>
+          56566 Neuwied<br>
+          Deutschland
+        </p>
+
+        <p>
+          Telefon:
+          <a href="tel:+492623606180">
+            +49 2623 60 61 80
+          </a>
+        </p>
+
+        <p>
+          E-Mail:
+          <a href="mailto:info@flaschenland.de">
+            info@flaschenland.de
+          </a>
+        </p>
+
+        <p>
+          Registergericht: Amtsgericht Montabaur
+        </p>
+
+        <p>
+          Registernummer: HRB 24237
+        </p>
+
+        <p>
+          Geschäftsführer: Tobias Mayer, Robert Cipin
+        </p>
+
+        <p>
+          Umsatzsteuer-Identifikationsnummer:
+          DE296331731
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- Rechtlicher Hinweis -->
+
+    <section class="section">
+
+      <h2>Hinweis zur Einordnung</h2>
+
+      <p>
+        Diese Seite enthält Nutzungsbedingungen für die interne
+        Mitarbeiter-Anwendung FlaschenlandOPS. Sie stellt keine
+        allgemeinen Verkaufs- oder Kunden-AGB für den Onlineshop
+        Flaschenland.de dar.
+      </p>
+
+      <p>
+        Die offiziellen Kunden-AGB des Onlineshops sind davon getrennt
+        und gelten für die dort beschriebenen Vertragsverhältnisse.
+      </p>
+
+      <p>
+        Für FlaschenlandOPS gelten zusätzlich die jeweils einschlägigen
+        arbeitsvertraglichen, betrieblichen, datenschutzrechtlichen
+        und gesetzlichen Regelungen.
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer class="footer">
+
+    <div class="footer-inner">
+
+      <div>
+        <strong>FlaschenlandOPS</strong><br>
+        Interne Mitarbeiter-App<br>
+        © 2026 Flaschenland GmbH
+      </div>
+
+      <div class="footer-links">
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="agb.html">Nutzungsbedingungen</a>
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
