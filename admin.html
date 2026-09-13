@@ -19,17 +19,21 @@
             color: #172033;
         }
 
-        /* =========================
-           HEADER
-        ========================= */
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
 
         header {
             min-height: 70px;
-            background: #ffffff;
+            background: #fff;
             border-bottom: 1px solid #e4e8ef;
-
             padding: 12px 25px;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -45,14 +49,11 @@
             width: 43px;
             height: 43px;
             border-radius: 11px;
-
             background: #1769e0;
-            color: #ffffff;
-
+            color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-
             font-size: 23px;
             font-weight: 800;
         }
@@ -68,14 +69,23 @@
             margin-top: 2px;
         }
 
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .admin-name {
+            font-size: 14px;
+            color: #596273;
+            font-weight: 600;
+        }
+
         .logout {
             border: 1px solid #d8dee8;
-            background: #ffffff;
+            background: #fff;
             padding: 10px 15px;
             border-radius: 9px;
-
-            cursor: pointer;
-
             font-size: 14px;
             font-weight: 600;
         }
@@ -83,10 +93,6 @@
         .logout:hover {
             background: #f5f7fa;
         }
-
-        /* =========================
-           MAIN
-        ========================= */
 
         main {
             max-width: 1400px;
@@ -107,10 +113,6 @@
             color: #6b7280;
             font-size: 14px;
         }
-
-        /* =========================
-           MESSAGE
-        ========================= */
 
         #message {
             display: none;
@@ -134,14 +136,15 @@
             color: #b42318;
         }
 
-        /* =========================
-           FILTER
-        ========================= */
-
-        .filter-card {
-            background: #ffffff;
+        .filter-card,
+        .card,
+        .table-card {
+            background: #fff;
             border: 1px solid #e4e8ef;
             border-radius: 16px;
+        }
+
+        .filter-card {
             padding: 20px;
             margin-bottom: 25px;
         }
@@ -154,10 +157,7 @@
 
         .filters {
             display: grid;
-            grid-template-columns:
-                repeat(4, minmax(150px, 1fr))
-                auto;
-
+            grid-template-columns: repeat(4, minmax(150px, 1fr)) auto;
             gap: 12px;
             align-items: end;
         }
@@ -174,56 +174,56 @@
         .filter-group select {
             width: 100%;
             height: 43px;
-
             border: 1px solid #d5dbe5;
             border-radius: 8px;
-
-            background: #ffffff;
-
+            background: #fff;
             padding: 0 11px;
             font-size: 14px;
-
             outline: none;
         }
 
         .filter-group input:focus,
         .filter-group select:focus {
             border-color: #1769e0;
+            box-shadow: 0 0 0 3px rgba(23,105,224,.10);
+        }
+
+        .filter-button,
+        .primary-button,
+        .add-button {
+            background: #1769e0;
+            color: #fff;
+            border: none;
+            border-radius: 9px;
+            font-weight: 700;
         }
 
         .filter-button {
             height: 43px;
-            border: none;
-            border-radius: 8px;
-
             padding: 0 18px;
-
-            background: #1769e0;
-            color: #ffffff;
-
-            font-weight: 700;
-            cursor: pointer;
         }
 
-        .filter-button:hover {
+        .filter-button:hover,
+        .primary-button:hover,
+        .add-button:hover {
             background: #0d57c7;
         }
 
-        /* =========================
-           KPI
-        ========================= */
+        .filter-button:disabled,
+        .primary-button:disabled {
+            opacity: .65;
+            cursor: not-allowed;
+        }
 
         .kpi-grid {
             display: grid;
-            grid-template-columns:
-                repeat(5, minmax(150px, 1fr));
-
+            grid-template-columns: repeat(5, minmax(150px, 1fr));
             gap: 15px;
             margin-bottom: 25px;
         }
 
         .kpi {
-            background: #ffffff;
+            background: #fff;
             border: 1px solid #e4e8ef;
             border-radius: 15px;
             padding: 19px;
@@ -246,10 +246,6 @@
             margin-top: 4px;
         }
 
-        /* =========================
-           GRID
-        ========================= */
-
         .dashboard-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -258,9 +254,6 @@
         }
 
         .card {
-            background: #ffffff;
-            border: 1px solid #e4e8ef;
-            border-radius: 16px;
             padding: 20px;
         }
 
@@ -268,51 +261,6 @@
             font-size: 18px;
             margin-bottom: 17px;
         }
-
-        /* =========================
-           CHART
-        ========================= */
-
-        .chart-container {
-            width: 100%;
-            height: 280px;
-
-            display: flex;
-            align-items: end;
-            gap: 7px;
-
-            border-bottom: 1px solid #dfe4eb;
-            padding: 10px 5px 0;
-            overflow-x: auto;
-        }
-
-        .bar-wrapper {
-            min-width: 32px;
-            height: 100%;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: end;
-            align-items: center;
-        }
-
-        .bar {
-            width: 25px;
-            min-height: 2px;
-            background: #1769e0;
-            border-radius: 5px 5px 0 0;
-        }
-
-        .bar-label {
-            font-size: 9px;
-            color: #6b7280;
-            margin-top: 6px;
-            white-space: nowrap;
-        }
-
-        /* =========================
-           PROCESS DISTRIBUTION
-        ========================= */
 
         .process-row {
             margin-bottom: 18px;
@@ -350,14 +298,41 @@
             border-radius: 10px;
         }
 
-        /* =========================
-           TABLE
-        ========================= */
+        .chart-container {
+            width: 100%;
+            height: 280px;
+            display: flex;
+            align-items: end;
+            gap: 7px;
+            border-bottom: 1px solid #dfe4eb;
+            padding: 10px 5px 0;
+            overflow-x: auto;
+        }
+
+        .bar-wrapper {
+            min-width: 32px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            align-items: center;
+        }
+
+        .bar {
+            width: 25px;
+            min-height: 2px;
+            background: #1769e0;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .bar-label {
+            font-size: 9px;
+            color: #6b7280;
+            margin-top: 6px;
+            white-space: nowrap;
+        }
 
         .table-card {
-            background: #ffffff;
-            border: 1px solid #e4e8ef;
-            border-radius: 16px;
             overflow: hidden;
             margin-bottom: 25px;
         }
@@ -365,14 +340,25 @@
         .table-header {
             padding: 20px;
             border-bottom: 1px solid #e7ebf0;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 15px;
         }
 
         .table-header h2 {
             font-size: 18px;
+        }
+
+        .table-header-text p {
+            color: #7a8494;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .add-button {
+            padding: 11px 16px;
+            font-size: 13px;
         }
 
         .table-wrapper {
@@ -383,7 +369,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 800px;
+            min-width: 900px;
         }
 
         th,
@@ -405,7 +391,8 @@
             background: #fafbfd;
         }
 
-        .status {
+        .status,
+        .role {
             display: inline-block;
             padding: 5px 9px;
             border-radius: 20px;
@@ -423,26 +410,27 @@
             color: #6b7280;
         }
 
-        .role {
-            font-weight: 700;
-        }
-
         .role.admin {
-            color: #7c3aed;
+            background: #f0eaff;
+            color: #6d28d9;
         }
 
         .role.employee {
+            background: #eaf1ff;
             color: #1769e0;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
         }
 
         .action-button {
             border: 1px solid #d8dee8;
-            background: #ffffff;
+            background: #fff;
             border-radius: 7px;
             padding: 7px 10px;
-
-            cursor: pointer;
-
             font-size: 12px;
             font-weight: 600;
         }
@@ -451,30 +439,31 @@
             background: #f5f7fa;
         }
 
-        /* =========================
-           EMPTY
-        ========================= */
+        .action-button.blue {
+            color: #1458b8;
+            border-color: #bfd2f3;
+            background: #f6f9ff;
+        }
 
-        .empty {
+        .action-button.green {
+            color: #18743a;
+            border-color: #bfe1c7;
+            background: #f5fcf6;
+        }
+
+        .action-button.red {
+            color: #b42318;
+            border-color: #efc3c3;
+            background: #fff8f8;
+        }
+
+        .empty,
+        .loading {
             padding: 30px;
             text-align: center;
             color: #7a8494;
             font-size: 14px;
         }
-
-        /* =========================
-           LOADING
-        ========================= */
-
-        .loading {
-            padding: 30px;
-            text-align: center;
-            color: #7a8494;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
 
         footer {
             text-align: center;
@@ -483,37 +472,211 @@
             font-size: 12px;
         }
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
+        footer a {
+            color: #687386;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        footer a:hover {
+            color: #1769e0;
+            text-decoration: underline;
+        }
+
+        /* MODAL */
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15,23,42,.55);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal {
+            width: 100%;
+            max-width: 560px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 25px 80px rgba(0,0,0,.25);
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #e7ebf0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-header h2 {
+            font-size: 19px;
+        }
+
+        .close-modal {
+            width: 35px;
+            height: 35px;
+            border: none;
+            border-radius: 8px;
+            background: #f1f4f8;
+            color: #4b5563;
+            font-size: 22px;
+        }
+
+        .close-modal:hover {
+            background: #e5e9ef;
+        }
+
+        .modal-body {
+            padding: 22px;
+        }
+
+        .modal-footer {
+            padding: 18px 20px;
+            border-top: 1px solid #e7ebf0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            height: 46px;
+            border: 1px solid #d5dbe5;
+            border-radius: 9px;
+            padding: 0 12px;
+            outline: none;
+            background: #fff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #1769e0;
+            box-shadow: 0 0 0 3px rgba(23,105,224,.10);
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper input {
+            padding-right: 90px;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            color: #1769e0;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 7px;
+        }
+
+        .form-hint {
+            color: #7a8494;
+            font-size: 11px;
+            line-height: 1.5;
+            margin-top: 6px;
+        }
+
+        .modal-message {
+            display: none;
+            padding: 11px 13px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .modal-message.error {
+            display: block;
+            background: #fff1f1;
+            border: 1px solid #efc3c3;
+            color: #b42318;
+        }
+
+        .modal-message.success {
+            display: block;
+            background: #effcf3;
+            border: 1px solid #b9e3c3;
+            color: #18743a;
+        }
+
+        .secondary-button,
+        .primary-button {
+            height: 44px;
+            border-radius: 9px;
+            padding: 0 16px;
+            font-weight: 700;
+        }
+
+        .secondary-button {
+            border: 1px solid #d6dce6;
+            background: #fff;
+            color: #374151;
+        }
+
+        .primary-button {
+            border: none;
+        }
 
         @media (max-width: 1100px) {
-
             .kpi-grid {
-                grid-template-columns:
-                    repeat(3, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
 
             .filters {
-                grid-template-columns:
-                    repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 800px) {
-
             .dashboard-grid {
                 grid-template-columns: 1fr;
             }
 
-            .kpi-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
+            .admin-name {
+                display: none;
             }
         }
 
         @media (max-width: 550px) {
-
             header {
                 padding: 10px 14px;
             }
@@ -546,6 +709,31 @@
             .page-title h1 {
                 font-size: 24px;
             }
+
+            .table-header {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .add-button {
+                width: 100%;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .modal-footer {
+                flex-direction: column-reverse;
+            }
+
+            .modal-footer button {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -556,9 +744,7 @@
 
     <div class="header-left">
 
-        <div class="logo">
-            F
-        </div>
+        <div class="logo">F</div>
 
         <div>
             <div class="brand">
@@ -572,12 +758,24 @@
 
     </div>
 
-    <button
-        class="logout"
-        id="logoutButton"
-    >
-        Abmelden
-    </button>
+    <div class="header-right">
+
+        <div
+            id="adminName"
+            class="admin-name"
+        >
+            Administrator
+        </div>
+
+        <button
+            class="logout"
+            id="logoutButton"
+            type="button"
+        >
+            Abmelden
+        </button>
+
+    </div>
 
 </header>
 
@@ -600,9 +798,7 @@
     <div id="message"></div>
 
 
-    <!-- =========================
-         FILTER
-    ========================== -->
+    <!-- FILTER -->
 
     <div class="filter-card">
 
@@ -677,6 +873,7 @@
             <button
                 class="filter-button"
                 id="applyFilter"
+                type="button"
             >
                 Auswerten
             </button>
@@ -686,9 +883,7 @@
     </div>
 
 
-    <!-- =========================
-         KPIs
-    ========================== -->
+    <!-- KPIs -->
 
     <div class="kpi-grid">
 
@@ -755,18 +950,18 @@
         <div class="kpi">
 
             <div class="kpi-label">
-                Wannen / Stunde
+                Pick Wannen / Stunde
             </div>
 
             <div
                 class="kpi-value"
-                id="tubsPerHour"
+                id="pickTubsPerHour"
             >
                 0,00
             </div>
 
             <div class="kpi-unit">
-                Gesamtproduktivität
+                Pick
             </div>
 
         </div>
@@ -775,18 +970,18 @@
         <div class="kpi">
 
             <div class="kpi-label">
-                Pakete / Stunde
+                Pack Pakete / Stunde
             </div>
 
             <div
                 class="kpi-value"
-                id="packagesPerHour"
+                id="packPackagesPerHour"
             >
                 0,00
             </div>
 
             <div class="kpi-unit">
-                Gesamtproduktivität
+                Pack
             </div>
 
         </div>
@@ -794,12 +989,9 @@
     </div>
 
 
-    <!-- =========================
-         CHARTS
-    ========================== -->
+    <!-- CHARTS -->
 
     <div class="dashboard-grid">
-
 
         <div class="card">
 
@@ -838,19 +1030,26 @@
     </div>
 
 
-    <!-- =========================
-         MITARBEITERVERGLEICH
-    ========================== -->
+    <!-- MITARBEITERVERGLEICH -->
 
     <div class="table-card">
 
         <div class="table-header">
 
-            <h2>
-                Mitarbeitervergleich
-            </h2>
+            <div class="table-header-text">
+
+                <h2>
+                    Mitarbeitervergleich
+                </h2>
+
+                <p>
+                    Produktivität wird pro Prozess berechnet.
+                </p>
+
+            </div>
 
         </div>
+
 
         <div class="table-wrapper">
 
@@ -865,37 +1064,43 @@
                         </th>
 
                         <th>
-                            Stunden
+                            Gesamt Std.
                         </th>
 
                         <th>
-                            Wannen
+                            Pick Std.
                         </th>
 
                         <th>
-                            Pakete
+                            Wannen Pick
                         </th>
 
                         <th>
-                            Wannen / Std.
+                            Wannen / Pick Std.
                         </th>
 
                         <th>
-                            Pakete / Std.
+                            Pack Std.
+                        </th>
+
+                        <th>
+                            Pakete Pack
+                        </th>
+
+                        <th>
+                            Pakete / Pack Std.
                         </th>
 
                     </tr>
 
                 </thead>
 
-                <tbody
-                    id="employeeStatsBody"
-                >
+                <tbody id="employeeStatsBody">
 
                     <tr>
 
                         <td
-                            colspan="6"
+                            colspan="8"
                             class="loading"
                         >
                             Daten werden geladen...
@@ -912,19 +1117,34 @@
     </div>
 
 
-    <!-- =========================
-         MITARBEITER VERWALTUNG
-    ========================== -->
+    <!-- MITARBEITERVERWALTUNG -->
 
     <div class="table-card">
 
         <div class="table-header">
 
-            <h2>
-                Mitarbeiterverwaltung
-            </h2>
+            <div class="table-header-text">
+
+                <h2>
+                    Mitarbeiterverwaltung
+                </h2>
+
+                <p>
+                    Mitarbeiter verwalten und Passwörter zurücksetzen.
+                </p>
+
+            </div>
+
+            <button
+                id="openCreateEmployee"
+                class="add-button"
+                type="button"
+            >
+                + Mitarbeiter anlegen
+            </button>
 
         </div>
+
 
         <div class="table-wrapper">
 
@@ -955,16 +1175,14 @@
                         </th>
 
                         <th>
-                            Aktion
+                            Aktionen
                         </th>
 
                     </tr>
 
                 </thead>
 
-                <tbody
-                    id="employeesBody"
-                >
+                <tbody id="employeesBody">
 
                     <tr>
 
@@ -989,387 +1207,878 @@
 
 
 <footer>
+
     FlaschenlandOPS
+
+    |
+
+    <a href="datenschutz.html">
+        Datenschutz
+    </a>
+
+    |
+
+    <a href="impressum.html">
+        Impressum
+    </a>
+
+    |
+
+    <a href="agb.html">
+        AGB
+    </a>
+
 </footer>
 
 
-<!-- =========================
-     SUPABASE
-========================== -->
+<!-- ============================================================
+     MODAL: MITARBEITER ANLEGEN
+============================================================ -->
+
+<div
+    id="createModal"
+    class="modal-overlay"
+>
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h2>
+                Mitarbeiter anlegen
+            </h2>
+
+            <button
+                class="close-modal"
+                type="button"
+                data-close="createModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="createEmployeeForm">
+
+            <div class="modal-body">
+
+                <div
+                    id="createMessage"
+                    class="modal-message"
+                ></div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="createFirstName">
+                            Vorname *
+                        </label>
+
+                        <input
+                            id="createFirstName"
+                            type="text"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="createLastName">
+                            Nachname *
+                        </label>
+
+                        <input
+                            id="createLastName"
+                            type="text"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="createEmployeeNumber">
+                            Mitarbeiternummer *
+                        </label>
+
+                        <input
+                            id="createEmployeeNumber"
+                            type="text"
+                            placeholder="z. B. MA001"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="createRole">
+                            Rolle *
+                        </label>
+
+                        <select id="createRole">
+
+                            <option value="employee">
+                                Mitarbeiter
+                            </option>
+
+                            <option value="admin">
+                                Administrator
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="createEmail">
+                            E-Mail-Adresse *
+                        </label>
+
+                        <input
+                            id="createEmail"
+                            type="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="createPassword">
+                            Startpasswort *
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                id="createPassword"
+                                type="password"
+                                minlength="8"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                id="createPasswordToggle"
+                                class="password-toggle"
+                                type="button"
+                            >
+                                Anzeigen
+                            </button>
+
+                        </div>
+
+                        <div class="form-hint">
+                            Mindestens 8 Zeichen.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    data-close="createModal"
+                >
+                    Abbrechen
+                </button>
+
+                <button
+                    id="createEmployeeSubmit"
+                    type="submit"
+                    class="primary-button"
+                >
+                    Mitarbeiter anlegen
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ============================================================
+     MODAL: BEARBEITEN
+============================================================ -->
+
+<div
+    id="editModal"
+    class="modal-overlay"
+>
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h2>
+                Mitarbeiter bearbeiten
+            </h2>
+
+            <button
+                class="close-modal"
+                type="button"
+                data-close="editModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="editEmployeeForm">
+
+            <div class="modal-body">
+
+                <div
+                    id="editMessage"
+                    class="modal-message"
+                ></div>
+
+
+                <input
+                    type="hidden"
+                    id="editEmployeeId"
+                >
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="editFirstName">
+                            Vorname *
+                        </label>
+
+                        <input
+                            id="editFirstName"
+                            type="text"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="editLastName">
+                            Nachname *
+                        </label>
+
+                        <input
+                            id="editLastName"
+                            type="text"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="editEmployeeNumber">
+                            Mitarbeiternummer *
+                        </label>
+
+                        <input
+                            id="editEmployeeNumber"
+                            type="text"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="editRole">
+                            Rolle *
+                        </label>
+
+                        <select id="editRole">
+
+                            <option value="employee">
+                                Mitarbeiter
+                            </option>
+
+                            <option value="admin">
+                                Administrator
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    data-close="editModal"
+                >
+                    Abbrechen
+                </button>
+
+                <button
+                    id="editEmployeeSubmit"
+                    type="submit"
+                    class="primary-button"
+                >
+                    Änderungen speichern
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ============================================================
+     MODAL: PASSWORT
+============================================================ -->
+
+<div
+    id="passwordModal"
+    class="modal-overlay"
+>
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h2>
+                Passwort zurücksetzen
+            </h2>
+
+            <button
+                class="close-modal"
+                type="button"
+                data-close="passwordModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="passwordForm">
+
+            <div class="modal-body">
+
+                <div
+                    id="passwordMessage"
+                    class="modal-message"
+                ></div>
+
+
+                <input
+                    type="hidden"
+                    id="passwordEmployeeId"
+                >
+
+
+                <p
+                    id="passwordEmployeeName"
+                    style="margin-bottom:18px;font-size:14px;color:#4b5563;"
+                ></p>
+
+
+                <div class="form-group">
+
+                    <label for="newPassword">
+                        Neues Passwort *
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            id="newPassword"
+                            type="password"
+                            minlength="8"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <button
+                            id="newPasswordToggle"
+                            class="password-toggle"
+                            type="button"
+                        >
+                            Anzeigen
+                        </button>
+
+                    </div>
+
+                    <div class="form-hint">
+                        Mindestens 8 Zeichen.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    data-close="passwordModal"
+                >
+                    Abbrechen
+                </button>
+
+                <button
+                    id="passwordSubmit"
+                    type="submit"
+                    class="primary-button"
+                >
+                    Passwort ändern
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <script>
 
-    /* ============================================================
-       SUPABASE
-    ============================================================ */
+const SUPABASE_URL =
+    "https://kmdsltojdpfpsatwgfcg.supabase.co";
 
-    const SUPABASE_URL =
-        "https://kmdsltojdpfpsatwgfcg.supabase.co";
+const SUPABASE_KEY =
+    "sb_publishable_dpG11d2sSHDTn-2Y5cCAsQ_dPVSBAGo";
 
-    const SUPABASE_KEY =
-        "sb_publishable_dpG11d2sSHDTn-2Y5cCAsQ_dPVSBAGo";
-
-    const supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
-    /* ============================================================
-       ELEMENTE
-    ============================================================ */
+let currentUser = null;
+let currentProfile = null;
 
-    const message =
+let employees = [];
+let processes = [];
+let sessions = [];
+let quantities = [];
+
+
+/* ============================================================
+   HILFSFUNKTIONEN
+============================================================ */
+
+function escapeHtml(value) {
+
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+function formatNumber(value, decimals = 2) {
+
+    return new Intl.NumberFormat(
+        "de-DE",
+        {
+            minimumFractionDigits: decimals,
+            maximumFractionDigits: decimals
+        }
+    ).format(Number(value) || 0);
+}
+
+
+function formatDate(value) {
+
+    if (!value) {
+        return "-";
+    }
+
+    return new Date(value).toLocaleDateString(
+        "de-DE"
+    );
+}
+
+
+function dateToString(date) {
+
+    const year =
+        date.getFullYear();
+
+    const month =
+        String(date.getMonth() + 1)
+            .padStart(2, "0");
+
+    const day =
+        String(date.getDate())
+            .padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+}
+
+
+function hoursBetween(start, end) {
+
+    if (!start || !end) {
+        return 0;
+    }
+
+    const startTime =
+        new Date(start).getTime();
+
+    const endTime =
+        new Date(end).getTime();
+
+    if (
+        !Number.isFinite(startTime) ||
+        !Number.isFinite(endTime) ||
+        endTime <= startTime
+    ) {
+        return 0;
+    }
+
+    return (
+        endTime - startTime
+    ) / 3600000;
+}
+
+
+function getProcessByName(name) {
+
+    return processes.find(
+        process =>
+            process.name === name
+    );
+}
+
+
+function showMessage(text, type = "success") {
+
+    const element =
         document.getElementById("message");
 
-    const logoutButton =
-        document.getElementById("logoutButton");
+    element.textContent = text;
+    element.className = type;
+    element.style.display = "block";
 
-    const dateFrom =
-        document.getElementById("dateFrom");
+    setTimeout(() => {
 
-    const dateTo =
-        document.getElementById("dateTo");
+        element.style.display = "none";
+        element.className = "";
 
-    const employeeFilter =
-        document.getElementById("employeeFilter");
+    }, 5000);
+}
 
-    const processFilter =
-        document.getElementById("processFilter");
 
-    const applyFilter =
-        document.getElementById("applyFilter");
+function showModalMessage(
+    id,
+    text,
+    type
+) {
 
-    const employeeStatsBody =
-        document.getElementById(
-            "employeeStatsBody"
-        );
+    const element =
+        document.getElementById(id);
 
-    const employeesBody =
-        document.getElementById(
-            "employeesBody"
-        );
+    element.textContent = text;
+    element.className =
+        "modal-message " + type;
+    element.style.display = "block";
+}
 
-    const processDistribution =
-        document.getElementById(
-            "processDistribution"
-        );
 
-    const dailyChart =
-        document.getElementById(
-            "dailyChart"
-        );
+function clearModalMessage(id) {
 
+    const element =
+        document.getElementById(id);
 
-    /* ============================================================
-       DATEN
-    ============================================================ */
+    element.textContent = "";
+    element.className = "modal-message";
+    element.style.display = "none";
+}
 
-    let currentUser = null;
-    let currentProfile = null;
 
-    let employees = [];
-    let processes = [];
+/* ============================================================
+   START
+============================================================ */
 
-    let sessions = [];
-    let quantities = [];
+async function initialize() {
 
-
-    /* ============================================================
-       HILFSFUNKTIONEN
-    ============================================================ */
-
-    function showMessage(
-        text,
-        type = "success"
-    ) {
-
-        message.textContent =
-            text;
-
-        message.className =
-            type;
-
-        setTimeout(
-            () => {
-
-                message.textContent =
-                    "";
-
-                message.className =
-                    "";
-
-            },
-            5000
-        );
-    }
-
-
-    function formatNumber(
-        number,
-        decimals = 2
-    ) {
-
-        return new Intl.NumberFormat(
-            "de-DE",
-            {
-                minimumFractionDigits:
-                    decimals,
-
-                maximumFractionDigits:
-                    decimals
-            }
-        ).format(number);
-    }
-
-
-    function formatDate(
-        dateString
-    ) {
-
-        if (!dateString) {
-            return "-";
-        }
-
-        return new Date(
-            dateString
-        ).toLocaleDateString(
-            "de-DE"
-        );
-    }
-
-
-    function getDateString(
-        date
-    ) {
-
-        const year =
-            date.getFullYear();
-
-        const month =
-            String(
-                date.getMonth() + 1
-            ).padStart(2, "0");
-
-        const day =
-            String(
-                date.getDate()
-            ).padStart(2, "0");
-
-        return (
-            year +
-            "-" +
-            month +
-            "-" +
-            day
-        );
-    }
-
-
-    function getHours(
-        startedAt,
-        endedAt
-    ) {
-
-        if (
-            !startedAt ||
-            !endedAt
-        ) {
-            return 0;
-        }
-
-        const start =
-            new Date(
-                startedAt
-            ).getTime();
-
-        const end =
-            new Date(
-                endedAt
-            ).getTime();
-
-        if (end <= start) {
-            return 0;
-        }
-
-        return (
-            end - start
-        ) / 3600000;
-    }
-
-
-    /* ============================================================
-       INITIALISIERUNG
-    ============================================================ */
-
-    async function initialize() {
-
-        try {
-
-            const {
-                data,
-                error
-            } =
-                await supabaseClient.auth.getSession();
-
-
-            if (error) {
-                throw error;
-            }
-
-
-            if (!data.session) {
-
-                window.location.href =
-                    "index.html";
-
-                return;
-            }
-
-
-            currentUser =
-                data.session.user;
-
-
-            /*
-             * Adminprofil laden
-             */
-
-            const {
-                data: profile,
-                error: profileError
-            } =
-                await supabaseClient
-                    .from("profiles")
-                    .select(
-                        "id, employee_number, first_name, last_name, role, active"
-                    )
-                    .eq(
-                        "id",
-                        currentUser.id
-                    )
-                    .single();
-
-
-            if (profileError) {
-                throw profileError;
-            }
-
-
-            if (
-                !profile.active ||
-                profile.role !== "admin"
-            ) {
-
-                await supabaseClient.auth.signOut();
-
-                window.location.href =
-                    "index.html";
-
-                return;
-            }
-
-
-            currentProfile =
-                profile;
-
-
-            /*
-             * Standardzeitraum:
-             * aktueller Monat
-             */
-
-            const today =
-                new Date();
-
-            const firstDay =
-                new Date(
-                    today.getFullYear(),
-                    today.getMonth(),
-                    1
-                );
-
-
-            dateFrom.value =
-                getDateString(
-                    firstDay
-                );
-
-            dateTo.value =
-                getDateString(
-                    today
-                );
-
-
-            await loadEmployees();
-
-            await loadProcesses();
-
-            await loadData();
-
-        }
-
-        catch (error) {
-
-            console.error(
-                "Admin Initialisierung:",
-                error
-            );
-
-            showMessage(
-                "Das Dashboard konnte nicht geladen werden.",
-                "error"
-            );
-        }
-    }
-
-
-    /* ============================================================
-       MITARBEITER LADEN
-    ============================================================ */
-
-    async function loadEmployees() {
+    try {
 
         const {
             data,
             error
         } =
             await supabaseClient
-                .from("profiles")
-                .select(
-                    "id, employee_number, first_name, last_name, role, active, created_at"
-                )
-                .order(
-                    "last_name",
-                    {
-                        ascending: true
-                    }
-                );
-
+                .auth
+                .getSession();
 
         if (error) {
             throw error;
         }
 
+        if (!data.session) {
 
-        employees =
-            data || [];
+            window.location.href =
+                "index.html";
+
+            return;
+        }
+
+        currentUser =
+            data.session.user;
 
 
-        /*
-         * Mitarbeiterfilter
-         */
+        const {
+            data: profile,
+            error: profileError
+        } =
+            await supabaseClient
+                .from("profiles")
+                .select(
+                    "id, employee_number, first_name, last_name, role, active"
+                )
+                .eq(
+                    "id",
+                    currentUser.id
+                )
+                .single();
 
-        employeeFilter.innerHTML =
-            '<option value="">Alle Mitarbeiter</option>';
+        if (profileError) {
+            throw profileError;
+        }
 
 
-        employees.forEach(
-            employee => {
+        if (
+            !profile.active ||
+            profile.role !== "admin"
+        ) {
+
+            await supabaseClient
+                .auth
+                .signOut();
+
+            window.location.href =
+                "index.html";
+
+            return;
+        }
+
+
+        currentProfile =
+            profile;
+
+
+        document.getElementById(
+            "adminName"
+        ).textContent =
+            profile.first_name +
+            " " +
+            profile.last_name;
+
+
+        const today =
+            new Date();
+
+        const firstDay =
+            new Date(
+                today.getFullYear(),
+                today.getMonth(),
+                1
+            );
+
+
+        document.getElementById(
+            "dateFrom"
+        ).value =
+            dateToString(firstDay);
+
+
+        document.getElementById(
+            "dateTo"
+        ).value =
+            dateToString(today);
+
+
+        await loadEmployees();
+        await loadProcesses();
+        await loadData();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Initialisierung:",
+            error
+        );
+
+        showMessage(
+            "Das Admin-Dashboard konnte nicht geladen werden.",
+            "error"
+        );
+    }
+}
+
+
+/* ============================================================
+   MITARBEITER LADEN
+============================================================ */
+
+async function loadEmployees() {
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("profiles")
+            .select(
+                "id, employee_number, first_name, last_name, role, active, created_at"
+            )
+            .order(
+                "last_name",
+                {
+                    ascending: true
+                }
+            );
+
+    if (error) {
+        throw error;
+    }
+
+    employees =
+        data || [];
+
+
+    const filter =
+        document.getElementById(
+            "employeeFilter"
+        );
+
+
+    filter.innerHTML =
+        `
+        <option value="">
+            Alle Mitarbeiter
+        </option>
+        `;
+
+
+    employees.forEach(
+        employee => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+            option.value =
+                employee.id;
+
+            option.textContent =
+                employee.first_name +
+                " " +
+                employee.last_name;
+
+            filter.appendChild(option);
+        }
+    );
+
+
+    renderEmployees();
+}
+
+
+/* ============================================================
+   PROZESSE
+============================================================ */
+
+async function loadProcesses() {
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("processes")
+            .select(
+                "id, name, tracks_quantity, quantity_unit, active, sort_order"
+            )
+            .order(
+                "sort_order",
+                {
+                    ascending: true
+                }
+            );
+
+    if (error) {
+        throw error;
+    }
+
+    processes =
+        data || [];
+
+
+    const filter =
+        document.getElementById(
+            "processFilter"
+        );
+
+
+    filter.innerHTML =
+        `
+        <option value="">
+            Alle Prozesse
+        </option>
+        `;
+
+
+    processes
+        .filter(
+            process =>
+                process.active
+        )
+        .forEach(
+            process => {
 
                 const option =
                     document.createElement(
@@ -1377,44 +2086,1097 @@
                     );
 
                 option.value =
-                    employee.id;
+                    process.id;
 
                 option.textContent =
-                    employee.first_name +
-                    " " +
-                    employee.last_name;
+                    process.name;
 
-                employeeFilter.appendChild(
-                    option
+                filter.appendChild(option);
+            }
+        );
+}
+
+
+/* ============================================================
+   DATEN LADEN
+============================================================ */
+
+async function loadData() {
+
+    const from =
+        document.getElementById(
+            "dateFrom"
+        ).value;
+
+    const to =
+        document.getElementById(
+            "dateTo"
+        ).value;
+
+    const employeeId =
+        document.getElementById(
+            "employeeFilter"
+        ).value;
+
+    const processId =
+        document.getElementById(
+            "processFilter"
+        ).value;
+
+
+    if (!from || !to) {
+
+        showMessage(
+            "Bitte Von- und Bis-Datum auswählen.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if (from > to) {
+
+        showMessage(
+            "Das Startdatum darf nicht nach dem Enddatum liegen.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    /*
+     * Ende des ausgewählten Zeitraums.
+     */
+
+    const endDate =
+        new Date(
+            `${to}T23:59:59.999`
+        );
+
+
+    let sessionQuery =
+        supabaseClient
+            .from("work_sessions")
+            .select(
+                "id, employee_id, process_id, started_at, ended_at"
+            )
+            .not(
+                "ended_at",
+                "is",
+                null
+            )
+            .gte(
+                "started_at",
+                `${from}T00:00:00`
+            )
+            .lte(
+                "started_at",
+                endDate.toISOString()
+            );
+
+
+    if (employeeId) {
+
+        sessionQuery =
+            sessionQuery.eq(
+                "employee_id",
+                employeeId
+            );
+    }
+
+
+    if (processId) {
+
+        sessionQuery =
+            sessionQuery.eq(
+                "process_id",
+                processId
+            );
+    }
+
+
+    const {
+        data: sessionData,
+        error: sessionError
+    } =
+        await sessionQuery;
+
+
+    if (sessionError) {
+        throw sessionError;
+    }
+
+
+    sessions =
+        sessionData || [];
+
+
+    let quantityQuery =
+        supabaseClient
+            .from("daily_quantities")
+            .select(
+                "id, employee_id, process_id, work_date, quantity"
+            )
+            .gte(
+                "work_date",
+                from
+            )
+            .lte(
+                "work_date",
+                to
+            );
+
+
+    if (employeeId) {
+
+        quantityQuery =
+            quantityQuery.eq(
+                "employee_id",
+                employeeId
+            );
+    }
+
+
+    if (processId) {
+
+        quantityQuery =
+            quantityQuery.eq(
+                "process_id",
+                processId
+            );
+    }
+
+
+    const {
+        data: quantityData,
+        error: quantityError
+    } =
+        await quantityQuery;
+
+
+    if (quantityError) {
+        throw quantityError;
+    }
+
+
+    quantities =
+        quantityData || [];
+
+
+    calculateDashboard();
+}
+
+
+/* ============================================================
+   DASHBOARD BERECHNEN
+============================================================ */
+
+function calculateDashboard() {
+
+    let totalHours = 0;
+
+
+    sessions.forEach(
+        session => {
+
+            totalHours +=
+                hoursBetween(
+                    session.started_at,
+                    session.ended_at
                 );
+        }
+    );
+
+
+    let totalTubs = 0;
+    let totalPackages = 0;
+
+
+    quantities.forEach(
+        item => {
+
+            const process =
+                processes.find(
+                    p =>
+                        Number(p.id) ===
+                        Number(item.process_id)
+                );
+
+
+            if (!process) {
+                return;
+            }
+
+
+            if (
+                process.name === "Pick" ||
+                process.name === "Wareneingang"
+            ) {
+
+                totalTubs +=
+                    Number(item.quantity);
+            }
+
+
+            if (
+                process.name === "Pack"
+            ) {
+
+                totalPackages +=
+                    Number(item.quantity);
+            }
+        }
+    );
+
+
+    const pickProcess =
+        getProcessByName("Pick");
+
+    const packProcess =
+        getProcessByName("Pack");
+
+
+    let pickHours = 0;
+    let packHours = 0;
+
+
+    sessions.forEach(
+        session => {
+
+            const hours =
+                hoursBetween(
+                    session.started_at,
+                    session.ended_at
+                );
+
+
+            if (
+                pickProcess &&
+                Number(session.process_id) ===
+                Number(pickProcess.id)
+            ) {
+
+                pickHours += hours;
+            }
+
+
+            if (
+                packProcess &&
+                Number(session.process_id) ===
+                Number(packProcess.id)
+            ) {
+
+                packHours += hours;
+            }
+        }
+    );
+
+
+    const pickTubs =
+        quantities
+            .filter(
+                item =>
+                    pickProcess &&
+                    Number(item.process_id) ===
+                    Number(pickProcess.id)
+            )
+            .reduce(
+                (
+                    total,
+                    item
+                ) =>
+                    total +
+                    Number(item.quantity),
+                0
+            );
+
+
+    const packPackages =
+        quantities
+            .filter(
+                item =>
+                    packProcess &&
+                    Number(item.process_id) ===
+                    Number(packProcess.id)
+            )
+            .reduce(
+                (
+                    total,
+                    item
+                ) =>
+                    total +
+                    Number(item.quantity),
+                0
+            );
+
+
+    const pickProductivity =
+        pickHours > 0
+            ? pickTubs / pickHours
+            : 0;
+
+
+    const packProductivity =
+        packHours > 0
+            ? packPackages / packHours
+            : 0;
+
+
+    document.getElementById(
+        "totalHours"
+    ).textContent =
+        formatNumber(totalHours);
+
+
+    document.getElementById(
+        "totalTubs"
+    ).textContent =
+        formatNumber(totalTubs, 0);
+
+
+    document.getElementById(
+        "totalPackages"
+    ).textContent =
+        formatNumber(totalPackages, 0);
+
+
+    document.getElementById(
+        "pickTubsPerHour"
+    ).textContent =
+        formatNumber(pickProductivity);
+
+
+    document.getElementById(
+        "packPackagesPerHour"
+    ).textContent =
+        formatNumber(packProductivity);
+
+
+    renderProcessDistribution();
+    renderDailyChart();
+    renderEmployeeStats();
+}
+
+
+/* ============================================================
+   PROZESSVERTEILUNG
+============================================================ */
+
+function renderProcessDistribution() {
+
+    const container =
+        document.getElementById(
+            "processDistribution"
+        );
+
+    container.innerHTML = "";
+
+
+    const processHours = {};
+
+
+    processes.forEach(
+        process => {
+
+            processHours[process.id] = 0;
+        }
+    );
+
+
+    sessions.forEach(
+        session => {
+
+            if (
+                processHours[
+                    session.process_id
+                ] !== undefined
+            ) {
+
+                processHours[
+                    session.process_id
+                ] +=
+                    hoursBetween(
+                        session.started_at,
+                        session.ended_at
+                    );
+            }
+        }
+    );
+
+
+    const total =
+        Object.values(processHours)
+            .reduce(
+                (sum, value) =>
+                    sum + value,
+                0
+            );
+
+
+    if (total <= 0) {
+
+        container.innerHTML =
+            `
+            <div class="empty">
+                Keine Arbeitszeit im ausgewählten Zeitraum.
+            </div>
+            `;
+
+        return;
+    }
+
+
+    processes.forEach(
+        process => {
+
+            const hours =
+                processHours[
+                    process.id
+                ] || 0;
+
+
+            if (hours <= 0) {
+                return;
+            }
+
+
+            const percentage =
+                (
+                    hours / total
+                ) * 100;
+
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            row.className =
+                "process-row";
+
+
+            row.innerHTML =
+                `
+                <div class="process-row-top">
+
+                    <span class="process-row-name">
+                        ${escapeHtml(process.name)}
+                    </span>
+
+                    <span class="process-row-value">
+                        ${formatNumber(hours)}
+                        Std.
+                        (${formatNumber(percentage, 1)} %)
+                    </span>
+
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="width:${percentage}%"
+                    ></div>
+
+                </div>
+                `;
+
+
+            container.appendChild(row);
+        }
+    );
+}
+
+
+/* ============================================================
+   TAGESCHART
+============================================================ */
+
+function renderDailyChart() {
+
+    const chart =
+        document.getElementById(
+            "dailyChart"
+        );
+
+
+    chart.innerHTML = "";
+
+
+    const from =
+        new Date(
+            document.getElementById(
+                "dateFrom"
+            ).value +
+            "T00:00:00"
+        );
+
+
+    const to =
+        new Date(
+            document.getElementById(
+                "dateTo"
+            ).value +
+            "T00:00:00"
+        );
+
+
+    const days = [];
+
+
+    const cursor =
+        new Date(from);
+
+
+    while (cursor <= to) {
+
+        days.push(
+            dateToString(cursor)
+        );
+
+        cursor.setDate(
+            cursor.getDate() + 1
+        );
+    }
+
+
+    const dailyHours = {};
+
+
+    days.forEach(
+        day => {
+
+            dailyHours[day] = 0;
+        }
+    );
+
+
+    sessions.forEach(
+        session => {
+
+            const day =
+                dateToString(
+                    new Date(
+                        session.started_at
+                    )
+                );
+
+
+            if (
+                dailyHours[day] !== undefined
+            ) {
+
+                dailyHours[day] +=
+                    hoursBetween(
+                        session.started_at,
+                        session.ended_at
+                    );
+            }
+        }
+    );
+
+
+    const maxHours =
+        Math.max(
+            ...Object.values(
+                dailyHours
+            ),
+            1
+        );
+
+
+    days.forEach(
+        day => {
+
+            const hours =
+                dailyHours[day] || 0;
+
+
+            const wrapper =
+                document.createElement(
+                    "div"
+                );
+
+
+            wrapper.className =
+                "bar-wrapper";
+
+
+            const height =
+                (
+                    hours /
+                    maxHours
+                ) * 230;
+
+
+            wrapper.innerHTML =
+                `
+                <div
+                    class="bar"
+                    style="height:${Math.max(height, 2)}px"
+                    title="${formatNumber(hours)} Stunden"
+                ></div>
+
+                <div class="bar-label">
+                    ${day.substring(8,10)}.${day.substring(5,7)}
+                </div>
+                `;
+
+
+            chart.appendChild(wrapper);
+        }
+    );
+}
+
+
+/* ============================================================
+   MITARBEITERVERGLEICH
+============================================================ */
+
+function renderEmployeeStats() {
+
+    const body =
+        document.getElementById(
+            "employeeStatsBody"
+        );
+
+
+    body.innerHTML = "";
+
+
+    const pickProcess =
+        getProcessByName("Pick");
+
+    const packProcess =
+        getProcessByName("Pack");
+
+
+    employees
+        .filter(
+            employee =>
+                employee.active
+        )
+        .forEach(
+            employee => {
+
+                let totalHours = 0;
+                let pickHours = 0;
+                let packHours = 0;
+
+
+                sessions.forEach(
+                    session => {
+
+                        if (
+                            session.employee_id !==
+                            employee.id
+                        ) {
+                            return;
+                        }
+
+
+                        const hours =
+                            hoursBetween(
+                                session.started_at,
+                                session.ended_at
+                            );
+
+
+                        totalHours += hours;
+
+
+                        if (
+                            pickProcess &&
+                            Number(session.process_id) ===
+                            Number(pickProcess.id)
+                        ) {
+
+                            pickHours += hours;
+                        }
+
+
+                        if (
+                            packProcess &&
+                            Number(session.process_id) ===
+                            Number(packProcess.id)
+                        ) {
+
+                            packHours += hours;
+                        }
+                    }
+                );
+
+
+                let pickTubs = 0;
+                let packPackages = 0;
+
+
+                quantities.forEach(
+                    quantity => {
+
+                        if (
+                            quantity.employee_id !==
+                            employee.id
+                        ) {
+                            return;
+                        }
+
+
+                        if (
+                            pickProcess &&
+                            Number(quantity.process_id) ===
+                            Number(pickProcess.id)
+                        ) {
+
+                            pickTubs +=
+                                Number(
+                                    quantity.quantity
+                                );
+                        }
+
+
+                        if (
+                            packProcess &&
+                            Number(quantity.process_id) ===
+                            Number(packProcess.id)
+                        ) {
+
+                            packPackages +=
+                                Number(
+                                    quantity.quantity
+                                );
+                        }
+                    }
+                );
+
+
+                const tubsPerHour =
+                    pickHours > 0
+                        ? pickTubs / pickHours
+                        : 0;
+
+
+                const packagesPerHour =
+                    packHours > 0
+                        ? packPackages / packHours
+                        : 0;
+
+
+                const row =
+                    document.createElement(
+                        "tr"
+                    );
+
+
+                row.innerHTML =
+                    `
+                    <td>
+                        <strong>
+                            ${escapeHtml(employee.first_name)}
+                            ${escapeHtml(employee.last_name)}
+                        </strong>
+                    </td>
+
+                    <td>
+                        ${formatNumber(totalHours)}
+                    </td>
+
+                    <td>
+                        ${formatNumber(pickHours)}
+                    </td>
+
+                    <td>
+                        ${formatNumber(pickTubs, 0)}
+                    </td>
+
+                    <td>
+                        ${formatNumber(tubsPerHour)}
+                    </td>
+
+                    <td>
+                        ${formatNumber(packHours)}
+                    </td>
+
+                    <td>
+                        ${formatNumber(packPackages, 0)}
+                    </td>
+
+                    <td>
+                        ${formatNumber(packagesPerHour)}
+                    </td>
+                    `;
+
+
+                body.appendChild(row);
             }
         );
 
 
-        renderEmployees();
+    if (
+        body.children.length === 0
+    ) {
+
+        body.innerHTML =
+            `
+            <tr>
+                <td
+                    colspan="8"
+                    class="empty"
+                >
+                    Keine aktiven Mitarbeiter vorhanden.
+                </td>
+            </tr>
+            `;
+    }
+}
+
+
+/* ============================================================
+   MITARBEITERVERWALTUNG
+============================================================ */
+
+function renderEmployees() {
+
+    const body =
+        document.getElementById(
+            "employeesBody"
+        );
+
+
+    body.innerHTML = "";
+
+
+    employees.forEach(
+        employee => {
+
+            const row =
+                document.createElement(
+                    "tr"
+                );
+
+
+            const isSelf =
+                employee.id ===
+                currentUser.id;
+
+
+            row.innerHTML =
+                `
+                <td>
+                    <strong>
+                        ${escapeHtml(employee.employee_number)}
+                    </strong>
+                </td>
+
+                <td>
+                    <strong>
+                        ${escapeHtml(employee.first_name)}
+                        ${escapeHtml(employee.last_name)}
+                    </strong>
+                </td>
+
+                <td>
+
+                    <span class="role ${
+                        employee.role === "admin"
+                            ? "admin"
+                            : "employee"
+                    }">
+
+                        ${
+                            employee.role === "admin"
+                                ? "Administrator"
+                                : "Mitarbeiter"
+                        }
+
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <span class="status ${
+                        employee.active
+                            ? "active"
+                            : "inactive"
+                    }">
+
+                        ${
+                            employee.active
+                                ? "Aktiv"
+                                : "Deaktiviert"
+                        }
+
+                    </span>
+
+                </td>
+
+                <td>
+                    ${formatDate(employee.created_at)}
+                </td>
+
+                <td>
+
+                    <div class="action-buttons">
+
+                        <button
+                            class="action-button blue edit-button"
+                            type="button"
+                        >
+                            Bearbeiten
+                        </button>
+
+                        <button
+                            class="action-button blue password-button"
+                            type="button"
+                        >
+                            Passwort
+                        </button>
+
+                        ${
+                            isSelf
+                                ? ""
+                                : `
+                                <button
+                                    class="action-button ${
+                                        employee.active
+                                            ? "red"
+                                            : "green"
+                                    } status-button"
+                                    type="button"
+                                >
+                                    ${
+                                        employee.active
+                                            ? "Deaktivieren"
+                                            : "Aktivieren"
+                                    }
+                                </button>
+                                `
+                        }
+
+                    </div>
+
+                </td>
+                `;
+
+
+            row.querySelector(
+                ".edit-button"
+            ).addEventListener(
+                "click",
+                () =>
+                    openEditModal(employee)
+            );
+
+
+            row.querySelector(
+                ".password-button"
+            ).addEventListener(
+                "click",
+                () =>
+                    openPasswordModal(employee)
+            );
+
+
+            const statusButton =
+                row.querySelector(
+                    ".status-button"
+                );
+
+
+            if (statusButton) {
+
+                statusButton.addEventListener(
+                    "click",
+                    () =>
+                        toggleEmployee(employee)
+                );
+            }
+
+
+            body.appendChild(row);
+        }
+    );
+
+
+    if (
+        employees.length === 0
+    ) {
+
+        body.innerHTML =
+            `
+            <tr>
+                <td
+                    colspan="6"
+                    class="empty"
+                >
+                    Keine Mitarbeiter vorhanden.
+                </td>
+            </tr>
+            `;
+    }
+}
+
+
+/* ============================================================
+   AKTIVIEREN / DEAKTIVIEREN
+============================================================ */
+
+async function toggleEmployee(
+    employee
+) {
+
+    if (
+        employee.id ===
+        currentUser.id
+    ) {
+
+        showMessage(
+            "Du kannst dein eigenes Administratorkonto nicht deaktivieren.",
+            "error"
+        );
+
+        return;
     }
 
 
-    /* ============================================================
-       PROZESSE LADEN
-    ============================================================ */
+    const newStatus =
+        !employee.active;
 
-    async function loadProcesses() {
+
+    const confirmed =
+        confirm(
+            newStatus
+                ? "Diesen Mitarbeiter wieder aktivieren?"
+                : "Diesen Mitarbeiter wirklich deaktivieren?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    try {
 
         const {
-            data,
             error
         } =
             await supabaseClient
-                .from("processes")
-                .select(
-                    "id, name, tracks_quantity, quantity_unit, active"
-                )
-                .order(
-                    "sort_order",
-                    {
-                        ascending: true
-                    }
+                .from("profiles")
+                .update({
+                    active:
+                        newStatus,
+
+                    updated_at:
+                        new Date().toISOString()
+                })
+                .eq(
+                    "id",
+                    employee.id
                 );
 
 
@@ -1423,1075 +3185,1034 @@
         }
 
 
-        processes =
-            data || [];
+        await supabaseClient
+            .from("audit_logs")
+            .insert({
+                user_id:
+                    currentUser.id,
 
+                action:
+                    newStatus
+                        ? "employee_activated"
+                        : "employee_deactivated",
 
-        processFilter.innerHTML =
-            '<option value="">Alle Prozesse</option>';
+                entity_type:
+                    "profiles",
 
+                entity_id:
+                    employee.id,
 
-        processes
-            .filter(
-                process =>
-                    process.active
-            )
-            .forEach(
-                process => {
+                old_data: {
+                    active:
+                        employee.active
+                },
 
-                    const option =
-                        document.createElement(
-                            "option"
-                        );
-
-                    option.value =
-                        process.id;
-
-                    option.textContent =
-                        process.name;
-
-                    processFilter.appendChild(
-                        option
-                    );
+                new_data: {
+                    active:
+                        newStatus
                 }
-            );
-    }
+            });
 
 
-    /* ============================================================
-       DATEN LADEN
-    ============================================================ */
-
-    async function loadData() {
-
-        const from =
-            dateFrom.value;
-
-        const to =
-            dateTo.value;
-
-
-        if (!from || !to) {
-
-            showMessage(
-                "Bitte einen Zeitraum auswählen.",
-                "error"
-            );
-
-            return;
-        }
-
-
-        if (from > to) {
-
-            showMessage(
-                "Das Startdatum darf nicht nach dem Enddatum liegen.",
-                "error"
-            );
-
-            return;
-        }
-
-
-        /*
-         * Sessions
-         */
-
-        let sessionQuery =
-            supabaseClient
-                .from("work_sessions")
-                .select(
-                    "id, employee_id, process_id, started_at, ended_at"
-                )
-                .not(
-                    "ended_at",
-                    "is",
-                    null
-                )
-                .gte(
-                    "started_at",
-                    from + "T00:00:00"
-                )
-                .lte(
-                    "started_at",
-                    to + "T23:59:59"
-                );
-
-
-        if (
-            employeeFilter.value
-        ) {
-
-            sessionQuery =
-                sessionQuery.eq(
-                    "employee_id",
-                    employeeFilter.value
-                );
-        }
-
-
-        if (
-            processFilter.value
-        ) {
-
-            sessionQuery =
-                sessionQuery.eq(
-                    "process_id",
-                    processFilter.value
-                );
-        }
-
-
-        const {
-            data: sessionData,
-            error: sessionError
-        } =
-            await sessionQuery;
-
-
-        if (sessionError) {
-            throw sessionError;
-        }
-
-
-        sessions =
-            sessionData || [];
-
-
-        /*
-         * Mengen
-         */
-
-        let quantityQuery =
-            supabaseClient
-                .from("daily_quantities")
-                .select(
-                    "id, employee_id, process_id, work_date, quantity"
-                )
-                .gte(
-                    "work_date",
-                    from
-                )
-                .lte(
-                    "work_date",
-                    to
-                );
-
-
-        if (
-            employeeFilter.value
-        ) {
-
-            quantityQuery =
-                quantityQuery.eq(
-                    "employee_id",
-                    employeeFilter.value
-                );
-        }
-
-
-        if (
-            processFilter.value
-        ) {
-
-            quantityQuery =
-                quantityQuery.eq(
-                    "process_id",
-                    processFilter.value
-                );
-        }
-
-
-        const {
-            data: quantityData,
-            error: quantityError
-        } =
-            await quantityQuery;
-
-
-        if (quantityError) {
-            throw quantityError;
-        }
-
-
-        quantities =
-            quantityData || [];
-
-
-        calculateDashboard();
-    }
-
-
-    /* ============================================================
-       DASHBOARD BERECHNEN
-    ============================================================ */
-
-    function calculateDashboard() {
-
-        let totalHours = 0;
-
-        let totalTubs = 0;
-
-        let totalPackages = 0;
-
-
-        /*
-         * Gesamtstunden
-         */
-
-        sessions.forEach(
-            session => {
-
-                totalHours +=
-                    getHours(
-                        session.started_at,
-                        session.ended_at
-                    );
-            }
-        );
-
-
-        /*
-         * Mengen
-         */
-
-        quantities.forEach(
-            quantity => {
-
-                const process =
-                    processes.find(
-                        p =>
-                            p.id ===
-                            quantity.process_id
-                    );
-
-
-                if (!process) {
-                    return;
-                }
-
-
-                if (
-                    process.name ===
-                    "Wareneingang" ||
-                    process.name ===
-                    "Pick"
-                ) {
-
-                    totalTubs +=
-                        Number(
-                            quantity.quantity
-                        );
-
-                }
-
-
-                if (
-                    process.name ===
-                    "Pack"
-                ) {
-
-                    totalPackages +=
-                        Number(
-                            quantity.quantity
-                        );
-                }
-            }
-        );
-
-
-        /*
-         * KPIs
-         */
-
-        document.getElementById(
-            "totalHours"
-        ).textContent =
-            formatNumber(
-                totalHours
-            );
-
-
-        document.getElementById(
-            "totalTubs"
-        ).textContent =
-            formatNumber(
-                totalTubs,
-                0
-            );
-
-
-        document.getElementById(
-            "totalPackages"
-        ).textContent =
-            formatNumber(
-                totalPackages,
-                0
-            );
-
-
-        /*
-         * Produktivität
-         *
-         * Gesamtmenge / Gesamtzeit
-         */
-
-        const tubsPerHour =
-            totalHours > 0
-                ? totalTubs / totalHours
-                : 0;
-
-
-        const packagesPerHour =
-            totalHours > 0
-                ? totalPackages / totalHours
-                : 0;
-
-
-        document.getElementById(
-            "tubsPerHour"
-        ).textContent =
-            formatNumber(
-                tubsPerHour
-            );
-
-
-        document.getElementById(
-            "packagesPerHour"
-        ).textContent =
-            formatNumber(
-                packagesPerHour
-            );
-
-
-        renderProcessDistribution();
-
-        renderDailyChart();
-
-        renderEmployeeStats();
-    }
-
-
-    /* ============================================================
-       PROZESSVERTEILUNG
-    ============================================================ */
-
-    function renderProcessDistribution() {
-
-        processDistribution.innerHTML =
-            "";
-
-
-        const processHours = {};
-
-
-        processes.forEach(
-            process => {
-
-                processHours[
-                    process.id
-                ] = 0;
-            }
-        );
-
-
-        sessions.forEach(
-            session => {
-
-                if (
-                    processHours[
-                        session.process_id
-                    ] !== undefined
-                ) {
-
-                    processHours[
-                        session.process_id
-                    ] +=
-                        getHours(
-                            session.started_at,
-                            session.ended_at
-                        );
-                }
-            }
-        );
-
-
-        const totalHours =
-            Object.values(
-                processHours
-            ).reduce(
-                (sum, value) =>
-                    sum + value,
-                0
-            );
-
-
-        if (totalHours <= 0) {
-
-            processDistribution.innerHTML =
-                `
-                <div class="empty">
-                    Keine Arbeitszeit im ausgewählten Zeitraum.
-                </div>
-                `;
-
-            return;
-        }
-
-
-        processes.forEach(
-            process => {
-
-                const hours =
-                    processHours[
-                        process.id
-                    ] || 0;
-
-
-                if (hours <= 0) {
-                    return;
-                }
-
-
-                const percentage =
-                    (
-                        hours /
-                        totalHours
-                    ) * 100;
-
-
-                const row =
-                    document.createElement(
-                        "div"
-                    );
-
-                row.className =
-                    "process-row";
-
-
-                row.innerHTML = `
-                    <div class="process-row-top">
-                        <span class="process-row-name">
-                            ${process.name}
-                        </span>
-
-                        <span class="process-row-value">
-                            ${formatNumber(hours)} Std.
-                            (${formatNumber(percentage, 1)} %)
-                        </span>
-                    </div>
-
-                    <div class="progress">
-                        <div
-                            class="progress-bar"
-                            style="width:${percentage}%"
-                        ></div>
-                    </div>
-                `;
-
-
-                processDistribution.appendChild(
-                    row
-                );
-            }
-        );
-    }
-
-
-    /* ============================================================
-       TAGESCHART
-    ============================================================ */
-
-    function renderDailyChart() {
-
-        dailyChart.innerHTML =
-            "";
-
-
-        const from =
-            new Date(
-                dateFrom.value +
-                "T00:00:00"
-            );
-
-        const to =
-            new Date(
-                dateTo.value +
-                "T00:00:00"
-            );
-
-
-        const days = [];
-
-
-        const cursor =
-            new Date(from);
-
-
-        while (
-            cursor <= to
-        ) {
-
-            days.push(
-                getDateString(
-                    cursor
-                )
-            );
-
-            cursor.setDate(
-                cursor.getDate() + 1
-            );
-        }
-
-
-        const dailyHours = {};
-
-
-        days.forEach(
-            day => {
-
-                dailyHours[day] =
-                    0;
-            }
-        );
-
-
-        sessions.forEach(
-            session => {
-
-                const day =
-                    getDateString(
-                        new Date(
-                            session.started_at
-                        )
-                    );
-
-
-                if (
-                    dailyHours[day] !== undefined
-                ) {
-
-                    dailyHours[day] +=
-                        getHours(
-                            session.started_at,
-                            session.ended_at
-                        );
-                }
-            }
-        );
-
-
-        const maxHours =
-            Math.max(
-                ...Object.values(
-                    dailyHours
-                ),
-                1
-            );
-
-
-        days.forEach(
-            day => {
-
-                const hours =
-                    dailyHours[day];
-
-
-                const wrapper =
-                    document.createElement(
-                        "div"
-                    );
-
-                wrapper.className =
-                    "bar-wrapper";
-
-
-                const height =
-                    (
-                        hours /
-                        maxHours
-                    ) * 230;
-
-
-                wrapper.innerHTML = `
-
-                    <div
-                        class="bar"
-                        style="height:${Math.max(height, 2)}px"
-                        title="${formatNumber(hours)} Stunden"
-                    ></div>
-
-                    <div class="bar-label">
-                        ${day.substring(8, 10)}.${day.substring(5, 7)}
-                    </div>
-
-                `;
-
-
-                dailyChart.appendChild(
-                    wrapper
-                );
-            }
-        );
-
-
-        if (
-            days.length === 0
-        ) {
-
-            dailyChart.innerHTML =
-                `
-                <div class="empty">
-                    Keine Daten vorhanden.
-                </div>
-                `;
-        }
-    }
-
-
-    /* ============================================================
-       MITARBEITERVERGLEICH
-    ============================================================ */
-
-    function renderEmployeeStats() {
-
-        employeeStatsBody.innerHTML =
-            "";
-
-
-        const stats = {};
-
-
-        employees.forEach(
-            employee => {
-
-                stats[
-                    employee.id
-                ] = {
-
-                    hours: 0,
-
-                    tubs: 0,
-
-                    packages: 0
-                };
-            }
-        );
-
-
-        sessions.forEach(
-            session => {
-
-                if (
-                    !stats[
-                        session.employee_id
-                    ]
-                ) {
-                    return;
-                }
-
-
-                stats[
-                    session.employee_id
-                ].hours +=
-                    getHours(
-                        session.started_at,
-                        session.ended_at
-                    );
-            }
-        );
-
-
-        quantities.forEach(
-            quantity => {
-
-                if (
-                    !stats[
-                        quantity.employee_id
-                    ]
-                ) {
-                    return;
-                }
-
-
-                const process =
-                    processes.find(
-                        p =>
-                            p.id ===
-                            quantity.process_id
-                    );
-
-
-                if (!process) {
-                    return;
-                }
-
-
-                if (
-                    process.name ===
-                    "Wareneingang" ||
-                    process.name ===
-                    "Pick"
-                ) {
-
-                    stats[
-                        quantity.employee_id
-                    ].tubs +=
-                        Number(
-                            quantity.quantity
-                        );
-                }
-
-
-                if (
-                    process.name ===
-                    "Pack"
-                ) {
-
-                    stats[
-                        quantity.employee_id
-                    ].packages +=
-                        Number(
-                            quantity.quantity
-                        );
-                }
-            }
-        );
-
-
-        const filteredEmployees =
-            employees.filter(
-                employee =>
-                    employee.active
-            );
-
-
-        if (
-            filteredEmployees.length === 0
-        ) {
-
-            employeeStatsBody.innerHTML =
-                `
-                <tr>
-                    <td colspan="6" class="empty">
-                        Keine Mitarbeiter vorhanden.
-                    </td>
-                </tr>
-                `;
-
-            return;
-        }
-
-
-        filteredEmployees.forEach(
-            employee => {
-
-                const stat =
-                    stats[
-                        employee.id
-                    ];
-
-
-                const tubsPerHour =
-                    stat.hours > 0
-                        ? stat.tubs /
-                          stat.hours
-                        : 0;
-
-
-                const packagesPerHour =
-                    stat.hours > 0
-                        ? stat.packages /
-                          stat.hours
-                        : 0;
-
-
-                const row =
-                    document.createElement(
-                        "tr"
-                    );
-
-
-                row.innerHTML = `
-
-                    <td>
-                        <strong>
-                            ${employee.first_name}
-                            ${employee.last_name}
-                        </strong>
-                    </td>
-
-                    <td>
-                        ${formatNumber(stat.hours)}
-                    </td>
-
-                    <td>
-                        ${formatNumber(stat.tubs, 0)}
-                    </td>
-
-                    <td>
-                        ${formatNumber(stat.packages, 0)}
-                    </td>
-
-                    <td>
-                        ${formatNumber(tubsPerHour)}
-                    </td>
-
-                    <td>
-                        ${formatNumber(packagesPerHour)}
-                    </td>
-
-                `;
-
-
-                employeeStatsBody.appendChild(
-                    row
-                );
-            }
-        );
-    }
-
-
-    /* ============================================================
-       MITARBEITERVERWALTUNG
-    ============================================================ */
-
-    function renderEmployees() {
-
-        employeesBody.innerHTML =
-            "";
-
-
-        if (
-            employees.length === 0
-        ) {
-
-            employeesBody.innerHTML =
-                `
-                <tr>
-                    <td colspan="6" class="empty">
-                        Keine Mitarbeiter vorhanden.
-                    </td>
-                </tr>
-                `;
-
-            return;
-        }
-
-
-        employees.forEach(
-            employee => {
-
-                const row =
-                    document.createElement(
-                        "tr"
-                    );
-
-
-                const roleClass =
-                    employee.role === "admin"
-                        ? "admin"
-                        : "employee";
-
-
-                const statusClass =
-                    employee.active
-                        ? "active"
-                        : "inactive";
-
-
-                const statusText =
-                    employee.active
-                        ? "Aktiv"
-                        : "Deaktiviert";
-
-
-                const actionText =
-                    employee.active
-                        ? "Deaktivieren"
-                        : "Aktivieren";
-
-
-                row.innerHTML = `
-
-                    <td>
-                        ${employee.employee_number}
-                    </td>
-
-                    <td>
-                        <strong>
-                            ${employee.first_name}
-                            ${employee.last_name}
-                        </strong>
-                    </td>
-
-                    <td>
-                        <span class="role ${roleClass}">
-                            ${employee.role === "admin"
-                                ? "Administrator"
-                                : "Mitarbeiter"}
-                        </span>
-                    </td>
-
-                    <td>
-                        <span class="status ${statusClass}">
-                            ${statusText}
-                        </span>
-                    </td>
-
-                    <td>
-                        ${formatDate(
-                            employee.created_at
-                        )}
-                    </td>
-
-                    <td>
-                        <button
-                            class="action-button"
-                            data-id="${employee.id}"
-                        >
-                            ${actionText}
-                        </button>
-                    </td>
-
-                `;
-
-
-                const button =
-                    row.querySelector(
-                        ".action-button"
-                    );
-
-
-                button.addEventListener(
-                    "click",
-                    () =>
-                        toggleEmployee(
-                            employee
-                        )
-                );
-
-
-                employeesBody.appendChild(
-                    row
-                );
-            }
-        );
-    }
-
-
-    /* ============================================================
-       MITARBEITER AKTIVIEREN / DEAKTIVIEREN
-    ============================================================ */
-
-    async function toggleEmployee(
-        employee
-    ) {
-
-        /*
-         * Verhindern, dass der aktuell
-         * eingeloggte Admin sich selbst
-         * versehentlich deaktiviert.
-         */
-
-        if (
-            employee.id ===
-            currentUser.id
-        ) {
-
-            showMessage(
-                "Du kannst dein eigenes Administratorkonto hier nicht deaktivieren.",
-                "error"
-            );
-
-            return;
-        }
-
-
-        const newStatus =
-            !employee.active;
-
-
-        const question =
+        showMessage(
             newStatus
-                ? "Mitarbeiter wieder aktivieren?"
-                : "Mitarbeiter wirklich deaktivieren?";
+                ? "Mitarbeiter wurde aktiviert."
+                : "Mitarbeiter wurde deaktiviert."
+        );
 
 
-        if (
-            !confirm(
-                question
-            )
-        ) {
-            return;
-        }
+        await loadEmployees();
+        await loadData();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        showMessage(
+            "Der Mitarbeiterstatus konnte nicht geändert werden.",
+            "error"
+        );
+    }
+}
 
 
-        try {
+/* ============================================================
+   MITARBEITER ANLEGEN
+============================================================ */
 
-            const {
-                error
-            } =
-                await supabaseClient
-                    .from("profiles")
-                    .update({
-                        active:
-                            newStatus,
+document
+    .getElementById(
+        "createEmployeeForm"
+    )
+    .addEventListener(
+        "submit",
+        async event => {
 
-                        updated_at:
-                            new Date().toISOString()
-                    })
-                    .eq(
-                        "id",
-                        employee.id
-                    );
+            event.preventDefault();
 
 
-            if (error) {
-                throw error;
+            const firstName =
+                document.getElementById(
+                    "createFirstName"
+                ).value.trim();
+
+
+            const lastName =
+                document.getElementById(
+                    "createLastName"
+                ).value.trim();
+
+
+            const employeeNumber =
+                document.getElementById(
+                    "createEmployeeNumber"
+                ).value.trim();
+
+
+            const role =
+                document.getElementById(
+                    "createRole"
+                ).value;
+
+
+            const email =
+                document.getElementById(
+                    "createEmail"
+                ).value.trim();
+
+
+            const password =
+                document.getElementById(
+                    "createPassword"
+                ).value;
+
+
+            const submit =
+                document.getElementById(
+                    "createEmployeeSubmit"
+                );
+
+
+            clearModalMessage(
+                "createMessage"
+            );
+
+
+            if (
+                !firstName ||
+                !lastName ||
+                !employeeNumber ||
+                !email ||
+                !password
+            ) {
+
+                showModalMessage(
+                    "createMessage",
+                    "Bitte alle Pflichtfelder ausfüllen.",
+                    "error"
+                );
+
+                return;
             }
 
 
-            showMessage(
-                newStatus
-                    ? "Mitarbeiter wurde aktiviert."
-                    : "Mitarbeiter wurde deaktiviert."
-            );
+            if (
+                password.length < 8
+            ) {
+
+                showModalMessage(
+                    "createMessage",
+                    "Das Passwort muss mindestens 8 Zeichen lang sein.",
+                    "error"
+                );
+
+                return;
+            }
 
 
-            await loadEmployees();
+            submit.disabled = true;
+            submit.textContent =
+                "Wird angelegt...";
 
-            await loadData();
 
+            try {
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient
+                        .auth
+                        .getSession();
+
+
+                if (
+                    error ||
+                    !data.session
+                ) {
+
+                    throw new Error(
+                        "Die Anmeldung ist abgelaufen."
+                    );
+                }
+
+
+                const response =
+                    await fetch(
+                        "/api/admin-users",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json",
+
+                                "Authorization":
+                                    "Bearer " +
+                                    data.session.access_token
+                            },
+
+                            body:
+                                JSON.stringify({
+
+                                    action:
+                                        "create_employee",
+
+                                    email:
+                                        email,
+
+                                    password:
+                                        password,
+
+                                    employee_number:
+                                        employeeNumber,
+
+                                    first_name:
+                                        firstName,
+
+                                    last_name:
+                                        lastName,
+
+                                    role:
+                                        role
+                                })
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        result.error ||
+                        "Mitarbeiter konnte nicht angelegt werden."
+                    );
+                }
+
+
+                showModalMessage(
+                    "createMessage",
+                    "Mitarbeiter wurde erfolgreich angelegt.",
+                    "success"
+                );
+
+
+                document
+                    .getElementById(
+                        "createEmployeeForm"
+                    )
+                    .reset();
+
+
+                setTimeout(
+                    async () => {
+
+                        closeModal(
+                            "createModal"
+                        );
+
+                        await loadEmployees();
+                        await loadData();
+
+                        showMessage(
+                            "Mitarbeiter wurde erfolgreich angelegt."
+                        );
+
+                    },
+                    700
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Mitarbeiter anlegen:",
+                    error
+                );
+
+                showModalMessage(
+                    "createMessage",
+                    error.message ||
+                    "Mitarbeiter konnte nicht angelegt werden.",
+                    "error"
+                );
+
+            }
+
+            finally {
+
+                submit.disabled = false;
+
+                submit.textContent =
+                    "Mitarbeiter anlegen";
+            }
         }
+    );
 
-        catch (error) {
 
-            console.error(
-                "Mitarbeiterstatus:",
-                error
+/* ============================================================
+   BEARBEITEN
+============================================================ */
+
+function openEditModal(employee) {
+
+    document.getElementById(
+        "editEmployeeId"
+    ).value =
+        employee.id;
+
+
+    document.getElementById(
+        "editFirstName"
+    ).value =
+        employee.first_name;
+
+
+    document.getElementById(
+        "editLastName"
+    ).value =
+        employee.last_name;
+
+
+    document.getElementById(
+        "editEmployeeNumber"
+    ).value =
+        employee.employee_number;
+
+
+    document.getElementById(
+        "editRole"
+    ).value =
+        employee.role;
+
+
+    clearModalMessage(
+        "editMessage"
+    );
+
+
+    openModal(
+        "editModal"
+    );
+}
+
+
+document
+    .getElementById(
+        "editEmployeeForm"
+    )
+    .addEventListener(
+        "submit",
+        async event => {
+
+            event.preventDefault();
+
+
+            const id =
+                document.getElementById(
+                    "editEmployeeId"
+                ).value;
+
+
+            const firstName =
+                document.getElementById(
+                    "editFirstName"
+                ).value.trim();
+
+
+            const lastName =
+                document.getElementById(
+                    "editLastName"
+                ).value.trim();
+
+
+            const employeeNumber =
+                document.getElementById(
+                    "editEmployeeNumber"
+                ).value.trim();
+
+
+            const role =
+                document.getElementById(
+                    "editRole"
+                ).value;
+
+
+            const submit =
+                document.getElementById(
+                    "editEmployeeSubmit"
+                );
+
+
+            clearModalMessage(
+                "editMessage"
             );
 
-            showMessage(
-                "Der Mitarbeiterstatus konnte nicht geändert werden.",
-                "error"
+
+            if (
+                !firstName ||
+                !lastName ||
+                !employeeNumber
+            ) {
+
+                showModalMessage(
+                    "editMessage",
+                    "Bitte alle Pflichtfelder ausfüllen.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            if (
+                id === currentUser.id &&
+                role !== "admin"
+            ) {
+
+                showModalMessage(
+                    "editMessage",
+                    "Deine eigene Administratorrolle kann hier nicht entfernt werden.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            submit.disabled = true;
+            submit.textContent =
+                "Speichern...";
+
+
+            try {
+
+                const oldEmployee =
+                    employees.find(
+                        employee =>
+                            employee.id === id
+                    );
+
+
+                const {
+                    data: duplicate,
+                    error: duplicateError
+                } =
+                    await supabaseClient
+                        .from("profiles")
+                        .select("id")
+                        .eq(
+                            "employee_number",
+                            employeeNumber
+                        )
+                        .neq(
+                            "id",
+                            id
+                        )
+                        .maybeSingle();
+
+
+                if (duplicateError) {
+                    throw duplicateError;
+                }
+
+
+                if (duplicate) {
+
+                    throw new Error(
+                        "Diese Mitarbeiternummer wird bereits verwendet."
+                    );
+                }
+
+
+                const {
+                    error
+                } =
+                    await supabaseClient
+                        .from("profiles")
+                        .update({
+
+                            employee_number:
+                                employeeNumber,
+
+                            first_name:
+                                firstName,
+
+                            last_name:
+                                lastName,
+
+                            role:
+                                role,
+
+                            updated_at:
+                                new Date().toISOString()
+
+                        })
+                        .eq(
+                            "id",
+                            id
+                        );
+
+
+                if (error) {
+                    throw error;
+                }
+
+
+                await supabaseClient
+                    .from("audit_logs")
+                    .insert({
+
+                        user_id:
+                            currentUser.id,
+
+                        action:
+                            "employee_updated",
+
+                        entity_type:
+                            "profiles",
+
+                        entity_id:
+                            id,
+
+                        old_data:
+                            oldEmployee || null,
+
+                        new_data: {
+
+                            employee_number:
+                                employeeNumber,
+
+                            first_name:
+                                firstName,
+
+                            last_name:
+                                lastName,
+
+                            role:
+                                role
+                        }
+                    });
+
+
+                showModalMessage(
+                    "editMessage",
+                    "Mitarbeiter wurde erfolgreich geändert.",
+                    "success"
+                );
+
+
+                setTimeout(
+                    async () => {
+
+                        closeModal(
+                            "editModal"
+                        );
+
+                        await loadEmployees();
+                        await loadData();
+
+                        showMessage(
+                            "Mitarbeiterdaten wurden gespeichert."
+                        );
+
+                    },
+                    700
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+                showModalMessage(
+                    "editMessage",
+                    error.message ||
+                    "Änderungen konnten nicht gespeichert werden.",
+                    "error"
+                );
+
+            }
+
+            finally {
+
+                submit.disabled = false;
+
+                submit.textContent =
+                    "Änderungen speichern";
+            }
+        }
+    );
+
+
+/* ============================================================
+   PASSWORT
+============================================================ */
+
+function openPasswordModal(employee) {
+
+    document.getElementById(
+        "passwordEmployeeId"
+    ).value =
+        employee.id;
+
+
+    document.getElementById(
+        "passwordEmployeeName"
+    ).textContent =
+        "Neues Passwort für " +
+        employee.first_name +
+        " " +
+        employee.last_name;
+
+
+    document.getElementById(
+        "newPassword"
+    ).value = "";
+
+
+    clearModalMessage(
+        "passwordMessage"
+    );
+
+
+    openModal(
+        "passwordModal"
+    );
+}
+
+
+document
+    .getElementById(
+        "passwordForm"
+    )
+    .addEventListener(
+        "submit",
+        async event => {
+
+            event.preventDefault();
+
+
+            const userId =
+                document.getElementById(
+                    "passwordEmployeeId"
+                ).value;
+
+
+            const password =
+                document.getElementById(
+                    "newPassword"
+                ).value;
+
+
+            const submit =
+                document.getElementById(
+                    "passwordSubmit"
+                );
+
+
+            clearModalMessage(
+                "passwordMessage"
             );
+
+
+            if (
+                !userId ||
+                !password
+            ) {
+
+                showModalMessage(
+                    "passwordMessage",
+                    "Bitte ein neues Passwort eingeben.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            if (
+                password.length < 8
+            ) {
+
+                showModalMessage(
+                    "passwordMessage",
+                    "Das Passwort muss mindestens 8 Zeichen lang sein.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            if (
+                userId === currentUser.id
+            ) {
+
+                showModalMessage(
+                    "passwordMessage",
+                    "Das eigene Administratorpasswort bitte über den normalen Passwortwechsel ändern.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            submit.disabled = true;
+            submit.textContent =
+                "Wird geändert...";
+
+
+            try {
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient
+                        .auth
+                        .getSession();
+
+
+                if (
+                    error ||
+                    !data.session
+                ) {
+
+                    throw new Error(
+                        "Die Anmeldung ist abgelaufen."
+                    );
+                }
+
+
+                const response =
+                    await fetch(
+                        "/api/admin-users",
+                        {
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json",
+
+                                "Authorization":
+                                    "Bearer " +
+                                    data.session.access_token
+                            },
+
+                            body:
+                                JSON.stringify({
+
+                                    action:
+                                        "reset_password",
+
+                                    user_id:
+                                        userId,
+
+                                    password:
+                                        password
+                                })
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        result.error ||
+                        "Passwort konnte nicht geändert werden."
+                    );
+                }
+
+
+                showModalMessage(
+                    "passwordMessage",
+                    "Passwort wurde erfolgreich geändert.",
+                    "success"
+                );
+
+
+                document.getElementById(
+                    "newPassword"
+                ).value = "";
+
+
+                setTimeout(
+                    () => {
+
+                        closeModal(
+                            "passwordModal"
+                        );
+
+                        showMessage(
+                            "Passwort wurde erfolgreich zurückgesetzt."
+                        );
+
+                    },
+                    700
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+                showModalMessage(
+                    "passwordMessage",
+                    error.message ||
+                    "Passwort konnte nicht geändert werden.",
+                    "error"
+                );
+
+            }
+
+            finally {
+
+                submit.disabled = false;
+
+                submit.textContent =
+                    "Passwort ändern";
+            }
+        }
+    );
+
+
+/* ============================================================
+   MODALS
+============================================================ */
+
+function openModal(id) {
+
+    document
+        .getElementById(id)
+        .classList.add("open");
+}
+
+
+function closeModal(id) {
+
+    document
+        .getElementById(id)
+        .classList.remove("open");
+}
+
+
+document
+    .querySelectorAll(
+        "[data-close]"
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    closeModal(
+                        button.dataset.close
+                    );
+                }
+            );
+        }
+    );
+
+
+document
+    .querySelectorAll(
+        ".modal-overlay"
+    )
+    .forEach(
+        overlay => {
+
+            overlay.addEventListener(
+                "click",
+                event => {
+
+                    if (
+                        event.target ===
+                        overlay
+                    ) {
+
+                        overlay.classList.remove(
+                            "open"
+                        );
+                    }
+                }
+            );
+        }
+    );
+
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            document
+                .querySelectorAll(
+                    ".modal-overlay.open"
+                )
+                .forEach(
+                    modal => {
+
+                        modal.classList.remove(
+                            "open"
+                        );
+                    }
+                );
         }
     }
+);
 
 
-    /* ============================================================
-       FILTER
-    ============================================================ */
+/* ============================================================
+   MITARBEITER ANLEGEN ÖFFNEN
+============================================================ */
 
-    applyFilter.addEventListener(
+document
+    .getElementById(
+        "openCreateEmployee"
+    )
+    .addEventListener(
         "click",
-        async function () {
+        () => {
 
-            applyFilter.disabled =
-                true;
+            document
+                .getElementById(
+                    "createEmployeeForm"
+                )
+                .reset();
 
-            applyFilter.textContent =
+
+            clearModalMessage(
+                "createMessage"
+            );
+
+
+            openModal(
+                "createModal"
+            );
+        }
+    );
+
+
+/* ============================================================
+   PASSWORT ANZEIGEN
+============================================================ */
+
+function setupPasswordToggle(
+    inputId,
+    buttonId
+) {
+
+    const input =
+        document.getElementById(
+            inputId
+        );
+
+    const button =
+        document.getElementById(
+            buttonId
+        );
+
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            if (
+                input.type ===
+                "password"
+            ) {
+
+                input.type = "text";
+
+                button.textContent =
+                    "Verbergen";
+
+            } else {
+
+                input.type =
+                    "password";
+
+                button.textContent =
+                    "Anzeigen";
+            }
+        }
+    );
+}
+
+
+setupPasswordToggle(
+    "createPassword",
+    "createPasswordToggle"
+);
+
+
+setupPasswordToggle(
+    "newPassword",
+    "newPasswordToggle"
+);
+
+
+/* ============================================================
+   FILTER
+============================================================ */
+
+document
+    .getElementById(
+        "applyFilter"
+    )
+    .addEventListener(
+        "click",
+        async () => {
+
+            const button =
+                document.getElementById(
+                    "applyFilter"
+                );
+
+
+            button.disabled = true;
+
+            button.textContent =
                 "Laden...";
 
 
@@ -2503,10 +4224,7 @@
 
             catch (error) {
 
-                console.error(
-                    "Filter:",
-                    error
-                );
+                console.error(error);
 
                 showMessage(
                     "Die Auswertung konnte nicht geladen werden.",
@@ -2517,25 +4235,30 @@
 
             finally {
 
-                applyFilter.disabled =
-                    false;
+                button.disabled = false;
 
-                applyFilter.textContent =
+                button.textContent =
                     "Auswerten";
             }
         }
     );
 
 
-    /* ============================================================
-       LOGOUT
-    ============================================================ */
+/* ============================================================
+   LOGOUT
+============================================================ */
 
-    logoutButton.addEventListener(
+document
+    .getElementById(
+        "logoutButton"
+    )
+    .addEventListener(
         "click",
-        async function () {
+        async () => {
 
-            await supabaseClient.auth.signOut();
+            await supabaseClient
+                .auth
+                .signOut();
 
             window.location.href =
                 "index.html";
@@ -2543,18 +4266,21 @@
     );
 
 
-    /* ============================================================
-       AUTH STATUS
-    ============================================================ */
+/* ============================================================
+   AUTH STATE
+============================================================ */
 
-    supabaseClient.auth.onAuthStateChange(
-        function (
+supabaseClient
+    .auth
+    .onAuthStateChange(
+        (
             event,
             session
-        ) {
+        ) => {
 
             if (
-                event === "SIGNED_OUT" ||
+                event ===
+                    "SIGNED_OUT" ||
                 !session
             ) {
 
@@ -2565,11 +4291,11 @@
     );
 
 
-    /* ============================================================
-       START
-    ============================================================ */
+/* ============================================================
+   START
+============================================================ */
 
-    initialize();
+initialize();
 
 </script>
 
