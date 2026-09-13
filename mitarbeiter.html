@@ -20,16 +20,11 @@
             color: #172033;
         }
 
-        /* =========================
-           HEADER
-        ========================= */
-
         header {
             background: #ffffff;
             border-bottom: 1px solid #e4e8ef;
             min-height: 70px;
             padding: 12px 24px;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -48,11 +43,9 @@
             border-radius: 11px;
             background: #1769e0;
             color: #ffffff;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             font-size: 23px;
             font-weight: 800;
         }
@@ -72,23 +65,16 @@
             border: 1px solid #d8dee8;
             background: #ffffff;
             color: #374151;
-
             padding: 10px 15px;
             border-radius: 9px;
-
             font-size: 14px;
             font-weight: 600;
-
             cursor: pointer;
         }
 
         .logout-button:hover {
             background: #f5f7fa;
         }
-
-        /* =========================
-           MAIN
-        ========================= */
 
         main {
             width: 100%;
@@ -111,16 +97,11 @@
             font-size: 15px;
         }
 
-        /* =========================
-           STATUS
-        ========================= */
-
         .status-card {
             background: #ffffff;
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
             margin-bottom: 25px;
-
             border: 1px solid #e5e9f0;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
         }
@@ -128,30 +109,54 @@
         .status-label {
             color: #6b7280;
             font-size: 13px;
-            margin-bottom: 6px;
+            margin-bottom: 7px;
         }
 
         .status-process {
-            font-size: 24px;
+            font-size: 25px;
             font-weight: 800;
             margin-bottom: 8px;
         }
 
         .status-time {
-            font-size: 18px;
-            font-weight: 700;
+            font-size: 22px;
+            font-weight: 800;
             color: #1769e0;
+            margin-bottom: 18px;
         }
 
         .no-process {
             color: #6b7280;
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 600;
+            margin-bottom: 0;
         }
 
-        /* =========================
-           PROCESS GRID
-        ========================= */
+        .stop-button {
+            display: none;
+            width: 100%;
+            min-height: 52px;
+            border: none;
+            border-radius: 10px;
+            background: #c62828;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .stop-button.visible {
+            display: block;
+        }
+
+        .stop-button:hover {
+            background: #a91f1f;
+        }
+
+        .stop-button:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
 
         .section-title {
             font-size: 20px;
@@ -166,20 +171,15 @@
 
         .process-button {
             min-height: 145px;
-
             background: #ffffff;
             border: 2px solid #e0e5ed;
             border-radius: 16px;
-
             padding: 20px;
-
             cursor: pointer;
-
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-
             transition: 0.2s;
         }
 
@@ -192,6 +192,12 @@
         .process-button.active {
             border-color: #1769e0;
             background: #eef5ff;
+        }
+
+        .process-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .process-icon {
@@ -215,18 +221,12 @@
             font-weight: 700;
         }
 
-        /* =========================
-           QUANTITY CARD
-        ========================= */
-
         .quantity-card {
             display: none;
-
             background: #ffffff;
             border-radius: 16px;
             padding: 22px;
             margin-top: 25px;
-
             border: 1px solid #e5e9f0;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
         }
@@ -267,12 +267,9 @@
         .quantity-input {
             width: 100%;
             height: 50px;
-
             border: 1px solid #d5dbe5;
             border-radius: 9px;
-
             padding: 0 14px;
-
             font-size: 17px;
             outline: none;
         }
@@ -285,16 +282,12 @@
         .save-button {
             height: 50px;
             padding: 0 22px;
-
             border: none;
             border-radius: 9px;
-
             background: #1769e0;
             color: #ffffff;
-
             font-size: 15px;
             font-weight: 700;
-
             cursor: pointer;
         }
 
@@ -307,18 +300,11 @@
             cursor: not-allowed;
         }
 
-        /* =========================
-           MESSAGES
-        ========================= */
-
         .message {
             display: none;
-
             padding: 13px 15px;
             border-radius: 10px;
-
             margin-bottom: 20px;
-
             font-size: 14px;
             line-height: 1.4;
         }
@@ -337,10 +323,6 @@
             color: #18743a;
         }
 
-        /* =========================
-           FOOTER
-        ========================= */
-
         footer {
             text-align: center;
             color: #8a93a3;
@@ -348,19 +330,23 @@
             padding: 20px;
         }
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
+        footer a {
+            color: #6b7280;
+            text-decoration: none;
+            margin: 0 6px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
 
         @media (max-width: 800px) {
-
             .process-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 500px) {
-
             header {
                 padding: 10px 15px;
             }
@@ -408,6 +394,10 @@
             .save-button {
                 width: 100%;
             }
+
+            .stop-button {
+                min-height: 56px;
+            }
         }
     </style>
 </head>
@@ -415,17 +405,11 @@
 <body>
 
 <header>
-
     <div class="header-left">
-
-        <div class="small-logo">
-            F
-        </div>
+        <div class="small-logo">F</div>
 
         <div>
-            <div class="brand">
-                FlaschenlandOPS
-            </div>
+            <div class="brand">FlaschenlandOPS</div>
 
             <div
                 class="employee-name"
@@ -434,31 +418,26 @@
                 Wird geladen...
             </div>
         </div>
-
     </div>
 
     <button
         class="logout-button"
         id="logoutButton"
+        type="button"
     >
         Abmelden
     </button>
-
 </header>
 
 
 <main>
 
     <div class="welcome">
-
-        <h1>
-            Arbeitsprozess
-        </h1>
+        <h1>Arbeitsprozess</h1>
 
         <p>
             Wähle den Prozess aus, an dem du gerade arbeitest.
         </p>
-
     </div>
 
 
@@ -468,9 +447,7 @@
     ></div>
 
 
-    <!-- =========================
-         AKTUELLER STATUS
-    ========================== -->
+    <!-- AKTUELLER STATUS -->
 
     <div class="status-card">
 
@@ -493,12 +470,18 @@
             00:00:00
         </div>
 
+        <button
+            id="stopProcessButton"
+            class="stop-button"
+            type="button"
+        >
+            ⏹ Prozess stoppen
+        </button>
+
     </div>
 
 
-    <!-- =========================
-         PROZESSE
-    ========================== -->
+    <!-- PROZESSE -->
 
     <h2 class="section-title">
         Prozesse
@@ -509,11 +492,9 @@
         <button
             class="process-button"
             data-process="Wareneingang"
+            type="button"
         >
-
-            <div class="process-icon">
-                📦
-            </div>
+            <div class="process-icon">📦</div>
 
             <div class="process-name">
                 Wareneingang
@@ -522,18 +503,15 @@
             <div class="process-state">
                 Wannen
             </div>
-
         </button>
 
 
         <button
             class="process-button"
             data-process="Pick"
+            type="button"
         >
-
-            <div class="process-icon">
-                🛒
-            </div>
+            <div class="process-icon">🛒</div>
 
             <div class="process-name">
                 Pick
@@ -542,18 +520,15 @@
             <div class="process-state">
                 Wannen
             </div>
-
         </button>
 
 
         <button
             class="process-button"
             data-process="Pack"
+            type="button"
         >
-
-            <div class="process-icon">
-                📦
-            </div>
+            <div class="process-icon">📦</div>
 
             <div class="process-name">
                 Pack
@@ -562,18 +537,15 @@
             <div class="process-state">
                 Pakete
             </div>
-
         </button>
 
 
         <button
             class="process-button"
             data-process="Service"
+            type="button"
         >
-
-            <div class="process-icon">
-                🎧
-            </div>
+            <div class="process-icon">🎧</div>
 
             <div class="process-name">
                 Service
@@ -582,15 +554,12 @@
             <div class="process-state">
                 Nur Zeit
             </div>
-
         </button>
 
     </div>
 
 
-    <!-- =========================
-         MENGENEINGABE
-    ========================== -->
+    <!-- MENGENEINGABE -->
 
     <div
         id="quantityCard"
@@ -611,7 +580,6 @@
             Trag hier deine Menge für heute ein.
         </div>
 
-
         <div class="quantity-row">
 
             <div class="quantity-input-wrapper">
@@ -627,6 +595,7 @@
                     min="0"
                     step="1"
                     placeholder="0"
+                    inputmode="numeric"
                 >
 
             </div>
@@ -634,6 +603,7 @@
             <button
                 id="saveQuantityButton"
                 class="save-button"
+                type="button"
             >
                 Menge speichern
             </button>
@@ -646,16 +616,17 @@
 
 
 <footer>
-    FlaschenlandOPS
+    <div>FlaschenlandOPS</div>
+
+    <div style="margin-top:8px;">
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="agb.html">AGB</a>
+    </div>
 </footer>
 
 
-<!-- =========================
-     SUPABASE
-========================= -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 
 <script>
 
@@ -695,6 +666,9 @@
     const currentTime =
         document.getElementById("currentTime");
 
+    const stopProcessButton =
+        document.getElementById("stopProcessButton");
+
     const processButtons =
         document.querySelectorAll(".process-button");
 
@@ -719,6 +693,7 @@
     ============================================================ */
 
     let currentUser = null;
+
     let currentProfile = null;
 
     let processes = [];
@@ -727,33 +702,36 @@
 
     let timerInterval = null;
 
-    let selectedQuantityProcess = null;
+    let busy = false;
 
 
     /* ============================================================
        HILFSFUNKTIONEN
     ============================================================ */
 
-    function showMessage(text, type = "success") {
+    function showMessage(text, type = "error") {
 
         message.textContent = text;
 
         message.className =
             "message " + type;
 
-        setTimeout(() => {
+    }
 
-            message.className = "message";
 
-            message.textContent = "";
+    function clearMessage() {
 
-        }, 5000);
+        message.textContent = "";
+
+        message.className =
+            "message";
+
     }
 
 
     function formatDuration(milliseconds) {
 
-        if (milliseconds < 0) {
+        if (!Number.isFinite(milliseconds) || milliseconds < 0) {
             milliseconds = 0;
         }
 
@@ -771,14 +749,87 @@
         const seconds =
             totalSeconds % 60;
 
-
-        return (
-            String(hours).padStart(2, "0") +
-            ":" +
-            String(minutes).padStart(2, "0") +
-            ":" +
+        return [
+            String(hours).padStart(2, "0"),
+            String(minutes).padStart(2, "0"),
             String(seconds).padStart(2, "0")
+        ].join(":");
+    }
+
+
+    function getProcessById(processId) {
+
+        return processes.find(
+            process => String(process.id) === String(processId)
         );
+    }
+
+
+    function getProcessByName(name) {
+
+        return processes.find(
+            process => process.name === name
+        );
+    }
+
+
+    function getActiveProcess() {
+
+        if (!activeSession) {
+            return null;
+        }
+
+        return getProcessById(
+            activeSession.process_id
+        );
+    }
+
+
+    function getTodayLocalDate() {
+
+        const now = new Date();
+
+        const year =
+            now.getFullYear();
+
+        const month =
+            String(now.getMonth() + 1)
+                .padStart(2, "0");
+
+        const day =
+            String(now.getDate())
+                .padStart(2, "0");
+
+        return `${year}-${month}-${day}`;
+    }
+
+
+    function stopTimer() {
+
+        if (timerInterval !== null) {
+
+            clearInterval(timerInterval);
+
+            timerInterval = null;
+        }
+    }
+
+
+    function startTimer() {
+
+        stopTimer();
+
+        if (!activeSession) {
+            return;
+        }
+
+        updateTimer();
+
+        timerInterval =
+            setInterval(
+                updateTimer,
+                1000
+            );
     }
 
 
@@ -792,70 +843,922 @@
             return;
         }
 
-
-        const startedAt =
+        const started =
             new Date(
                 activeSession.started_at
             );
 
-
         const now =
             new Date();
 
-
-        const duration =
+        const elapsed =
             now.getTime() -
-            startedAt.getTime();
-
+            started.getTime();
 
         currentTime.textContent =
-            formatDuration(duration);
+            formatDuration(elapsed);
+    }
+
+
+    function setProcessButtonsDisabled(disabled) {
+
+        processButtons.forEach(button => {
+
+            button.disabled = disabled;
+
+        });
+    }
+
+
+    function updateProcessButtonStates() {
+
+        processButtons.forEach(button => {
+
+            const processName =
+                button.dataset.process;
+
+            const isActive =
+                activeSession &&
+                getActiveProcess() &&
+                getActiveProcess().name === processName;
+
+            button.classList.toggle(
+                "active",
+                Boolean(isActive)
+            );
+
+            const state =
+                button.querySelector(".process-state");
+
+            if (!state) {
+                return;
+            }
+
+            if (isActive) {
+
+                const process =
+                    getActiveProcess();
+
+                state.textContent =
+                    process && process.tracks_quantity
+                        ? "Aktiv · Menge"
+                        : "Aktiv · Nur Zeit";
+
+            } else {
+
+                if (processName === "Service") {
+                    state.textContent =
+                        "Nur Zeit";
+                } else if (
+                    processName === "Pack"
+                ) {
+                    state.textContent =
+                        "Pakete";
+                } else {
+                    state.textContent =
+                        "Wannen";
+                }
+            }
+        });
+    }
+
+
+    function updateStatusUI() {
+
+        const process =
+            getActiveProcess();
+
+        if (!activeSession || !process) {
+
+            currentProcess.textContent =
+                "Kein Prozess aktiv";
+
+            currentProcess.className =
+                "no-process";
+
+            currentTime.style.display =
+                "none";
+
+            stopProcessButton.classList.remove(
+                "visible"
+            );
+
+            quantityCard.classList.remove(
+                "visible"
+            );
+
+            stopTimer();
+
+            updateProcessButtonStates();
+
+            return;
+        }
+
+
+        currentProcess.textContent =
+            process.name;
+
+        currentProcess.className =
+            "status-process";
 
         currentTime.style.display =
             "block";
+
+        stopProcessButton.classList.add(
+            "visible"
+        );
+
+
+        if (process.tracks_quantity) {
+
+            quantityCard.classList.add(
+                "visible"
+            );
+
+            quantityTitle.textContent =
+                process.name + " – Menge";
+
+            quantityDescription.textContent =
+                process.quantity_unit === "Pakete"
+                    ? "Trag hier die heute bearbeiteten Pakete ein."
+                    : "Trag hier die heute bearbeiteten Wannen ein.";
+
+        } else {
+
+            quantityCard.classList.remove(
+                "visible"
+            );
+
+            quantityInput.value = "";
+        }
+
+
+        updateProcessButtonStates();
+
+        startTimer();
     }
 
 
-    function startTimer() {
+    /* ============================================================
+       PROFIL LADEN
+    ============================================================ */
 
-        stopTimer();
+    async function loadProfile() {
 
-        updateTimer();
+        const {
+            data,
+            error
+        } = await supabaseClient
+            .from("profiles")
+            .select("*")
+            .eq("id", currentUser.id)
+            .single();
 
-        timerInterval =
-            setInterval(
-                updateTimer,
-                1000
+        if (error) {
+            throw new Error(
+                "Mitarbeiterprofil konnte nicht geladen werden."
             );
+        }
+
+        if (!data) {
+            throw new Error(
+                "Kein Mitarbeiterprofil gefunden."
+            );
+        }
+
+        if (!data.active) {
+
+            await supabaseClient.auth.signOut();
+
+            window.location.href =
+                "index.html";
+
+            return;
+        }
+
+        currentProfile = data;
+
+        employeeName.textContent =
+            `${data.first_name} ${data.last_name}`;
     }
 
 
-    function stopTimer() {
+    /* ============================================================
+       PROZESSE LADEN
+    ============================================================ */
 
-        if (timerInterval) {
+    async function loadProcesses() {
 
-            clearInterval(
-                timerInterval
+        const {
+            data,
+            error
+        } = await supabaseClient
+            .from("processes")
+            .select("*")
+            .eq("active", true)
+            .order("sort_order", {
+                ascending: true
+            });
+
+        if (error) {
+
+            throw new Error(
+                "Prozesse konnten nicht geladen werden."
+            );
+        }
+
+        processes = data || [];
+    }
+
+
+    /* ============================================================
+       AKTIVE SESSION LADEN
+    ============================================================ */
+
+    async function loadActiveSession() {
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+            .from("work_sessions")
+            .select("*")
+            .eq("employee_id", currentUser.id)
+            .is("ended_at", null)
+            .order("started_at", {
+                ascending: false
+            })
+            .limit(1);
+
+        if (error) {
+
+            throw new Error(
+                "Aktiver Prozess konnte nicht geladen werden."
+            );
+        }
+
+
+        if (data && data.length > 0) {
+
+            activeSession =
+                data[0];
+
+        } else {
+
+            activeSession =
+                null;
+        }
+
+
+        updateStatusUI();
+    }
+
+
+    /* ============================================================
+       PROZESS STARTEN
+    ============================================================ */
+
+    async function startProcess(processName) {
+
+        if (busy) {
+            return;
+        }
+
+        const process =
+            getProcessByName(processName);
+
+        if (!process) {
+
+            showMessage(
+                "Der ausgewählte Prozess wurde nicht gefunden."
             );
 
-            timerInterval = null;
+            return;
+        }
+
+
+        /*
+         * Wenn derselbe Prozess bereits aktiv ist,
+         * machen wir nichts.
+         */
+
+        if (
+            activeSession &&
+            getActiveProcess() &&
+            getActiveProcess().id === process.id
+        ) {
+
+            showMessage(
+                `${process.name} läuft bereits.`,
+                "success"
+            );
+
+            return;
+        }
+
+
+        busy = true;
+
+        clearMessage();
+
+        setProcessButtonsDisabled(true);
+
+        stopProcessButton.disabled = true;
+
+
+        try {
+
+            /*
+             * Falls bereits ein Prozess läuft,
+             * wird dieser zuerst beendet.
+             */
+
+            if (activeSession) {
+
+                const oldSessionId =
+                    activeSession.id;
+
+                const {
+                    error: endError
+                } = await supabaseClient
+                    .from("work_sessions")
+                    .update({
+                        ended_at:
+                            new Date().toISOString()
+                    })
+                    .eq("id", oldSessionId)
+                    .eq("employee_id", currentUser.id)
+                    .is("ended_at", null);
+
+                if (endError) {
+                    throw endError;
+                }
+
+                activeSession = null;
+
+                stopTimer();
+            }
+
+
+            /*
+             * Neue Session starten.
+             */
+
+            const {
+                data,
+                error
+            } = await supabaseClient
+                .from("work_sessions")
+                .insert({
+                    employee_id:
+                        currentUser.id,
+
+                    process_id:
+                        process.id,
+
+                    started_at:
+                        new Date().toISOString()
+                })
+                .select("*")
+                .single();
+
+
+            if (error) {
+                throw error;
+            }
+
+
+            activeSession = data;
+
+            updateStatusUI();
+
+            showMessage(
+                `${process.name} gestartet.`,
+                "success"
+            );
+
+        } catch (error) {
+
+            console.error(
+                "startProcess:",
+                error
+            );
+
+            await loadActiveSession();
+
+            showMessage(
+                error.message ||
+                "Der Prozess konnte nicht gestartet werden."
+            );
+
+        } finally {
+
+            busy = false;
+
+            setProcessButtonsDisabled(false);
+
+            stopProcessButton.disabled =
+                false;
+
+            updateStatusUI();
         }
     }
 
 
     /* ============================================================
-       AUTH / BENUTZER LADEN
+       PROZESS STOPPEN
+    ============================================================ */
+
+    async function stopProcess() {
+
+        if (busy) {
+            return;
+        }
+
+        if (!activeSession) {
+
+            updateStatusUI();
+
+            return;
+        }
+
+
+        const activeProcess =
+            getActiveProcess();
+
+
+        busy = true;
+
+        clearMessage();
+
+        setProcessButtonsDisabled(true);
+
+        stopProcessButton.disabled = true;
+
+
+        try {
+
+            const sessionId =
+                activeSession.id;
+
+
+            /*
+             * Aktuelle Session serverseitig beenden.
+             *
+             * Die Zeit wird als UTC-Zeit gespeichert.
+             */
+
+            const {
+                data,
+                error
+            } = await supabaseClient
+                .from("work_sessions")
+                .update({
+                    ended_at:
+                        new Date().toISOString()
+                })
+                .eq("id", sessionId)
+                .eq("employee_id", currentUser.id)
+                .is("ended_at", null)
+                .select("*");
+
+
+            if (error) {
+                throw error;
+            }
+
+
+            /*
+             * Wenn keine Zeile geändert wurde,
+             * prüfen wir den aktuellen Zustand erneut.
+             */
+
+            if (!data || data.length === 0) {
+
+                const {
+                    data: checkData,
+                    error: checkError
+                } = await supabaseClient
+                    .from("work_sessions")
+                    .select("*")
+                    .eq("id", sessionId)
+                    .eq("employee_id", currentUser.id)
+                    .single();
+
+                if (checkError) {
+                    throw checkError;
+                }
+
+                if (checkData.ended_at === null) {
+
+                    throw new Error(
+                        "Der Prozess konnte nicht beendet werden."
+                    );
+                }
+            }
+
+
+            activeSession = null;
+
+            stopTimer();
+
+            updateStatusUI();
+
+
+            showMessage(
+                activeProcess
+                    ? `${activeProcess.name} wurde gestoppt.`
+                    : "Prozess wurde gestoppt.",
+                "success"
+            );
+
+        } catch (error) {
+
+            console.error(
+                "stopProcess:",
+                error
+            );
+
+            await loadActiveSession();
+
+            showMessage(
+                error.message ||
+                "Der Prozess konnte nicht gestoppt werden."
+            );
+
+        } finally {
+
+            busy = false;
+
+            setProcessButtonsDisabled(false);
+
+            stopProcessButton.disabled =
+                false;
+
+            updateStatusUI();
+        }
+    }
+
+
+    /* ============================================================
+       MENGE LADEN
+    ============================================================ */
+
+    async function loadTodayQuantity() {
+
+        if (!currentUser || !activeSession) {
+            return;
+        }
+
+        const process =
+            getActiveProcess();
+
+        if (!process || !process.tracks_quantity) {
+            return;
+        }
+
+
+        const today =
+            getTodayLocalDate();
+
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+            .from("daily_quantities")
+            .select("quantity")
+            .eq("employee_id", currentUser.id)
+            .eq("process_id", process.id)
+            .eq("work_date", today)
+            .maybeSingle();
+
+
+        if (error) {
+
+            console.error(
+                "loadTodayQuantity:",
+                error
+            );
+
+            return;
+        }
+
+
+        if (data) {
+
+            quantityInput.value =
+                data.quantity;
+        } else {
+
+            quantityInput.value = "";
+        }
+    }
+
+
+    /* ============================================================
+       MENGE SPEICHERN
+    ============================================================ */
+
+    async function saveQuantity() {
+
+        if (busy) {
+            return;
+        }
+
+        if (!activeSession) {
+
+            showMessage(
+                "Bitte zuerst einen Prozess starten."
+            );
+
+            return;
+        }
+
+
+        const process =
+            getActiveProcess();
+
+        if (!process || !process.tracks_quantity) {
+
+            showMessage(
+                "Für diesen Prozess gibt es keine Mengeneingabe."
+            );
+
+            return;
+        }
+
+
+        const rawValue =
+            quantityInput.value.trim();
+
+        if (rawValue === "") {
+
+            showMessage(
+                "Bitte eine Menge eingeben."
+            );
+
+            return;
+        }
+
+
+        const quantity =
+            Number(rawValue);
+
+
+        if (
+            !Number.isInteger(quantity) ||
+            quantity < 0
+        ) {
+
+            showMessage(
+                "Bitte eine gültige ganze Zahl ab 0 eingeben."
+            );
+
+            return;
+        }
+
+
+        busy = true;
+
+        saveQuantityButton.disabled = true;
+
+        clearMessage();
+
+
+        try {
+
+            const today =
+                getTodayLocalDate();
+
+
+            const {
+                error
+            } = await supabaseClient
+                .from("daily_quantities")
+                .upsert(
+                    {
+                        employee_id:
+                            currentUser.id,
+
+                        process_id:
+                            process.id,
+
+                        work_date:
+                            today,
+
+                        quantity:
+                            quantity,
+
+                        updated_at:
+                            new Date().toISOString()
+                    },
+                    {
+                        onConflict:
+                            "employee_id,process_id,work_date"
+                    }
+                );
+
+
+            if (error) {
+                throw error;
+            }
+
+
+            showMessage(
+                `${process.name}: ${quantity} ${process.quantity_unit || "Einheiten"} gespeichert.`,
+                "success"
+            );
+
+        } catch (error) {
+
+            console.error(
+                "saveQuantity:",
+                error
+            );
+
+            showMessage(
+                error.message ||
+                "Die Menge konnte nicht gespeichert werden."
+            );
+
+        } finally {
+
+            busy = false;
+
+            saveQuantityButton.disabled =
+                false;
+        }
+    }
+
+
+    /* ============================================================
+       ABMELDEN
+    ============================================================ */
+
+    async function logout() {
+
+        if (busy) {
+            return;
+        }
+
+        busy = true;
+
+        logoutButton.disabled = true;
+
+        stopProcessButton.disabled = true;
+
+        setProcessButtonsDisabled(true);
+
+
+        try {
+
+            /*
+             * Wenn ein Prozess läuft, wird er beim
+             * Abmelden automatisch beendet.
+             */
+
+            if (activeSession) {
+
+                const {
+                    error
+                } = await supabaseClient
+                    .from("work_sessions")
+                    .update({
+                        ended_at:
+                            new Date().toISOString()
+                    })
+                    .eq("id", activeSession.id)
+                    .eq("employee_id", currentUser.id)
+                    .is("ended_at", null);
+
+                if (error) {
+                    console.error(
+                        "Session beim Abmelden:",
+                        error
+                    );
+                }
+            }
+
+        } finally {
+
+            stopTimer();
+
+            activeSession = null;
+
+            await supabaseClient.auth.signOut();
+
+            window.location.href =
+                "index.html";
+        }
+    }
+
+
+    /* ============================================================
+       EVENTS
+    ============================================================ */
+
+    processButtons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            async () => {
+
+                const processName =
+                    button.dataset.process;
+
+                await startProcess(
+                    processName
+                );
+
+                if (activeSession) {
+                    await loadTodayQuantity();
+                }
+            }
+        );
+    });
+
+
+    stopProcessButton.addEventListener(
+        "click",
+        async () => {
+
+            await stopProcess();
+        }
+    );
+
+
+    saveQuantityButton.addEventListener(
+        "click",
+        async () => {
+
+            await saveQuantity();
+        }
+    );
+
+
+    logoutButton.addEventListener(
+        "click",
+        async () => {
+
+            await logout();
+        }
+    );
+
+
+    quantityInput.addEventListener(
+        "keydown",
+        async event => {
+
+            if (event.key === "Enter") {
+
+                event.preventDefault();
+
+                await saveQuantity();
+            }
+        }
+    );
+
+
+    /* ============================================================
+       AUTH STATE
+    ============================================================ */
+
+    supabaseClient.auth.onAuthStateChange(
+        async (event, session) => {
+
+            if (
+                event === "SIGNED_OUT"
+            ) {
+
+                stopTimer();
+
+                window.location.href =
+                    "index.html";
+
+                return;
+            }
+        }
+    );
+
+
+    /* ============================================================
+       INITIALISIERUNG
     ============================================================ */
 
     async function initialize() {
 
         try {
 
+            clearMessage();
+
+
             const {
                 data,
                 error
-            } =
-                await supabaseClient.auth.getSession();
+            } = await supabaseClient
+                .auth
+                .getSession();
 
 
             if (error) {
@@ -876,75 +1779,19 @@
                 data.session.user;
 
 
-            /*
-             * Profil laden
-             */
-
-            const {
-                data: profile,
-                error: profileError
-            } =
-                await supabaseClient
-                    .from("profiles")
-                    .select(
-                        "id, employee_number, first_name, last_name, role, active"
-                    )
-                    .eq(
-                        "id",
-                        currentUser.id
-                    )
-                    .single();
-
-
-            if (profileError) {
-                throw profileError;
-            }
-
-
-            if (!profile.active) {
-
-                await supabaseClient.auth.signOut();
-
-                window.location.href =
-                    "index.html";
-
-                return;
-            }
-
-
-            currentProfile =
-                profile;
-
-
-            employeeName.textContent =
-                profile.first_name +
-                " " +
-                profile.last_name;
-
-
-            /*
-             * Prozesse laden
-             */
+            await loadProfile();
 
             await loadProcesses();
-
-
-            /*
-             * Aktive Session laden
-             */
 
             await loadActiveSession();
 
 
-            /*
-             * Mengen für heute laden
-             */
+            if (activeSession) {
+                await loadTodayQuantity();
+            }
 
-            await loadTodayQuantity();
 
-        }
-
-        catch (error) {
+        } catch (error) {
 
             console.error(
                 "Initialisierung:",
@@ -952,789 +1799,12 @@
             );
 
             showMessage(
-                "Die Mitarbeiterdaten konnten nicht geladen werden.",
-                "error"
+                error.message ||
+                "Die Mitarbeiterseite konnte nicht geladen werden."
             );
         }
     }
 
-
-    /* ============================================================
-       PROZESSE LADEN
-    ============================================================ */
-
-    async function loadProcesses() {
-
-        const {
-            data,
-            error
-        } =
-            await supabaseClient
-                .from("processes")
-                .select(
-                    "id, name, tracks_quantity, quantity_unit, active, sort_order"
-                )
-                .eq(
-                    "active",
-                    true
-                )
-                .order(
-                    "sort_order",
-                    {
-                        ascending: true
-                    }
-                );
-
-
-        if (error) {
-            throw error;
-        }
-
-
-        processes =
-            data || [];
-    }
-
-
-    /* ============================================================
-       AKTIVE SESSION LADEN
-    ============================================================ */
-
-    async function loadActiveSession() {
-
-        const {
-            data,
-            error
-        } =
-            await supabaseClient
-                .from("work_sessions")
-                .select(
-                    `
-                    id,
-                    employee_id,
-                    process_id,
-                    started_at,
-                    ended_at,
-                    processes (
-                        id,
-                        name,
-                        tracks_quantity,
-                        quantity_unit
-                    )
-                    `
-                )
-                .eq(
-                    "employee_id",
-                    currentUser.id
-                )
-                .is(
-                    "ended_at",
-                    null
-                )
-                .maybeSingle();
-
-
-        if (error) {
-            throw error;
-        }
-
-
-        activeSession =
-            data;
-
-
-        updateProcessDisplay();
-
-    }
-
-
-    /* ============================================================
-       AKTIVEN PROZESS ANZEIGEN
-    ============================================================ */
-
-    function updateProcessDisplay() {
-
-        processButtons.forEach(
-            button => {
-
-                button.classList.remove(
-                    "active"
-                );
-
-                const name =
-                    button.dataset.process;
-
-                const state =
-                    button.querySelector(
-                        ".process-state"
-                    );
-
-
-                if (
-                    activeSession &&
-                    activeSession.processes &&
-                    activeSession.processes.name === name
-                ) {
-
-                    button.classList.add(
-                        "active"
-                    );
-
-                    state.textContent =
-                        "AKTIV";
-
-                } else {
-
-                    if (name === "Service") {
-
-                        state.textContent =
-                            "Nur Zeit";
-
-                    } else if (name === "Pack") {
-
-                        state.textContent =
-                            "Pakete";
-
-                    } else {
-
-                        state.textContent =
-                            "Wannen";
-                    }
-                }
-            }
-        );
-
-
-        if (
-            activeSession &&
-            activeSession.processes
-        ) {
-
-            currentProcess.textContent =
-                activeSession.processes.name;
-
-            currentProcess.className =
-                "status-process";
-
-            startTimer();
-
-        } else {
-
-            currentProcess.textContent =
-                "Kein Prozess aktiv";
-
-            currentProcess.className =
-                "no-process";
-
-            currentTime.style.display =
-                "none";
-
-            stopTimer();
-        }
-    }
-
-
-    /* ============================================================
-       PROZESS BUTTONS
-    ============================================================ */
-
-    processButtons.forEach(
-        button => {
-
-            button.addEventListener(
-                "click",
-                async function () {
-
-                    const processName =
-                        button.dataset.process;
-
-
-                    const process =
-                        processes.find(
-                            item =>
-                                item.name ===
-                                processName
-                        );
-
-
-                    if (!process) {
-
-                        showMessage(
-                            "Dieser Prozess wurde nicht gefunden.",
-                            "error"
-                        );
-
-                        return;
-                    }
-
-
-                    await switchProcess(
-                        process
-                    );
-                }
-            );
-        }
-    );
-
-
-    /* ============================================================
-       PROZESS WECHSELN
-    ============================================================ */
-
-    async function switchProcess(
-        newProcess
-    ) {
-
-        processButtons.forEach(
-            button => {
-                button.disabled = true;
-            }
-        );
-
-
-        try {
-
-            /*
-             * Falls bereits derselbe Prozess läuft:
-             * nichts tun.
-             */
-
-            if (
-                activeSession &&
-                activeSession.process_id ===
-                newProcess.id
-            ) {
-
-                showMessage(
-                    newProcess.name +
-                    " läuft bereits."
-                );
-
-                return;
-            }
-
-
-            /*
-             * Bestehenden Prozess beenden
-             */
-
-            if (activeSession) {
-
-                const {
-                    error: endError
-                } =
-                    await supabaseClient
-                        .from("work_sessions")
-                        .update({
-                            ended_at:
-                                new Date().toISOString()
-                        })
-                        .eq(
-                            "id",
-                            activeSession.id
-                        );
-
-
-                if (endError) {
-                    throw endError;
-                }
-            }
-
-
-            /*
-             * Neuen Prozess starten
-             */
-
-            const {
-                data: newSession,
-                error: startError
-            } =
-                await supabaseClient
-                    .from("work_sessions")
-                    .insert({
-                        employee_id:
-                            currentUser.id,
-
-                        process_id:
-                            newProcess.id,
-
-                        started_at:
-                            new Date().toISOString()
-                    })
-                    .select(
-                        `
-                        id,
-                        employee_id,
-                        process_id,
-                        started_at,
-                        ended_at,
-                        processes (
-                            id,
-                            name,
-                            tracks_quantity,
-                            quantity_unit
-                        )
-                        `
-                    )
-                    .single();
-
-
-            if (startError) {
-                throw startError;
-            }
-
-
-            activeSession =
-                newSession;
-
-
-            updateProcessDisplay();
-
-
-            showMessage(
-                newProcess.name +
-                " wurde gestartet."
-            );
-
-
-            /*
-             * Menge des neuen Prozesses anzeigen
-             */
-
-            if (
-                newProcess.tracks_quantity
-            ) {
-
-                selectedQuantityProcess =
-                    newProcess;
-
-                await loadTodayQuantity();
-
-            } else {
-
-                quantityCard.classList.remove(
-                    "visible"
-                );
-            }
-
-        }
-
-        catch (error) {
-
-            console.error(
-                "Prozesswechsel:",
-                error
-            );
-
-
-            showMessage(
-                "Der Prozess konnte nicht gewechselt werden.",
-                "error"
-            );
-
-
-            /*
-             * Daten erneut laden,
-             * falls es einen Fehler gab.
-             */
-
-            await loadActiveSession();
-        }
-
-        finally {
-
-            processButtons.forEach(
-                button => {
-                    button.disabled = false;
-                }
-            );
-        }
-    }
-
-
-    /* ============================================================
-       MENGE HEUTE LADEN
-    ============================================================ */
-
-    async function loadTodayQuantity() {
-
-        /*
-         * Wenn kein aktiver Prozess existiert,
-         * Menge ausblenden.
-         */
-
-        if (!activeSession) {
-
-            quantityCard.classList.remove(
-                "visible"
-            );
-
-            return;
-        }
-
-
-        const process =
-            activeSession.processes;
-
-
-        if (
-            !process ||
-            !process.tracks_quantity
-        ) {
-
-            quantityCard.classList.remove(
-                "visible"
-            );
-
-            return;
-        }
-
-
-        selectedQuantityProcess =
-            process;
-
-
-        const today =
-            new Date();
-
-
-        const year =
-            today.getFullYear();
-
-        const month =
-            String(
-                today.getMonth() + 1
-            ).padStart(2, "0");
-
-        const day =
-            String(
-                today.getDate()
-            ).padStart(2, "0");
-
-
-        const workDate =
-            year +
-            "-" +
-            month +
-            "-" +
-            day;
-
-
-        const {
-            data,
-            error
-        } =
-            await supabaseClient
-                .from("daily_quantities")
-                .select(
-                    "id, quantity"
-                )
-                .eq(
-                    "employee_id",
-                    currentUser.id
-                )
-                .eq(
-                    "process_id",
-                    process.id
-                )
-                .eq(
-                    "work_date",
-                    workDate
-                )
-                .maybeSingle();
-
-
-        if (error) {
-            throw error;
-        }
-
-
-        quantityTitle.textContent =
-            process.name +
-            " – Menge heute";
-
-
-        quantityDescription.textContent =
-            "Heutige Menge für " +
-            process.name +
-            ": " +
-            process.quantity_unit;
-
-
-        if (data) {
-
-            quantityInput.value =
-                data.quantity;
-
-        } else {
-
-            quantityInput.value =
-                "";
-        }
-
-
-        quantityCard.classList.add(
-            "visible"
-        );
-    }
-
-
-    /* ============================================================
-       MENGE SPEICHERN
-    ============================================================ */
-
-    saveQuantityButton.addEventListener(
-        "click",
-        async function () {
-
-            if (!selectedQuantityProcess) {
-
-                showMessage(
-                    "Kein Prozess für die Mengeneingabe ausgewählt.",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            const value =
-                quantityInput.value.trim();
-
-
-            if (value === "") {
-
-                showMessage(
-                    "Bitte eine Menge eingeben.",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            const quantity =
-                Number(value);
-
-
-            if (
-                !Number.isInteger(quantity) ||
-                quantity < 0
-            ) {
-
-                showMessage(
-                    "Bitte eine gültige ganze Zahl eingeben.",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            saveQuantityButton.disabled =
-                true;
-
-            saveQuantityButton.textContent =
-                "Speichern...";
-
-
-            try {
-
-                const today =
-                    new Date();
-
-
-                const year =
-                    today.getFullYear();
-
-                const month =
-                    String(
-                        today.getMonth() + 1
-                    ).padStart(2, "0");
-
-                const day =
-                    String(
-                        today.getDate()
-                    ).padStart(2, "0");
-
-
-                const workDate =
-                    year +
-                    "-" +
-                    month +
-                    "-" +
-                    day;
-
-
-                /*
-                 * UPSERT:
-                 * Existiert der Eintrag bereits,
-                 * wird er aktualisiert.
-                 */
-
-                const {
-                    error
-                } =
-                    await supabaseClient
-                        .from("daily_quantities")
-                        .upsert(
-                            {
-                                employee_id:
-                                    currentUser.id,
-
-                                process_id:
-                                    selectedQuantityProcess.id,
-
-                                work_date:
-                                    workDate,
-
-                                quantity:
-                                    quantity,
-
-                                updated_at:
-                                    new Date().toISOString()
-                            },
-                            {
-                                onConflict:
-                                    "employee_id,process_id,work_date"
-                            }
-                        );
-
-
-                if (error) {
-                    throw error;
-                }
-
-
-                showMessage(
-                    "Menge erfolgreich gespeichert."
-                );
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    "Menge speichern:",
-                    error
-                );
-
-                showMessage(
-                    "Die Menge konnte nicht gespeichert werden.",
-                    "error"
-                );
-            }
-
-            finally {
-
-                saveQuantityButton.disabled =
-                    false;
-
-                saveQuantityButton.textContent =
-                    "Menge speichern";
-            }
-        }
-    );
-
-
-    /* ============================================================
-       ABMELDEN
-    ============================================================ */
-
-    logoutButton.addEventListener(
-        "click",
-        async function () {
-
-            logoutButton.disabled =
-                true;
-
-            logoutButton.textContent =
-                "Abmelden...";
-
-
-            try {
-
-                /*
-                 * Wenn noch ein Prozess läuft,
-                 * beenden wir ihn beim Abmelden.
-                 */
-
-                if (activeSession) {
-
-                    const {
-                        error
-                    } =
-                        await supabaseClient
-                            .from("work_sessions")
-                            .update({
-                                ended_at:
-                                    new Date().toISOString()
-                            })
-                            .eq(
-                                "id",
-                                activeSession.id
-                            );
-
-
-                    if (error) {
-                        console.error(
-                            "Session beenden:",
-                            error
-                        );
-                    }
-                }
-
-
-                await supabaseClient.auth.signOut();
-
-
-                window.location.href =
-                    "index.html";
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    "Logout:",
-                    error
-                );
-
-                logoutButton.disabled =
-                    false;
-
-                logoutButton.textContent =
-                    "Abmelden";
-            }
-        }
-    );
-
-
-    /* ============================================================
-       AUTOMATISCH AUSLOGGEN BEI AUTH-ÄNDERUNG
-    ============================================================ */
-
-    supabaseClient.auth.onAuthStateChange(
-        function (
-            event,
-            session
-        ) {
-
-            if (
-                event === "SIGNED_OUT" ||
-                !session
-            ) {
-
-                window.location.href =
-                    "index.html";
-            }
-        }
-    );
-
-
-    /* ============================================================
-       START
-    ============================================================ */
 
     initialize();
 
